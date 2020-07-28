@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="179" height="150" viewBox="0 0 179 150">
+  <g id="Group_5" data-name="Group 5" transform="translate(-854 -68)">
+    <g id="Group_4" data-name="Group 4">
+      <g id="Group_3" data-name="Group 3" transform="translate(1768.246 -567)">
+        <g id="Group_2" data-name="Group 2" transform="translate(-875.787 679.744)">
+          <path id="Path_17" data-name="Path 17" d="M138.241,563.84l-15.7-24.29,15.7-24.4h12.747l-15.772,24.4,15.772,24.29Z" transform="translate(-122.541 -506.869)" fill="#3bb99b"/>
+          <path id="Path_18" data-name="Path 18" d="M904.8,479.246,885.28,549.882h-9.794L895,479.246Z" transform="translate(-834.065 -484.36)" fill="#3bb99b"/>
+          <path id="Path_19" data-name="Path 19" d="M916.788,515.151h12.676l15.772,24.32-15.773,24.21H916.787l15.7-24.211Z" transform="translate(-842.956 -506.775)" fill="#3bb99b"/>
+        </g>
+        <g id="Polygon_1" data-name="Polygon 1" transform="translate(-914.246 635)" fill="none">
+          <path d="M134.25,0,179,75l-44.75,75H44.75L0,75,44.75,0Z" stroke="none"/>
+          <path d="M 48.72468566894531 7 L 8.151351928710938 75 L 48.72468566894531 143 L 130.2753143310547 143 L 170.8486480712891 75 L 130.2753143310547 7 L 48.72468566894531 7 M 44.75 0 L 134.25 0 L 179 75 L 134.25 150 L 44.75 150 L 0 75 L 44.75 0 Z" stroke="none" fill="#3bb99b"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

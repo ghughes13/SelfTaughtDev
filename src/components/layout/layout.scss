@@ -620,3 +620,58 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+/*******************/
+/***Typography******/
+/*******************/
+
+h1 {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 100px;
+}
+
+h2 {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 100px;
+}
+
+h3 {
+  font-size: 50px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+h4 {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+}
+
+h5 {
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-size: 24px;
+}
+
+/*******************/
+/******General******/
+/*******************/
+
+body {
+  background: #282c34;
+}
+
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  font-family: "Poppins", sans-serif;
+  align-items: center;
+  color: white;
+  background: #3c3f58;
+  p {
+    margin-bottom: 25px;
+    margin-top: 25px;
+  }
+}

@@ -1,0 +1,54 @@
+.contact {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  a {
+    text-decoration: none;
+    color: #fff;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    display: inline-block;
+  }
+  h3:first-child a {
+    margin-top: 50px;
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    max-width: 70vw;
+    margin: auto;
+
+    a {
+      height: 100px;
+      width: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 25px;
+      img {
+        margin-bottom: 0;
+      }
+
+      i {
+        font-size: 40px;
+      }
+    }
+
+    .github {
+      background: white;
+      i {
+        color: #24292e;
+      }
+    }
+
+    .linkedin {
+      background: #0077b5;
+    }
+
+    .youtube {
+      background: #c4302b;
+    }
+  }
+}

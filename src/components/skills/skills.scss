@@ -1,0 +1,25 @@
+.skills {
+  text-align: center;
+  padding-top: 50px;
+
+  .skill-logo-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 80vw;
+    align-items: center;
+    justify-content: space-around;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 50px;
+
+    img {
+      flex-basis: 12vw;
+      margin: 25px 2%;
+      max-width: 15vw;
+    }
+
+    .react-logo {
+      max-width: 10vw;
+    }
+  }
+}

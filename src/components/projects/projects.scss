@@ -1,0 +1,13 @@
+.projects {
+  text-align: center;
+  padding-top: 50px;
+
+  .projects-container {
+    display: flex;
+    max-width: 80vw;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 75px;
+    padding-bottom: 50px;
+  }
+}

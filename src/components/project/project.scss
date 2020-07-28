@@ -1,0 +1,64 @@
+.project {
+  position: relative;
+  margin-bottom: 25px;
+  margin-left: 15px;
+  margin-right: 15px;
+
+  img {
+    margin-bottom: 0;
+  }
+
+  .overlay {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0);
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 7px;
+    margin: auto;
+    color: white;
+    opacity: 0;
+    transition-duration: 0.25s;
+
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      max-width: 100%;
+      margin-left: 0;
+      li {
+        font-family: "Poppins", sans-serif;
+        margin-left: 5px;
+        margin-right: 5px;
+      }
+    }
+
+    a {
+      background: #3bb99b;
+      color: white;
+      text-decoration: none;
+      font-family: "Poppins", sans-serif;
+      padding: 10px 15px;
+      border-radius: 15px;
+      margin: 0 15px;
+      transition-duration: 0.25s;
+
+      &:hover {
+        background: darken(#3bb99b, 10%);
+      }
+    }
+  }
+
+  &:hover {
+    .overlay {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.55);
+    }
+  }
+}

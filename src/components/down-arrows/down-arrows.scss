@@ -1,0 +1,59 @@
+.down-arrows {
+  text-align: center;
+}
+
+.animated-arrow {
+  margin: auto;
+  width: 26px;
+  height: 10px;
+  animation: fade 1s linear infinite;
+  animation-delay: 0.33s;
+  position: relative;
+}
+
+.animated-arrow::before,
+.animated-arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  background-color: #003a98;
+  height: 3px;
+  width: 20.5px;
+}
+
+.animated-arrow::before {
+  transform: rotate(35deg);
+  right: 47%;
+}
+
+.animated-arrow::after {
+  transform: rotate(-35deg);
+  left: 47%;
+}
+
+.animated-arrow::before,
+.animated-arrow::after {
+  background-color: #3bb99b;
+}
+
+.animated-arrow:nth-child(2) {
+  animation-delay: 0.46s;
+}
+
+.animated-arrow:nth-child(3) {
+  animation-delay: 0.59s;
+}
+
+.animated-arrow:nth-child(4) {
+  animation-delay: 0.72s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
