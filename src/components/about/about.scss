@@ -1,16 +1,40 @@
 .about {
   text-align: center;
 
+  h2 {
+    margin-bottom: 50px;
+  }
+
   .youtube-logo {
     max-width: 350px;
   }
 
   .video {
-    margin-bottom: -75px;
-    margin-top: 50px;
+    max-width: 1000px;
+    margin: auto;
+
+    @media screen and (max-width: 1224px) {
+      max-width: 85vw;
+    }
+  }
+
+  .wistia_swatch {
+    display: none;
   }
 
   .youtube-logo {
     margin-bottom: -25px;
+  }
+
+  .col {
+    margin-top: -50px;
+  }
+
+  canvas {
+    position: relative !important;
+  }
+
+  .w-bottom-bar-right-inner div:nth-child(4) {
+    display: none !important;
   }
 }

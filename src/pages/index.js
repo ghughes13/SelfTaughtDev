@@ -1,5 +1,4 @@
 import React from "react"
-import { motion, AnimatePresence } from "framer-motion"
 
 import Layout from "../components/layout/Layout"
 import SEO from "../components/seo"
@@ -11,7 +10,7 @@ import Contact from "../components/contact/Contact"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
+    <SEO title="Portfolio" />
     <Hero />
     <About />
     <Skills />

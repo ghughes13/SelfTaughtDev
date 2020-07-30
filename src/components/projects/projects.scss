@@ -9,5 +9,14 @@
     margin: auto;
     margin-top: 75px;
     padding-bottom: 50px;
+    white-space: nowrap;
+
+    @media screen and (max-width: 1500px) {
+      max-width: 95vw;
+    }
+
+    @media screen and (max-width: 767px) {
+      flex-direction: column;
+    }
   }
 }

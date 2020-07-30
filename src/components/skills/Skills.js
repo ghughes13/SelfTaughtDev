@@ -1,26 +1,18 @@
 import React from "react"
 import "./skills.scss"
 import DownArrows from "../down-arrows/DownArrows"
-import { motion, AnimatePresence } from "framer-motion"
 
 const Skills = () => {
   return (
     <div className="skills">
       <h2>Skills</h2>
       <div className="skill-logo-container">
-        <AnimatePresence>
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-          >
-            <img
-              className="html-logo skill"
-              src={require("../../svgs/skills/html-logo.svg")}
-              alt="logo"
-              title="HTML"
-            />
-          </motion.div>
-        </AnimatePresence>
+        <img
+          className="html-logo skill"
+          src={require("../../svgs/skills/html-logo.svg")}
+          alt="logo"
+          title="HTML"
+        />
         <img
           className="css-logo skill"
           src={require("../../svgs/skills/css-logo.svg")}

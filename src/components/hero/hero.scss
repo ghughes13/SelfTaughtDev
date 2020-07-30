@@ -2,7 +2,13 @@
   background: url("../../images/hero.png") no-repeat center center;
   background-size: cover;
   text-align: center;
-  padding: 400px 0;
+  padding: 200px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
 
   .logo {
     position: absolute;
@@ -17,7 +23,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 90vh;
+    bottom: 5vh;
   }
 
   .down-arrows {
@@ -30,7 +36,7 @@
     width: 100%;
     position: absolute;
     left: 0;
-    bottom: -53px;
+    bottom: 0;
     z-index: 0;
   }
 }

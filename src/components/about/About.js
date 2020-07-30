@@ -1,5 +1,7 @@
 import React from "react"
 import "./about.scss"
+
+import WistiaInline from "../wistiaIn_Inline_video/WistiaInline"
 import DownArrows from "../down-arrows/DownArrows"
 
 const About = () => {
@@ -7,14 +9,7 @@ const About = () => {
     <div className="about">
       <h2>About</h2>
       <div className="video">
-        <iframe
-          width="760"
-          height="425"
-          src="https://www.youtube.com/embed/PesqzWG0BVs"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <WistiaInline id="qwyip7fv2k" />
       </div>
       <div className="col">
         <a

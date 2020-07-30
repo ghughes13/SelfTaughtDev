@@ -1,5 +1,6 @@
 import React from "react"
 import "./contact.scss"
+import pdf from "../../Garrett_Hughes_Resume_Tech.pdf"
 
 const About = () => {
   return (
@@ -37,7 +38,7 @@ const About = () => {
         >
           <i class="fa fa-youtube"></i>
         </a>
-        <a href=" " rel="noreferrer">
+        <a href={pdf} target="_blank" rel="noreferrer">
           <img src={require("../../images/resume.png")} />
         </a>
       </div>

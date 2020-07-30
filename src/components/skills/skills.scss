@@ -16,10 +16,21 @@
       flex-basis: 12vw;
       margin: 25px 2%;
       max-width: 15vw;
+      @media screen and (max-width: 767px) {
+        flex-basis: initial;
+        max-width: initial;
+        height: 100px;
+        width: 100px;
+      }
     }
 
     .react-logo {
       max-width: 10vw;
+      min-width: 150px;
+    }
+
+    @media screen and (min-width: 1600px) {
+      max-width: 1500px;
     }
   }
 }

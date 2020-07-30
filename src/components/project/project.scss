@@ -39,6 +39,13 @@
       }
     }
 
+    .btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-self: center;
+    }
+
     a {
       background: #3bb99b;
       color: white;
@@ -49,6 +56,12 @@
       margin: 0 15px;
       transition-duration: 0.25s;
 
+      @media screen and (max-width: 1200px) {
+        &:last-child {
+          margin-top: 15px;
+        }
+      }
+
       &:hover {
         background: darken(#3bb99b, 10%);
       }
@@ -56,6 +69,13 @@
   }
 
   &:hover {
+    .overlay {
+      opacity: 1;
+      background: rgba(0, 0, 0, 0.55);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
     .overlay {
       opacity: 1;
       background: rgba(0, 0, 0, 0.55);
