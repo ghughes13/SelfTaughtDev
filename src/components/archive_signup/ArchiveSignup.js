@@ -68,6 +68,12 @@ const archiveSignup = () => (
           Let me know when it launches!
         </button>
       </div>
+      <div id="thanks">
+        <p>
+          Thanks for signing up! You'll get an email confirmation and we'll let
+          you know when the Project Archive Launches!
+        </p>
+      </div>
       <Loader />
       <p id="error-msg">
         Error submitting form. <br />
