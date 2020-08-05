@@ -1,6 +1,7 @@
 import React from "react"
 
 import "./archive-signup.scss"
+import Loader from "../loader/Loader"
 
 const archiveSignup = () => (
   <div className="archive-signup-lp">
@@ -11,43 +12,67 @@ const archiveSignup = () => (
     />
     <h1>Get notified when the Project Archive launches.</h1>
     <form
-      // action="https://selftaught-dev.us17.list-manage.com/subscribe/post-json?u=f78948dc4e5d0d17d2b0eb52f&id=89067ad222&c=?"
-      // method="POST"
-      id="theForm"
+      id="archive-notification-form"
+      method="POST"
+      name="Archive Notification LP"
+      action="/archive-notification-lp/#thanks"
       onSubmit={e => {
         e.preventDefault()
+        const submitButton = document.getElementById("sbmt-form-btn")
+        const loader = document.querySelector(".loader")
+        const formName = document.getElementById("archive-notification-form")
 
-        fetch("https://selftaught-dev.us17.list-manage.com/subscribe/post", {
+        loader.style.display = "block"
+        submitButton.style.display = "none"
+
+        fetch(formName.getAttribute("action"), {
           method: "POST",
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          body: new FormData(document.getElementById("theForm")),
-        }).then(res => {
-          console.log(res)
-          if (res.status === 200) {
-            console.log("success!")
-          } else {
-            console.log(res)
-            console.log("ERROR ERROR")
-          }
+          body: new FormData(formName),
         })
-      }}
-    >
-      <input type="hidden" name="u" value="f78948dc4e5d0d17d2b0eb52f" />
-      <input type="hidden" name="id" value="89067ad222" />
-      <label htmlFor="MERGE1">Name</label>
-      <input type="text" placeholder="Name" name="MERGE1" id="MERGE1" />
+          .then(res => {
+            console.log(res)
+            if (res.status === 200) {
+              document.querySelector("#vendor-lp").style.display = "none"
+              document.querySelector(".contact-thank-you").style.display =
+                "block"
+            } else {
+              loader.style.display = "none"
+              document.getElementById("error-msg").style.display = "block"
+              submitButton.style.display = "block"
+            }
+          })
+          .catch(error => {
+            loader.style.display = "none"
+            document.getElementById("error-msg").style.display = "block"
+            submitButton.style.display = "block"
 
-      <label htmlFor="MERGE0">email</label>
-      <input
-        className="margin-top-input"
-        type="email"
-        name="MERGE0"
-        placeholder="Email"
-        id="MERGE0"
-      />
-      <button type="submit">Let me know when it launches!</button>
+            console.log(error)
+          })
+      }}
+      netlify="true"
+      netlify-honeypot="bot-field"
+    >
+      <div className="form-info-div">
+        <input type="hidden" name="bot-field" id="bot" />
+        <label htmlFor="name">Name</label>
+        <input type="text" placeholder="Name" name="name" id="name" />
+        <label htmlFor="email">email</label>
+        <input
+          className="margin-top-input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          id="email"
+        />
+        <button id="sbmt-form-btn" type="submit">
+          Let me know when it launches!
+        </button>
+      </div>
+      <Loader />
+      <p id="error-msg">
+        Error submitting form. <br />
+        Ensure all fields are filled out.
+      </p>
     </form>
   </div>
 )
