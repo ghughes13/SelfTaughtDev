@@ -14,6 +14,7 @@ const archiveSignup = () => (
     <form
       id="archive-notification-form"
       method="POST"
+      enctype="multipart/form-data"
       name="Archive Notification LP"
       action="/archive-notification-lp/#thanks"
       onSubmit={e => {
@@ -55,6 +56,7 @@ const archiveSignup = () => (
       netlify-honeypot="bot-field"
     >
       <div className="form-info-div">
+        <input type="hidden" name="form-name" value="Archive Notification LP" />
         <input type="hidden" name="bot-field" id="bot" />
         <label htmlFor="name">Name</label>
         <input type="text" placeholder="Name" name="name" id="name" />
