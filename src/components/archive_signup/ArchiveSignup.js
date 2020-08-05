@@ -33,11 +33,9 @@ const archiveSignup = () => (
           ),
         })
           .then(res => {
-            console.log(res)
             if (res.status === 200) {
-              document.querySelector("#vendor-lp").style.display = "none"
-              document.querySelector(".contact-thank-you").style.display =
-                "block"
+              document.querySelector(".form-info-div").style.display = "none"
+              document.getElementById("thanks").style.display = "block"
             } else {
               loader.style.display = "none"
               document.getElementById("error-msg").style.display = "block"
@@ -48,8 +46,6 @@ const archiveSignup = () => (
             loader.style.display = "none"
             document.getElementById("error-msg").style.display = "block"
             submitButton.style.display = "block"
-
-            console.log(error)
           })
       }}
       netlify="true"
