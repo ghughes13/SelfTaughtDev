@@ -72,7 +72,11 @@
     max-width: 350px;
     background: #3bb99b;
     color: white;
+    padding: 0 30px;
     font-family: "poppins", sans-serif;
     display: none;
+    p {
+      margin-top: 1.45rem;
+    }
   }
 }

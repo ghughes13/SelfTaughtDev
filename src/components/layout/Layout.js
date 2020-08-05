@@ -22,7 +22,10 @@ const Layout = ({ children, footer = "" }) => {
       <div>
         <main>{children}</main>
         <footer className={footer}>
-          <p>Ghughes13</p>
+          <p>Self Taught Dev</p>
+          <p>
+            <a href="/privacy-policy">Privacy Policy</a>
+          </p>
           <p>© {new Date().getFullYear()}, All Rights Reserved</p>
         </footer>
       </div>

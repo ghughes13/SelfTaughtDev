@@ -35,7 +35,8 @@ const archiveSignup = () => (
           .then(res => {
             if (res.status === 200) {
               document.querySelector(".form-info-div").style.display = "none"
-              document.getElementById("thanks").style.display = "block"
+              document.getElementById("thanks").style.display = "flex"
+              loader.style.display = "none"
             } else {
               loader.style.display = "none"
               document.getElementById("error-msg").style.display = "block"
