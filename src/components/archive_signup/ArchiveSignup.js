@@ -27,7 +27,9 @@ const archiveSignup = () => (
 
         fetch(formName.getAttribute("action"), {
           method: "POST",
-          body: new FormData(formName),
+          body: new FormData(
+            document.getElementById("archive-notification-form")
+          ),
         })
           .then(res => {
             console.log(res)
