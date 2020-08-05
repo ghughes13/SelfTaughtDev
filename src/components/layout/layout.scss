@@ -682,6 +682,14 @@ footer {
   align-items: center;
   color: white;
   background: #3c3f58;
+
+  &.transparent {
+    background: rgba(0, 0, 0, 0.3);
+    margin-top: -76px;
+    z-index: 9;
+    position: relative;
+  }
+
   p {
     margin-bottom: 25px;
     margin-top: 25px;
