@@ -9,7 +9,7 @@ const PrivacyPolicy = () => (
 
       <p>
         This privacy notice discloses the privacy practices for{" "}
-        <a href="https://avteksc.wpengine.com/">avteksc.wpengine.com</a>. This
+        <a href="https://selftaught-dev.com/">selftaught-dev.com</a>. This
         privacy notice applies solely to information collected by this website.
         It will notify you of the following:
       </p>
@@ -116,7 +116,7 @@ const PrivacyPolicy = () => (
 
       <p>
         If you feel that we are not abiding by this privacy policy, you should
-        contact us immediately via telephone at  214-778-2983
+        contact us immediately via telephone at selftdev@gmail.com
       </p>
     </div>
   </Layout>
