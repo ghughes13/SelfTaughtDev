@@ -688,6 +688,9 @@ footer {
     margin-top: -76px;
     z-index: 9;
     position: relative;
+    @media screen and (max-width: 767px) {
+      margin-top: 0;
+    }
   }
 
   p {
@@ -701,5 +704,10 @@ footer {
   a {
     color: white;
     text-decoration: none;
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    margin-top: 0px;
   }
 }
