@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import "./hero.scss"
-import DownArrows from "../down-arrows/DownArrows"
+import DownArrows from "../../down-arrows/DownArrows"
 
 const Hero = () => {
   useEffect(() => {
@@ -13,7 +13,7 @@ const Hero = () => {
     <div className="hero">
       <img
         className="logo"
-        src={require("../../svgs/selftaughtdev-logo-mini.svg")}
+        src={require("../../../svgs/selftaughtdev-logo-mini.svg")}
         alt="logo"
       />
       <h1>Garrett Hughes</h1>

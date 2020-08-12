@@ -1,8 +1,8 @@
 import React from "react"
 import "./about.scss"
 
-import WistiaInline from "../wistiaIn_Inline_video/WistiaInline"
-import DownArrows from "../down-arrows/DownArrows"
+import WistiaInline from "../../wistiaIn_Inline_video/WistiaInline"
+import DownArrows from "../../down-arrows/DownArrows"
 
 const About = () => {
   return (
@@ -19,7 +19,7 @@ const About = () => {
         >
           <img
             className="youtube-logo"
-            src={require("../../svgs/youtube-logo-white.svg")}
+            src={require("../../../svgs/youtube-logo-white.svg")}
             alt="logo"
           />
         </a>
