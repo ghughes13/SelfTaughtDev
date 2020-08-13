@@ -5,6 +5,16 @@ module.exports = {
     author: `@ghughes139`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-175319701-1",
+        head: true,
+        anonymize: true,
+        respectDNT: true,
+        defer: false,
+      },
+    },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     {
@@ -28,14 +38,5 @@ module.exports = {
         icon: `src/svgs/selftaughtdev-mini-logo-square.svg`,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-175319701-1",
-      },
-    },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }
