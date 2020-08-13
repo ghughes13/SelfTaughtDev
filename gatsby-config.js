@@ -16,6 +16,15 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://selftaught-dev.com/",
+        sitemap: "https://selftaught-dev.com/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -29,11 +38,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Garrett Hughes Portfolio`,
+        name: `Self Taught Dev`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#282c34`,
+        theme_color: `#3bb99b`,
         display: `minimal-ui`,
         icon: `src/svgs/selftaughtdev-mini-logo-square.svg`,
       },
