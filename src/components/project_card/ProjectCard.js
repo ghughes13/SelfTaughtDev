@@ -17,7 +17,7 @@ const ProjectCard = ({ project }) => {
         })}
       </div>
       <h4>{project.projectTitle}</h4>
-      <p>{project.description}</p>
+      {/* <p>{project.description}</p> */}
       <Link className="btn-style-1" to={project.projectTitle}>
         Learn More
       </Link>

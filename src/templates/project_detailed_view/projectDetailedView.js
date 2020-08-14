@@ -1,5 +1,4 @@
-import React, { Component } from "react"
-import { Link } from "gatsby"
+import React from "react"
 
 import "./project-detailed-view.scss"
 
@@ -17,7 +16,7 @@ export default function ProjectDetails(someProp) {
     <div className="project-detailed-view">
       <div className="background-image" style={styles}></div>
       <div className="back">
-        <Link to="/">Home</Link>
+        <a href="/">Home</a>
       </div>
       <div className="content">
         <h1>{projDetails.projectTitle} </h1>
