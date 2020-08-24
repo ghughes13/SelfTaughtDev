@@ -667,7 +667,8 @@ h5 {
   font-size: 24px;
 }
 
-p,a {
+p,
+a {
   font-family: "poppins", sans-serif;
 }
 
@@ -755,12 +756,21 @@ footer {
   min-height: 100vh;
   position: relative;
 
+  @media screen and (max-width: 767px) {
+    padding: 300px 0 100px;
+    min-height: initial;
+  }
+
   .logo {
     position: absolute;
     top: 5vh;
     left: 0;
     right: 0;
     margin: auto;
+
+    @media screen and (max-width: 767px) {
+      top: 100px;
+    }
   }
 
   .down-arrows {
@@ -773,6 +783,10 @@ footer {
 
 h1 {
   padding-top: 75px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 34px;
+  }
 }
 
 .page-title {
@@ -797,6 +811,14 @@ h1 {
   border-radius: 0 0 10px 10px;
   padding: 10px 20px;
   animation: dropDown 1s;
+
+  @media screen and (max-width: 767px) {
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 300px;
+  }
+
   p {
     margin-bottom: 0;
   }

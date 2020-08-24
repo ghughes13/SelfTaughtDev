@@ -12,7 +12,6 @@ exports.createPages = ({ boundActionCreators }) => {
   )
   // console.log(data)
   data.forEach(indvProjectData => {
-    console.log(indvProjectData)
     createPage({
       path: `/${indvProjectData.projectTitle}`,
       component: slash(pageTemplate),

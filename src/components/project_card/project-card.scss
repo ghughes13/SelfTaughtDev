@@ -6,6 +6,14 @@
   position: relative;
   padding-bottom: 75px;
 
+  @media screen and (max-width: 1224px) {
+    flex-basis: 45%;
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-basis: 90%;
+  }
+
   .project-skills {
     display: flex;
     justify-content: space-evenly;
@@ -20,10 +28,19 @@
     border-radius: 10px 10px 0 0;
     object-fit: cover;
     height: 300px;
+
+    @media screen and (max-width: 767px) {
+      min-height: 200px;
+      height: initial;
+    }
   }
 
   h4 {
     text-align: center;
+
+    @media screen and (max-width: 767px) {
+      padding: 0 10px;
+    }
   }
 
   p {

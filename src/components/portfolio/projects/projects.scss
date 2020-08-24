@@ -17,6 +17,10 @@
 
     @media screen and (max-width: 767px) {
       flex-direction: column;
+
+      h4 {
+        font-size: 24px;
+      }
     }
   }
 }
