@@ -22,11 +22,15 @@ const Layout = ({ children, footer = "" }) => {
       <div>
         <main>{children}</main>
         <footer className={footer}>
-          <p>Self Taught Dev</p>
+          <div className="footer col-1">
+            <p>
+              <a href="/privacy-policy">Privacy Policy</a>
+            </p>
+          </div>
+          <p>Send any bugs/feedback to selftdev@gmail.com</p>
           <p>
-            <a href="/privacy-policy">Privacy Policy</a>
+            © {new Date().getFullYear()}, All Rights Reserved Self Taught Dev
           </p>
-          <p>© {new Date().getFullYear()}, All Rights Reserved</p>
         </footer>
       </div>
     </>
