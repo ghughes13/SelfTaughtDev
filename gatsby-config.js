@@ -3,6 +3,7 @@ module.exports = {
     title: `SelfTaughtDev`,
     description: `Build Projects and Learn To Code`,
     author: `@ghughes139`,
+    siteUrl: `https://selftaught-dev.com`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
