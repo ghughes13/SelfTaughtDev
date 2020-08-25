@@ -12,6 +12,8 @@ const archiveNotificationLP = () => (
       formTitle="Archive Notification LP"
       urlToPostTo="/archive-notification-lp/#thanks"
       btnText="Let me know when it launches!"
+      successMessage="Thanks for signing up! You'll get an email confirmation and we'll let
+      you know when the Project Archive Launches!"
     />
   </Layout>
 )

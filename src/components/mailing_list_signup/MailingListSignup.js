@@ -3,7 +3,13 @@ import React from "react"
 import "./mailing-list-signup.scss"
 import Loader from "../loader/Loader"
 
-const mailingListSignup = ({ pageTitle, formName, urlToPostTo, btnText }) => (
+const mailingListSignup = ({
+  pageTitle,
+  formTitle,
+  urlToPostTo,
+  btnText,
+  successMessage,
+}) => (
   <div className="mailing-list-signup">
     <img
       className="logo"
@@ -12,23 +18,23 @@ const mailingListSignup = ({ pageTitle, formName, urlToPostTo, btnText }) => (
     />
     <h1>{pageTitle}</h1>
     <form
-      id="notification-form"
+      id={formTitle}
       method="POST"
       encType="multipart/form-data"
-      name={formName}
+      name={formTitle}
       action={urlToPostTo}
       onSubmit={e => {
         e.preventDefault()
         const submitButton = document.getElementById("sbmt-form-btn")
         const loader = document.querySelector(".loader")
-        const formName = document.getElementById("notification-form")
+        const formName = document.getElementById(formTitle)
 
         loader.style.display = "block"
         submitButton.style.display = "none"
 
         fetch(formName.getAttribute("action"), {
           method: "POST",
-          body: new FormData(document.getElementById("notification-form")),
+          body: new FormData(document.getElementById(formTitle)),
         })
           .then(res => {
             if (res.status === 200) {
@@ -51,7 +57,7 @@ const mailingListSignup = ({ pageTitle, formName, urlToPostTo, btnText }) => (
       netlify-honeypot="bot-field"
     >
       <div className="form-info-div">
-        <input type="hidden" name="form-name" value={formName} />
+        <input type="hidden" name="form-name" value={formTitle} />
         <input type="hidden" name="bot-field" id="bot" />
         <label htmlFor="name">Name</label>
         <input type="text" placeholder="Name" name="name" id="name" />
@@ -63,15 +69,19 @@ const mailingListSignup = ({ pageTitle, formName, urlToPostTo, btnText }) => (
           placeholder="Email"
           id="email"
         />
+        <div className="optin-box">
+          <input type="checkbox" name="optin" id="optin" required />
+          <label for="optin" id="optin-label">
+            I acknowledge that I am also signing up for the SelfTaughtDev free
+            email newsletter.{" "}
+          </label>
+        </div>
         <button id="sbmt-form-btn" type="submit">
           {btnText}
         </button>
       </div>
       <div id="thanks">
-        <p>
-          Thanks for signing up! You'll get an email confirmation and we'll let
-          you know when the Project Archive Launches!
-        </p>
+        <p>{successMessage}</p>
       </div>
       <Loader />
       <p id="error-msg">
