@@ -9,7 +9,7 @@ const archiveNotificationLP = () => (
     <SEO title="Archive Notification LP" />
     <MailingListSignup
       pageTitle="Get My Resume Template Sent To Your Inbox"
-      formTitle="Email Template LP"
+      formTitle="Resume Template LP"
       urlToPostTo="/resume-template/#thanks"
       btnText="Get The Template"
       successMessage="Thanks for signing up to the SelfTaughtDev Newsletter. If you don't receive the resume template within a few minutes, be sure to check your spam folder."
