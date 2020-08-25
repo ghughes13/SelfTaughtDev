@@ -1,36 +1,34 @@
 import React from "react"
 
-import "./archive-signup.scss"
+import "./mailing-list-signup.scss"
 import Loader from "../loader/Loader"
 
-const archiveSignup = () => (
-  <div className="archive-signup-lp">
+const mailingListSignup = ({ pageTitle, formName, urlToPostTo, btnText }) => (
+  <div className="mailing-list-signup">
     <img
       className="logo"
       src={require("../../svgs/selftaughtdev-logo-mini.svg")}
       alt="logo"
     />
-    <h1>Get notified when the Project Archive launches.</h1>
+    <h1>{pageTitle}</h1>
     <form
-      id="archive-notification-form"
+      id="notification-form"
       method="POST"
-      enctype="multipart/form-data"
-      name="Archive Notification LP"
-      action="/archive-notification-lp/#thanks"
+      encType="multipart/form-data"
+      name={formName}
+      action={urlToPostTo}
       onSubmit={e => {
         e.preventDefault()
         const submitButton = document.getElementById("sbmt-form-btn")
         const loader = document.querySelector(".loader")
-        const formName = document.getElementById("archive-notification-form")
+        const formName = document.getElementById("notification-form")
 
         loader.style.display = "block"
         submitButton.style.display = "none"
 
         fetch(formName.getAttribute("action"), {
           method: "POST",
-          body: new FormData(
-            document.getElementById("archive-notification-form")
-          ),
+          body: new FormData(document.getElementById("notification-form")),
         })
           .then(res => {
             if (res.status === 200) {
@@ -53,7 +51,7 @@ const archiveSignup = () => (
       netlify-honeypot="bot-field"
     >
       <div className="form-info-div">
-        <input type="hidden" name="form-name" value="Archive Notification LP" />
+        <input type="hidden" name="form-name" value={formName} />
         <input type="hidden" name="bot-field" id="bot" />
         <label htmlFor="name">Name</label>
         <input type="text" placeholder="Name" name="name" id="name" />
@@ -66,7 +64,7 @@ const archiveSignup = () => (
           id="email"
         />
         <button id="sbmt-form-btn" type="submit">
-          Let me know when it launches!
+          {btnText}
         </button>
       </div>
       <div id="thanks">
@@ -84,4 +82,4 @@ const archiveSignup = () => (
   </div>
 )
 
-export default archiveSignup
+export default mailingListSignup

@@ -8,10 +8,10 @@ const archiveNotificationLP = () => (
   <Layout footer="transparent">
     <SEO title="Archive Notification LP" />
     <MailingListSignup
-      pageTitle="Get notified when the Project Archive launches."
-      formTitle="Archive Notification LP"
-      urlToPostTo="/archive-notification-lp/#thanks"
-      btnText="Let me know when it launches!"
+      pageTitle="Get My Resume Template Sent To Your Inbox"
+      formTitle="Email Template LP"
+      urlToPostTo="/resume-template/#thanks"
+      btnText="Get The Template"
     />
   </Layout>
 )

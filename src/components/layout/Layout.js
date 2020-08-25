@@ -27,7 +27,7 @@ const Layout = ({ children, footer = "" }) => {
               <a href="/privacy-policy">Privacy Policy</a>
             </p>
           </div>
-          <p>Send any bugs/feedback to selftdev@gmail.com</p>
+          <p>Send bugs/feedback to selftdev@gmail.com</p>
           <p>
             © {new Date().getFullYear()}, All Rights Reserved Self Taught Dev
           </p>
