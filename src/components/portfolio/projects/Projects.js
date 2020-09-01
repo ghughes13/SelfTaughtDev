@@ -43,7 +43,7 @@ const Projects = () => {
             title="Honey CRM"
             imgSrc="honeycrm-site.png"
             skills={["HTML", "CSS", "SASS", "React", "Gatsby"]}
-            demoLink="https://admiring-clarke-317df8.netlify.app/"
+            demoLink="https://honeycrm.com/"
             codeLink="https://github.com/ghughes13/honey-CRM"
           />
           <Project
