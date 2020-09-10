@@ -42,10 +42,8 @@ const SignUpScreen = ({
     <h1>Sign Up</h1>
     <form
       id={formTitle}
-      method="POST"
       encType="multipart/form-data"
       name={formTitle}
-      action={urlToPostTo}
       onSubmit={e => {
         submitForm()
         e.preventDefault()
