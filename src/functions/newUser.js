@@ -63,4 +63,14 @@ function handleRequest(event, context, callback) {
   })
 }
 
+function sendErrorMessage(statusCode, message, callback) {
+  console.error(message)
+
+  callback(null, {
+    statusCode,
+    headers,
+    body: JSON.stringify({ message }),
+  })
+}
+
 exports.handler = handleRequest
