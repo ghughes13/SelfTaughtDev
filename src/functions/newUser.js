@@ -8,6 +8,8 @@ mongoose.connect(process.env.DBURL, {
   useNewUrlParser: true,
 })
 
+console.log(process.env.DBURL)
+
 mongoose.connection.on("connected", () => {})
 
 //Schema
