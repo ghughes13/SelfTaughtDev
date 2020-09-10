@@ -16,7 +16,7 @@ const SignUpScreen = ({
       .post(
         "https://www.selftaught-dev.com/.netlify/functions/newUser",
         JSON.stringify({
-          userName: document.getElementById("userName").value,
+          userName: document.getElementById("username").value,
           password: document.getElementById("password").value,
           firstName: document.getElementById("firstName").value,
           lastName: document.getElementById("lastName").value,
