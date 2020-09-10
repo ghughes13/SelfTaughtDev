@@ -1,7 +1,7 @@
 require("dotenv").config()
 // const stripe = require("stripe")()
 // const axios = require("axios")
-const mongoose = require("mongoose")
+var mongoose = require("mongoose")
 
 mongoose.connect(process.env.DBURL, {
   useUnifiedTopology: true,
