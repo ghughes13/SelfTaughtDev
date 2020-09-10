@@ -1,7 +1,30 @@
 import React from "react"
+import axios from "axios"
 
 import "./sign-up-screen.scss"
 import Loader from "../loader/Loader"
+
+const submitForm = () => {
+  axios
+    .post(
+      "https://www.selftaught-dev.com/.netlify/functions/newUser",
+      JSON.stringify({
+        userName: document.getElementById("userName").value,
+        password: document.getElementById("password").value,
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        email: document.getElementById("email").value,
+      })
+    )
+    .then(response => {
+      if (response.status === 200) {
+        console.log("IT WORKED MAYBE?")
+      }
+    })
+    .catch(error => {
+      console.log("FAILED ):")
+    })
+}
 
 const SignUpScreen = ({
   pageTitle,
@@ -24,34 +47,8 @@ const SignUpScreen = ({
       name={formTitle}
       action={urlToPostTo}
       onSubmit={e => {
+        submitForm()
         e.preventDefault()
-        const submitButton = document.getElementById("sbmt-form-btn")
-        const loader = document.querySelector(".loader")
-        const formName = document.getElementById(formTitle)
-
-        loader.style.display = "block"
-        submitButton.style.display = "none"
-
-        fetch(formName.getAttribute("action"), {
-          method: "POST",
-          body: new FormData(document.getElementById(formTitle)),
-        })
-          .then(res => {
-            if (res.status === 200) {
-              document.querySelector(".form-info-div").style.display = "none"
-              document.getElementById("thanks").style.display = "flex"
-              loader.style.display = "none"
-            } else {
-              loader.style.display = "none"
-              document.getElementById("error-msg").style.display = "block"
-              submitButton.style.display = "block"
-            }
-          })
-          .catch(error => {
-            loader.style.display = "none"
-            document.getElementById("error-msg").style.display = "block"
-            submitButton.style.display = "block"
-          })
       }}
     >
       <div className="form-info-div">
