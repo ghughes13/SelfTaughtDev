@@ -35,12 +35,13 @@ const headers = {
 function handleRequest(event, context, callback) {
   console.log("submitting")
   try {
+    console.log("trying to parse body")
     body = JSON.parse(event.body)
   } catch {
+    console.log("there was an error; Sending response")
     sendErrorMessage(400, "Body not formatted in JSON.", callback)
-    console.log(body.raw)
   }
-
+  console.log("No Error; Trying to save to DB")
   const newUser = new newUserModel({
     userName: body.username,
     password: body.password,
@@ -60,10 +61,12 @@ function handleRequest(event, context, callback) {
 
   return callback(null, {
     statusCode: 200,
+    headers,
   })
 }
 
 function sendErrorMessage(statusCode, message, callback) {
+  console.log("below is the error message")
   console.error(message)
 
   callback(null, {
