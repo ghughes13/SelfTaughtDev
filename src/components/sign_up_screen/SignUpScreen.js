@@ -42,7 +42,6 @@ const SignUpScreen = ({
     <h1>Sign Up</h1>
     <form
       id={formTitle}
-      encType="multipart/form-data"
       name={formTitle}
       onSubmit={e => {
         submitForm()
