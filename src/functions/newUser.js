@@ -70,10 +70,15 @@ function handleRequest(event, context, callback) {
     }
   })
 
-  callback(null, {
+  const response = {
     statusCode: 200,
-    headers,
-  })
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+    },
+  }
+
+  callback(null, response)
 }
 
 function sendErrorMessage(statusCode, message, callback) {
