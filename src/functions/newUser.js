@@ -1,7 +1,14 @@
 require("dotenv").config()
 // const stripe = require("stripe")()
 // const axios = require("axios")
-var mongoose = require("mongoose")
+const serverless = require("serverless-http")
+const express = require("express")
+const cors = require("cors")
+const mongoose = require("mongoose")
+
+const app = express()
+
+app.use(cors())
 
 mongoose.connect(process.env.DBURL, {
   useUnifiedTopology: true,
