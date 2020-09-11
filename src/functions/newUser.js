@@ -48,9 +48,11 @@ function handleRequest(event, context, callback) {
     console.log("there was an error; Sending response")
     sendErrorMessage(400, "Body not formatted in JSON.", callback)
   }
+
   console.log(body)
+
   const newUser = new newUserModel({
-    userName: body.username,
+    userName: body.userName,
     password: body.password,
     firstName: body.firstName,
     lastName: body.lastName,
@@ -60,20 +62,15 @@ function handleRequest(event, context, callback) {
 
   console.log("No Error; Trying to save to DB")
 
-  newUser
-    .save(error => {
-      if (error) {
-        console.log("error")
-      } else {
-        console.log("saved data!")
-      }
-    })
-    .then(() =>
-      callback(null, {
-        statusCode: 200,
-        headers,
-      })
-    )
+  newUser.save(error => {
+    if (error) {
+      console.log("error")
+    } else {
+      console.log("saved data!")
+    }
+  })
+
+  callback.sendStatus(200)
 }
 
 function sendErrorMessage(statusCode, message, callback) {
