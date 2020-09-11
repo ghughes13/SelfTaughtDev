@@ -70,7 +70,10 @@ function handleRequest(event, context, callback) {
     }
   })
 
-  callback.sendStatus(200)
+  callback(null, {
+    statusCode: 200,
+    headers,
+  })
 }
 
 function sendErrorMessage(statusCode, message, callback) {
