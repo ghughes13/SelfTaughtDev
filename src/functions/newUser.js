@@ -31,7 +31,7 @@ const userSchema = new Schema({
   accountType: String,
 })
 
-const newUserModel = mongoose.model("user", userSchema)
+const newUserModel = mongoose.model("users", userSchema)
 
 const headers = {
   "Access-Control-Allow-Origin": "*",
@@ -62,9 +62,9 @@ function handleRequest(event, context, callback) {
 
   console.log("No Error; Trying to save to DB")
 
-  newUser.save(error => {
-    if (error) {
-      console.log("error")
+  newUser.save(err => {
+    if (err) {
+      console.error(err)
     } else {
       console.log("saved data!")
     }

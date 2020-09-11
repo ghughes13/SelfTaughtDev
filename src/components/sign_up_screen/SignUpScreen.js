@@ -14,7 +14,7 @@ const SignUpScreen = ({
   const submitForm = () => {
     axios
       .post(
-        "https://www.selftaught-dev.com/.netlify/functions/newUser",
+        "https://selftaught-dev.com/.netlify/functions/newUser",
         JSON.stringify({
           userName: document.getElementById("username").value,
           password: document.getElementById("password").value,
@@ -29,6 +29,7 @@ const SignUpScreen = ({
         }
       })
       .catch(error => {
+        console.error(error)
         console.log("FAILED ):")
       })
   }
