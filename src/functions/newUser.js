@@ -1,6 +1,4 @@
 require("dotenv").config()
-// const stripe = require("stripe")()
-// const axios = require("axios")
 const mongoose = require("mongoose")
 
 mongoose.connect(
