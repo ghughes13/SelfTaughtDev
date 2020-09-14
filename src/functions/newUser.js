@@ -45,6 +45,11 @@ function handleRequest(event, context, callback) {
   }
 
   console.log(body)
+  console.log(body.userName)
+  console.log(body.password)
+  console.log(body.firstName)
+  console.log(body.lastName)
+  console.log(body.email)
 
   const newUser = new newUserModel({
     userName: body.userName,
@@ -55,6 +60,7 @@ function handleRequest(event, context, callback) {
     accountType: "lite",
   })
 
+  console.log(newUser)
   console.log("No Error; Trying to save to DB")
 
   newUser.save(err => {
