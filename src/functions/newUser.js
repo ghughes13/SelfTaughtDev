@@ -3,10 +3,13 @@ require("dotenv").config()
 // const axios = require("axios")
 const mongoose = require("mongoose")
 
-mongoose.connect(process.env.DBURL, {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-})
+mongoose.connect(
+  "mongodb+srv://Self-Taught-Dev:OpNJ3was2dAbOT8h@selftaughtdev.exocz.mongodb.net/ProjectArchiveData?retryWrites=true&w=majority",
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+  }
+)
 
 console.log(process.env.DBURL)
 
