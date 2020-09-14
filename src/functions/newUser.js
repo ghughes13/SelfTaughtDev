@@ -1,14 +1,7 @@
 require("dotenv").config()
 // const stripe = require("stripe")()
 // const axios = require("axios")
-const serverless = require("serverless-http")
-const express = require("express")
-const cors = require("cors")
 const mongoose = require("mongoose")
-
-const app = express()
-
-app.use(cors())
 
 mongoose.connect(process.env.DBURL, {
   useUnifiedTopology: true,
@@ -40,6 +33,8 @@ const headers = {
 }
 
 function handleRequest(event, context, callback) {
+  let body
+
   console.log("submitting")
   try {
     console.log("trying to parse body")
