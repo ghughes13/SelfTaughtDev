@@ -1,4 +1,5 @@
 require("dotenv").config()
+
 const mongoose = require("mongoose")
 
 mongoose.connect(
@@ -11,7 +12,9 @@ mongoose.connect(
 
 console.log(process.env.DBURL)
 
-mongoose.connection.on("connected", () => {})
+mongoose.connection.on("connected", () => {
+  console.log("should be connected")
+})
 
 //Schema
 const Schema = mongoose.Schema
