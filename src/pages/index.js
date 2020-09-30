@@ -26,7 +26,9 @@ const IndexPage = () => (
       <DownArrows />
     </div>
     <div className="project-previews">
+      {console.log(projectData)}
       {projectData.map(project => {
+        console.log(project)
         return <ProjectCard project={project} />
       })}
     </div>
