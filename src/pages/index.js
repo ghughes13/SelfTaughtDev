@@ -17,11 +17,6 @@ const IndexPage = () => (
           <a href="/portfolio">Click Here</a>
         </p>
       </div>
-      <img
-        className="logo"
-        src={require("../svgs/selftaughtdev-logo-mini.svg")}
-        alt="logo"
-      />
       <h1>
         <span className="mint-green">{"<"}</span>
         SelfTaughtDev

@@ -677,11 +677,48 @@ a {
 }
 
 /*******************/
+/******Nav Bar******/
+/*******************/
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 25px 5px;
+  align-items: center;
+  border-bottom: solid #3bb99b 2px;
+  position: fixed;
+  background: #282c34;
+  z-index: 9;
+  left: 0;
+  right: 0;
+
+  .logo {
+    max-height: 100%;
+    max-width: 75px;
+    margin: 0;
+  }
+
+  .log-btn a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .App-header .btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-family: Poppins;
+    cursor: pointer;
+  }
+}
+
+/*******************/
 /******General******/
 /*******************/
 
-body {
+html body {
   background: #282c34;
+  margin-right: 0 !important;
 }
 
 footer {
@@ -691,6 +728,8 @@ footer {
   align-items: center;
   color: white;
   background: #3c3f58;
+  position: relative;
+  border-top: solid #3bb99b 2px;
 
   &.transparent {
     background: rgba(0, 0, 0, 0.3);
@@ -748,12 +787,12 @@ footer {
   background: #282c34;
   background-size: cover;
   text-align: center;
-  padding: 200px 0;
+  padding: 100px 0;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 90vh;
   position: relative;
 
   @media screen and (max-width: 767px) {
@@ -807,10 +846,11 @@ h1 {
   color: white;
   position: absolute;
   left: 5%;
-  top: 0;
+  top: 87px;
   border-radius: 0 0 10px 10px;
   padding: 10px 20px;
   animation: dropDown 1s;
+  z-index: 0;
 
   @media screen and (max-width: 767px) {
     left: 0;

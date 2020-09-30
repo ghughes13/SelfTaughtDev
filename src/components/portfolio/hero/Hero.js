@@ -11,11 +11,6 @@ const Hero = () => {
 
   return (
     <div className="hero">
-      <img
-        className="logo"
-        src={require("../../../svgs/selftaughtdev-logo-mini.svg")}
-        alt="logo"
-      />
       <h1>Garrett Hughes</h1>
       <div className="subtext">
         <h5>Developer - YouTuber - Human</h5>

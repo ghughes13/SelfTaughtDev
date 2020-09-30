@@ -20,7 +20,7 @@ const Project = ({
         <h4>{title}</h4>
         <ul>
           {skills.map(skill => (
-            <li>{skill}</li>
+            <li key={skill}>{skill}</li>
           ))}
         </ul>
         <div className="btns">

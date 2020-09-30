@@ -13,7 +13,11 @@ const ProjectCard = ({ project }) => {
       </div>
       <div className="project-skills">
         {project.skills.split(",").map(skill => {
-          return <p className="skill">{skill}</p>
+          return (
+            <p key={skill} className="skill">
+              {skill}
+            </p>
+          )
         })}
       </div>
       <h4>{project.projectTitle}</h4>

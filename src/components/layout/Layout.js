@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import { IdentityContextProvider } from "react-netlify-identity-widget"
 
 import Header from "../header"
 import "./layout.scss"
@@ -16,8 +17,10 @@ const Layout = ({ children, footer = "" }) => {
     }
   `)
 
+  console.log("identity should be avail")
+
   return (
-    <>
+    <IdentityContextProvider url={"https://selftaught-dev.com/"}>
       <Header />
       <div>
         <main>{children}</main>
@@ -33,7 +36,7 @@ const Layout = ({ children, footer = "" }) => {
           </p>
         </footer>
       </div>
-    </>
+    </IdentityContextProvider>
   )
 }
 

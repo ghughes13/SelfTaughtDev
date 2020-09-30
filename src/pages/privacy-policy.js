@@ -116,7 +116,7 @@ const PrivacyPolicy = () => (
 
       <p>
         If you feel that we are not abiding by this privacy policy, you should
-        contact us immediately via telephone at selftdev@gmail.com
+        contact us immediately via email at selftdev@gmail.com
       </p>
     </div>
   </Layout>
