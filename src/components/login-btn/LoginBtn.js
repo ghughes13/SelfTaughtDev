@@ -8,7 +8,8 @@ import "@reach/tabs/styles.css"
 
 import "./login-btn.scss"
 
-function AuthStatusView() {
+function AuthStatusView({ innerText, classList }) {
+  const btnText = innerText || "Log In"
   const identity = useIdentityContext()
   const [dialog, setDialog] = React.useState(false)
   const name =
@@ -29,8 +30,11 @@ function AuthStatusView() {
           </>
         ) : (
           <>
-            <button className="btn" onClick={() => setDialog(true)}>
-              LOG IN
+            <button
+              className={"btn " + classList}
+              onClick={() => setDialog(true)}
+            >
+              {btnText}
             </button>
           </>
         )}

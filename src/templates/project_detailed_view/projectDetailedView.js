@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../../components/layout/Layout"
 import { useIdentityContext } from "react-netlify-identity-widget"
+import LoginBtn from "../../components/login-btn/LoginBtn"
 
 import "./project-detailed-view.scss"
 
@@ -53,7 +54,11 @@ function IsLoggedIn({ mockupLink }) {
           Download Project Files
         </a>
       ) : (
-        <a className="btn-style-1 demo-btn">Log In To Download Project Files</a>
+        <LoginBtn
+          innerText={"Log In To Download Project Files"}
+          classList="btn-style-1 demo-btn"
+        />
+        // <a className="btn-style-1 demo-btn">Log In To Download Project Files</a>
       )}
     </>
   )
