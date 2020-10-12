@@ -4,10 +4,17 @@ import Layout from "../components/layout/Layout"
 import SEO from "../components/seo"
 import DownArrows from "../components/down-arrows/DownArrows"
 import ProjectCard from "../components/project_card/ProjectCard"
+import { useIdentityContext } from "react-netlify-identity-widget"
 
 import * as projectData from "../data/projectData.json"
 
-const IndexPage = () => (
+export default function IndexPage() {
+  const identity = useIdentityContext()
+
+  console.log('Index Page')
+  console.log(identity && identity.isLoggedIn)
+
+  return (
   <Layout>
     <SEO title="Project Archive" />
     <div className="index-hero">
@@ -33,6 +40,5 @@ const IndexPage = () => (
       })}
     </div>
   </Layout>
-)
-
-export default IndexPage
+  )
+}

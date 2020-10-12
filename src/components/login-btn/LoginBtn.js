@@ -19,6 +19,9 @@ function AuthStatusView({ innerText, classList }) {
       identity.user.user_metadata.full_name) ||
     "NoName"
 
+  console.log('Login Btn detailed view')
+  console.log(identity && identity.isLoggedIn)
+    
   return (
     <div className="App">
       <header className="App-header">
