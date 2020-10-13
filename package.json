@@ -26,6 +26,7 @@
     "gatsby-plugin-sitemap": "^2.4.12",
     "gatsby-source-filesystem": "^2.3.14",
     "gatsby-transformer-sharp": "^2.5.7",
+    "gotrue-js": "^0.9.27",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.4",
     "netlify-identity-widget": "^1.9.1",

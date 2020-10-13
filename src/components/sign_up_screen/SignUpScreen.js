@@ -1,5 +1,5 @@
 import React from "react"
-import axios from "axios"
+import GoTrue from 'gotrue-js';
 
 import "./sign-up-screen.scss"
 import Loader from "../loader/Loader"
@@ -11,45 +11,65 @@ const SignUpScreen = ({
   btnText,
   successMessage,
 }) => {
+
+  const auth = new GoTrue({
+    APIUrl: 'https://selftaught-dev.com/.netlify/identity',
+    audience: '',
+    setCookie: true,
+  });
+
   const submitForm = () => {
-    axios
-      .post(
-        "https://selftaught-dev.com/.netlify/functions/newUser",
-        JSON.stringify({
-          userName: document.getElementById("username").value,
-          password: document.getElementById("password").value,
-          firstName: document.getElementById("firstName").value,
-          lastName: document.getElementById("lastName").value,
-          email: document.getElementById("email").value,
+    console.log('submitting');
+
+      const password = document.getElementById("password").value;
+      const email = document.getElementById("email").value;
+      
+      auth
+      .signup(email, password)
+      .then((response) => {
+        fetch("/sign-up/#thanks", {
+          method: "POST",
+          body: new FormData(document.getElementById("new-user")),
         })
-      )
-      .then(response => {
-        if (response.status === 200) {
-          console.log("IT WORKED MAYBE?")
+        .then(response => {
+          if (response.status === 200) {
+            console.log('Posted Noob;')
+          }
+        })
+        .catch(error => {
+          console.error(error)
+          console.log("FAILED ):")
+        })
+      })
+      .catch((error) => {
+        if(JSON.stringify(error.json.msg) === '"A user with this email address has already been registered"') {
+          console.log('email error');
+          document.querySelector('.email-error').style.display = "block"
         }
-      })
-      .catch(error => {
-        console.error(error)
-        console.log("FAILED ):")
-      })
+      });   
   }
+
+  
+  // Instantiate the GoTrue auth client with an optional configuration
+
+
+
 
   return (
     <div className="mailing-list-signup">
-      <img
-        className="logo"
-        src={require("../../svgs/selftaughtdev-logo-mini.svg")}
-        alt="logo"
-      />
       <h1>Sign Up</h1>
       <form
-        id={formTitle}
+        id="new-user"
         name={formTitle}
+        autoComplete="off"
         onSubmit={e => {
-          submitForm()
           e.preventDefault()
+          submitForm()
         }}
+        netlify="true"
+        netlify-honeypot="bot-field"
       >
+            <input type="hidden" name="bot-field" id="bot" />
         <div className="form-info-div">
           <label htmlFor="name">First Name</label>
           <input
@@ -57,6 +77,7 @@ const SignUpScreen = ({
             placeholder="First Name"
             name="firstName"
             id="firstName"
+            required
           />
           <label htmlFor="name">Last Name</label>
           <input
@@ -64,22 +85,27 @@ const SignUpScreen = ({
             placeholder="Last Name"
             name="lastName"
             id="lastName"
+            required
           />
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" placeholder="Email" id="email" />
+          <input type="email" name="email" placeholder="Email" id="email" autoComplete="email" required/>
+          <p className="email-error">A user with this email is already registered</p>
           <label htmlFor="name">Username</label>
           <input
             type="text"
             placeholder="Username"
             name="username"
             id="username"
+            autoComplete="username"
+            required
           />
           <label htmlFor="name">Password</label>
           <input
             type="password"
             placeholder="Password"
-            name="password"
             id="password"
+            autoComplete="new-password"
+            required
           />
           <button id="sbmt-form-btn" type="submit">
             Login
@@ -87,8 +113,7 @@ const SignUpScreen = ({
         </div>
         <div id="thanks">
           <p>
-            This shouldn't show up. You should just be taken to the project
-            archive main screen
+            A confirmation email has been send to your inbox. Please confirm your email to login. 
           </p>
         </div>
         <Loader />
