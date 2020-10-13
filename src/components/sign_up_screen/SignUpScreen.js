@@ -26,6 +26,18 @@ const SignUpScreen = ({
       
       auth
       .signup(email, password)
+      .then(response => {
+        if (response.status === 200) {
+          console.log(response)
+          console.log('User should be created');
+          auth.login(password, email, true).then((response) => {
+            console.log('Success! Response: ' + JSON.stringify({ response }))
+            document.querySelector('.new-user').style.display = "block"
+            document.querySelector('form').style.display = "none";
+          })
+          .catch((error) => console.log('Failed :( ' + JSON.stringify(error) ));
+        }
+      })
       .then((response) => {
         fetch("/sign-up/#thanks", {
           method: "POST",
@@ -33,12 +45,12 @@ const SignUpScreen = ({
         })
         .then(response => {
           if (response.status === 200) {
-            console.log('Posted Noob;')
+            
           }
         })
         .catch(error => {
           console.error(error)
-          console.log("FAILED ):")
+          console.log("FAILED ): <- Sad face for failure")
         })
       })
       .catch((error) => {
@@ -48,12 +60,6 @@ const SignUpScreen = ({
         }
       });   
   }
-
-  
-  // Instantiate the GoTrue auth client with an optional configuration
-
-
-
 
   return (
     <div className="mailing-list-signup">
@@ -111,9 +117,9 @@ const SignUpScreen = ({
             Login
           </button>
         </div>
-        <div id="thanks">
+        <div id="thanks" className="new-user">
           <p>
-            A confirmation email has been send to your inbox. Please confirm your email to login. 
+            Your account has successfully been created. You are now logged in. 
           </p>
         </div>
         <Loader />
