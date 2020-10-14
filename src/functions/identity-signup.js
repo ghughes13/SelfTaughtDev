@@ -1,8 +1,9 @@
-exports.handler = async () => {
-  console.log(JSON.stringify(args, null, 2))
+exports.handler = async (e) => {
+  const { user } = JSON.parse(e.body);
+  console.log(JSON.stringify(user, null, 2))
 
   return {
     statusCode: 200,
-    body: "ok"
+    body: JSON.stringify({app_metadata: { roles: ['sub:free'] }});
   }
 }
