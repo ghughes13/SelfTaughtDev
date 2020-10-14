@@ -1,5 +1,6 @@
 import React from "react"
-
+import GoTrue from 'gotrue-js';
+ 
 import "./login-screen.scss"
 import Loader from "../loader/Loader"
 
@@ -9,13 +10,33 @@ const mailingListSignup = ({
   urlToPostTo,
   btnText,
   successMessage,
-}) => (
-  <div className="mailing-list-signup">
-    <img
-      className="logo"
-      src={require("../../svgs/selftaughtdev-logo-mini.svg")}
-      alt="logo"
-    />
+}) => {
+
+  const auth = new GoTrue({
+    APIUrl: 'https://selftaught-dev.com/.netlify/identity',
+    audience: '',
+    setCookie: true,
+  });
+
+  const submitForm = () => { 
+    console.log('submitting');
+
+    const password = document.getElementById("password").value;
+    const email = document.getElementById("email").value;
+    
+    console.log(password, email)
+
+    auth
+      .login(password, email, true)
+      .then((response) => {
+        console.log('Success! Response: ' + JSON.stringify({ response }))
+      })
+      .catch((error) => console.log('Failed :( ' + JSON.stringify(error) ));
+  }
+  
+
+  return (
+    <div className="mailing-list-signup">
     <h1>Sign In</h1>
     <form
       id={formTitle}
@@ -25,46 +46,21 @@ const mailingListSignup = ({
       action={urlToPostTo}
       onSubmit={e => {
         e.preventDefault()
-        const submitButton = document.getElementById("sbmt-form-btn")
-        const loader = document.querySelector(".loader")
-        const formName = document.getElementById(formTitle)
-
-        loader.style.display = "block"
-        submitButton.style.display = "none"
-
-        fetch(formName.getAttribute("action"), {
-          method: "POST",
-          body: new FormData(document.getElementById(formTitle)),
-        })
-          .then(res => {
-            if (res.status === 200) {
-              document.querySelector(".form-info-div").style.display = "none"
-              document.getElementById("thanks").style.display = "flex"
-              loader.style.display = "none"
-            } else {
-              loader.style.display = "none"
-              document.getElementById("error-msg").style.display = "block"
-              submitButton.style.display = "block"
-            }
-          })
-          .catch(error => {
-            loader.style.display = "none"
-            document.getElementById("error-msg").style.display = "block"
-            submitButton.style.display = "block"
-          })
+        submitForm()
       }}
     >
       <div className="form-info-div">
-        <label htmlFor="name">Username</label>
-        <input type="text" placeholder="Username" name="name" id="name" />
-        <label htmlFor="email">Password</label>
+        <label htmlFor="email">Email
+        <input type="email" placeholder="Email" name="email" id="email" />
+        </label>
+        <label htmlFor="password">Password
         <input
           className="margin-top-input"
           type="password"
-          name="email"
+          name="password"
           placeholder="Password"
-          id="email"
-        />
+          id="password"
+        /></label>
         <button id="sbmt-form-btn" type="submit">
           Login
         </button>
@@ -82,6 +78,8 @@ const mailingListSignup = ({
       </p>
     </form>
   </div>
-)
+  )
+}
+
 
 export default mailingListSignup

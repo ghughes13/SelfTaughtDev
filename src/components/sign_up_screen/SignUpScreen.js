@@ -18,19 +18,24 @@ const SignUpScreen = ({
     setCookie: true,
   });
 
-  const submitForm = () => {
+  const submitForm = () => { 
     console.log('submitting');
 
       const password = document.getElementById("password").value;
       const email = document.getElementById("email").value;
       
+      console.log(password, email)
+
       auth
       .signup(email, password)
       .then(response => {
-        if (response.status === 200) {
-          console.log(response)
+        console.log(response)
+        if (response) {
           console.log('User should be created');
-          auth.login(password, email, true).then((response) => {
+          console.log(password, email)
+          auth
+          .login(password, email, true)
+          .then((response) => {
             console.log('Success! Response: ' + JSON.stringify({ response }))
             document.querySelector('.new-user').style.display = "block"
             document.querySelector('form').style.display = "none";
@@ -38,26 +43,27 @@ const SignUpScreen = ({
           .catch((error) => console.log('Failed :( ' + JSON.stringify(error) ));
         }
       })
-      .then((response) => {
-        fetch("/sign-up/#thanks", {
-          method: "POST",
-          body: new FormData(document.getElementById("new-user")),
-        })
-        .then(response => {
-          if (response.status === 200) {
+      // .then((response) => {
+      //   fetch("/sign-up/#thanks", {
+      //     method: "POST",
+      //     body: new FormData(document.getElementById("new-user")),
+      //   })
+      //   .then(response => {
+      //     if (response.status === 200) {
             
-          }
-        })
-        .catch(error => {
-          console.error(error)
-          console.log("FAILED ): <- Sad face for failure")
-        })
-      })
+      //     }
+      //   })
+      //   .catch(error => {
+      //     console.error(error)
+      //     console.log("FAILED ): <- Sad face for failure")
+      //   })
+      // })
       .catch((error) => {
         if(JSON.stringify(error.json.msg) === '"A user with this email address has already been registered"') {
           console.log('email error');
           document.querySelector('.email-error').style.display = "block"
         }
+        console.log(error)
       });   
   }
 
@@ -77,26 +83,26 @@ const SignUpScreen = ({
       >
             <input type="hidden" name="bot-field" id="bot" />
         <div className="form-info-div">
-          <label htmlFor="name">First Name</label>
+          <label htmlFor="name">First Name
           <input
             type="text"
             placeholder="First Name"
             name="firstName"
             id="firstName"
             required
-          />
-          <label htmlFor="name">Last Name</label>
+          /></label>
+          <label htmlFor="name">Last Name
           <input
             type="text"
             placeholder="Last Name"
             name="lastName"
             id="lastName"
             required
-          />
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" placeholder="Email" id="email" autoComplete="email" required/>
+          /></label>
+          <label htmlFor="email">Email
+          <input type="email" name="email" placeholder="Email" id="email" autoComplete="email" required/></label>
           <p className="email-error">A user with this email is already registered</p>
-          <label htmlFor="name">Username</label>
+          <label htmlFor="name">Username
           <input
             type="text"
             placeholder="Username"
@@ -104,15 +110,15 @@ const SignUpScreen = ({
             id="username"
             autoComplete="username"
             required
-          />
-          <label htmlFor="name">Password</label>
+          /></label>
+          <label htmlFor="name">Password
           <input
             type="password"
             placeholder="Password"
             id="password"
             autoComplete="new-password"
             required
-          />
+          /></label>
           <button id="sbmt-form-btn" type="submit">
             Login
           </button>

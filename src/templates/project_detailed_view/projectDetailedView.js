@@ -26,7 +26,7 @@ export default function ProjectDetails(someProp) {
             href={projDetails.videoUrl}
             className="btn-style-1 demo-btn"
             target="_blank"
-            rel="norefferrer"
+            rel="noreferrer"
           >
             Demo Video
           </a>
@@ -52,7 +52,7 @@ function IsLoggedIn({ mockupLink }) {
           href={mockupLink}
           className="btn-style-1 demo-btn"
           target="_blank"
-          rel="norefferrer"
+          rel="noreferrer"
         >
           Download Project Files
         </a>

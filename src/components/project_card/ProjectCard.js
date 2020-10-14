@@ -8,7 +8,7 @@ const ProjectCard = ({ project }) => {
     <div className="project-card">
       <div className="preview-img">
         <img
-          src={require("../../images/project_thumbnails" + project.imgUrl)}
+          src={require("../../images/project_thumbnails" + project.imgUrl)} alt={project.projectTitle}
         />
       </div>
       <div className="project-skills">

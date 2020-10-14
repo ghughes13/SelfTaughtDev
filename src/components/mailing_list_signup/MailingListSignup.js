@@ -59,19 +59,19 @@ const mailingListSignup = ({
       <div className="form-info-div">
         <input type="hidden" name="form-name" value={formTitle} />
         <input type="hidden" name="bot-field" id="bot" />
-        <label htmlFor="name">Name</label>
-        <input type="text" placeholder="Name" name="name" id="name" />
-        <label htmlFor="email">email</label>
+        <label htmlFor="name">Name
+        <input type="text" placeholder="Name" name="name" id="name" /></label>
+        <label htmlFor="email">email
         <input
           className="margin-top-input"
           type="email"
           name="email"
           placeholder="Email"
           id="email"
-        />
+        /></label>
         <div className="optin-box">
+        <label htmlFor="optin" id="optin-label">
           <input type="checkbox" name="optin" id="optin" required />
-          <label for="optin" id="optin-label">
             I acknowledge that I am also signing up for the SelfTaughtDev free
             email newsletter.{" "}
           </label>

@@ -46,7 +46,9 @@ function AuthStatusView({ innerText, classList }) {
           showDialog={dialog}
           onCloseDialog={() => setDialog(false)}
           onLogin={user => console.log("hello ", user?.user_metadata)}
-          onSignup={user => console.log("welcome ", user?.user_metadata)}
+          onSignup={user => { console.log("welcome ", user?.user_metadata)
+          user.logout();
+        }}
           onLogout={() => console.log("bye ", name)}
         />
       </header>
