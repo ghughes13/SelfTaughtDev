@@ -1,14 +1,14 @@
-const fetch = require('node-fetch');
+const fetch = require("node-fetch")
 
-exports.handler = async (e) => {
-  const { user } = JSON.parse(e.body);
+exports.handler = async e => {
+  const { user } = JSON.parse(e.body)
   console.log(JSON.stringify(user, null, 2))
 
-  const netlifyID = user.id;
+  const netlifyID = user.id
 
-  const stripeID = 1;
+  const stripeID = 1
 
-  const response = await fetch('https://graphql.fauna.com/graphql', {
+  const response = await fetch("https://graphql.fauna.com/graphql", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
@@ -24,16 +24,16 @@ exports.handler = async (e) => {
       variables: {
         netlifyID,
         stripeID,
-      }
-    })
+      },
+    }),
   })
-  .then(res => res.json())
-  .catch((err) => console.error(JSON.stringify(err)))
+    // .then(res => res.json())
+    .catch(err => console.error(JSON.stringify(err)))
 
   console.log({ response })
 
   return {
     statusCode: 200,
-    body: JSON.stringify({app_metadata: { roles: ['Lite'] }})
+    body: JSON.stringify({ app_metadata: { roles: ["Lite"] } }),
   }
 }
