@@ -2,6 +2,9 @@ const fetch = require("node-fetch")
 
 exports.handler = async e => {
   const { user } = JSON.parse(e.body)
+  console.log("here is user")
+  console.log(user)
+
   console.log(JSON.stringify(user, null, 2))
 
   const netlifyID = user.id
@@ -28,8 +31,12 @@ exports.handler = async e => {
     }),
   })
     // .then(res => res.json())
-    .catch(err => console.error(JSON.stringify(err)))
+    .catch(err => {
+      console.error(JSON.stringify(err))
+      console.log("wtf is 'o is not a function'")
+    })
 
+  console.log("here is the res")
   console.log({ response })
 
   return {
