@@ -9,7 +9,7 @@ export default function ProjectDetails(someProp) {
   const [projData, setProjData] = useState([])
 
   useEffect(() => {
-    const movies = fetch("/.netlify/functions/movies").then(response =>
+    const movies = fetch("/.netlify/functions/hasura").then(response =>
       response.json()
     )
 
