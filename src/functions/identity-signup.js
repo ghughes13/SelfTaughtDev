@@ -8,24 +8,24 @@ exports.handler = async event => {
 
   // TODO create a customer record in Fauna
   const response = await fetch("https://graphql.fauna.com/graphql", {
-    // method: "POST",
-    // headers: {
-    //   Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
-    // },
-    // body: JSON.stringify({
-    //   query: `
-    //     mutation ($netlifyID: ID! $stripeID: ID!) {
-    //       createUser(data: {netlifyID: $netlifyID, stripeID: $stripeID}) {
-    //         netlifyID
-    //         stripeID
-    //       }
-    //     }
-    //   `,
-    //   variables: {
-    //     netlifyID,
-    //     stripeID,
-    //   },
-    // }),
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
+    },
+    body: JSON.stringify({
+      query: `
+        mutation ($netlifyID: ID! $stripeID: ID!) {
+          createUser(data: {netlifyID: $netlifyID, stripeID: $stripeID}) {
+            netlifyID
+            stripeID
+          }
+        }
+      `,
+      variables: {
+        netlifyID,
+        stripeID,
+      },
+    }),
   })
     .then(res => res.json())
     .catch(err => console.error(JSON.stringify(err, null, 2)))
