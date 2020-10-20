@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import Layout from "../../components/layout/Layout"
 import { useIdentityContext } from "react-netlify-identity-widget"
 import LoginBtn from "../../components/login-btn/LoginBtn"
