@@ -42,7 +42,7 @@ export default function ProjectDetails(someProp) {
 function IsLoggedIn({ mockupLink }) {
   const identity = useIdentityContext()
 
-  console.log('project detailed view')
+  console.log("project detailed view")
   console.log(identity && identity.isLoggedIn)
 
   return (
