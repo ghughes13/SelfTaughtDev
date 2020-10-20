@@ -6,13 +6,15 @@ import LoginBtn from "../../components/login-btn/LoginBtn"
 import "./project-detailed-view.scss"
 
 export default function ProjectDetails(someProp) {
-  const [projData, setProjData] = useState([]) 
-  
+  const [projData, setProjData] = useState([])
+
   useEffect(() => {
-    const movies = await fetch('/.netlify/functions/movies').then((response) => response.json())
+    const movies = fetch("/.netlify/functions/movies").then(response =>
+      response.json()
+    )
 
     console.log(movies)
-  });
+  })
 
   const projDetails = someProp.pageContext.projectObs
 
@@ -25,48 +27,47 @@ export default function ProjectDetails(someProp) {
 
   return (
     <Layout>
-      { projData ? ( 
-       <div className="project-detailed-view">
-        <div className="background-image" style={styles}></div>
-        <div className="content">
-          <h1>{projDetails.projectTitle} </h1>
-          <p>{projDetails.description}</p>
-          <a
-            href={projDetails.videoUrl}
-            className="btn-style-1 demo-btn"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Demo Video
-          </a>
-          <div className="project-download">
-            <IsLoggedIn mockupLink={projDetails.projectMockupLink} />
+      {projData ? (
+        <div className="project-detailed-view">
+          <div className="background-image" style={styles}></div>
+          <div className="content">
+            <h1>{projDetails.projectTitle} </h1>
+            <p>{projDetails.description}</p>
+            <a
+              href={projDetails.videoUrl}
+              className="btn-style-1 demo-btn"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Demo Video
+            </a>
+            <div className="project-download">
+              <IsLoggedIn mockupLink={projDetails.projectMockupLink} />
+            </div>
           </div>
         </div>
-      </div>
-  ) : (
-      <div className="project-detailed-view">
-        <div className="background-image" style={styles}></div>
-        <div className="content">
-          <h1>LOADING</h1>
-          <p>{projDetails.description}</p>
-          <a
-            href={projDetails.videoUrl}
-            className="btn-style-1 demo-btn"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Demo Video
-          </a>
-          <div className="project-download">
-            <IsLoggedIn mockupLink={projDetails.projectMockupLink} />
+      ) : (
+        <div className="project-detailed-view">
+          <div className="background-image" style={styles}></div>
+          <div className="content">
+            <h1>LOADING</h1>
+            <p>{projDetails.description}</p>
+            <a
+              href={projDetails.videoUrl}
+              className="btn-style-1 demo-btn"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Demo Video
+            </a>
+            <div className="project-download">
+              <IsLoggedIn mockupLink={projDetails.projectMockupLink} />
+            </div>
           </div>
         </div>
-      </div>
-    )
-  }
+      )}
     </Layout>
-)
+  )
 }
 
 function IsLoggedIn({ mockupLink }) {
