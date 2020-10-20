@@ -38,7 +38,8 @@
     "react-netlify-identity": "^0.2.5",
     "react-netlify-identity-widget": "^0.2.7",
     "react-waypoint": "^9.0.3",
-    "serverless-http": "^2.5.0"
+    "serverless-http": "^2.5.0",
+    "stripe": "^8.114.0"
   },
   "devDependencies": {
     "http-proxy-middleware": "^1.0.5",
