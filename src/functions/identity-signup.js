@@ -1,16 +1,12 @@
 const fetch = require("node-fetch")
 
-exports.handler = async e => {
-  const { user } = JSON.parse(e.body)
-  console.log("here is user")
-  console.log(user)
-
-  console.log(JSON.stringify(user, null, 2))
+exports.handler = async event => {
+  const { user } = JSON.parse(event.body)
 
   const netlifyID = user.id
-
   const stripeID = 1
 
+  // TODO create a customer record in Fauna
   const response = await fetch("https://graphql.fauna.com/graphql", {
     method: "POST",
     headers: {
@@ -18,29 +14,26 @@ exports.handler = async e => {
     },
     body: JSON.stringify({
       query: `
-      mutation ($netlifyID: ID! $stripeID: ID!) {
-        createUser(data: {netlifyID: $netlifyID, stripeID: $stripeID}) {
-          netlifyID
-          stripeID
+        mutation ($netlifyID: ID! $stripeID: ID!) {
+          createUser(data: {netlifyID: $netlifyID, stripeID: $stripeID}) {
+            netlifyID
+            stripeID
+          }
         }
-      }`,
+      `,
       variables: {
         netlifyID,
         stripeID,
       },
     }),
   })
-    // .then(res => res.json())
-    .catch(err => {
-      console.error(JSON.stringify(err))
-      console.log("wtf is 'o is not a function'")
-    })
+    .then(res => res.json())
+    .catch(err => console.error(JSON.stringify(err, null, 2)))
 
-  console.log("here is the res")
   console.log({ response })
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ app_metadata: { roles: ["Lite"] } }),
+    body: JSON.stringify({ app_metadata: { roles: ["sub:free"] } }),
   }
 }
