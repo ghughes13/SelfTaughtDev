@@ -22,12 +22,8 @@ exports.handler = async () => {
     query: `
     query {
       Project_Data {
-        project_skills_lite
         project_mockup_link_pro
-        project_img_relative_url
         project_mockup_link_lite
-        project_video_instructions_url_pro
-        project_video_istructions_url_lite
         project_title
       }
     }
@@ -40,3 +36,11 @@ exports.handler = async () => {
     body: JSON.stringify(projects),
   }
 }
+
+// project_skills_lite
+// project_mockup_link_pro
+// project_img_relative_url
+// project_mockup_link_lite
+// project_video_instructions_url_pro
+// project_video_istructions_url_lite
+// project_title
