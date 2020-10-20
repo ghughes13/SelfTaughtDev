@@ -6,6 +6,10 @@ import LoginBtn from "../../components/login-btn/LoginBtn"
 import "./project-detailed-view.scss"
 
 export default function ProjectDetails(someProp) {
+  const movies = await fetch('/.netlify/functions/movies').then((response) => response.json())
+
+  console.log(movies)
+
   const projDetails = someProp.pageContext.projectObs
 
   const background = require("../../images/project_thumbnails" +
