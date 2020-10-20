@@ -4,13 +4,14 @@ const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET_KEY)
 exports.handler = async event => {
   const { user } = JSON.parse(event.body)
 
-  const netlifyID = user.id
-
   const customer = await stripe.customers.create({ email: user.email });
+
   await stripe.subscriptions.create({
     customer: customer.id, 
     items: [{'prod_IEpydWylJ6pcS8'}]
   })
+
+  const netlifyID = user.id
   const stripeID = customer.id
 
   // TODO create a customer record in Fauna
