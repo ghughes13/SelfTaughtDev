@@ -4,7 +4,8 @@
   "description": "",
   "main": "identity-signup.js",
   "dependencies": {
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^2.6.1",
+    "stripe": "^8.114.0"
   },
   "devDependencies": {},
   "scripts": {
