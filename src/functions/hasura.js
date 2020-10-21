@@ -18,7 +18,7 @@ exports.handler = async () => {
 
   exports.query = query
 
-  const { projects } = await query({
+  const projects = await query({
     query: `
     query {
       Project_Data {
