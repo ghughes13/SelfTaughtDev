@@ -39,10 +39,6 @@ exports.createPages = ({ boundActionCreators }) => {
     
     `,
   }).then(res => {
-    console.log("is promise here?")
-    console.log(res)
-    console.log(JSON.parse(JSON.stringify(res)))
-
     data.forEach(indvProjectData => {
       let dbProjectInfo = res
 
