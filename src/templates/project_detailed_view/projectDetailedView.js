@@ -9,12 +9,9 @@ export default function ProjectDetails(someProp) {
   const [projData, setProjData] = useState([])
 
   useEffect(() => {
-    const movies = fetch("/.netlify/functions/hasura")
-    // .then(response =>
-    //   response.json()
-    // )
-
-    console.log(movies)
+    const movies = fetch("/.netlify/functions/hasura").then(res =>
+      console.log(res)
+    )
   })
 
   const projDetails = someProp.pageContext.projectObs
