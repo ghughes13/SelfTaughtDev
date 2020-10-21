@@ -11,9 +11,11 @@ export default function ProjectDetails(someProp) {
   const projDetails = someProp.pageContext.projectObs
   const projDBDetails = someProp.pageContext.downloadData
 
-  const background = require("../../images/project_thumbnails" +  projDetails.imgUrl)
-  const title = projDBDetails ||
-  const mockupLite = projDBDetails.project_mockup_link_lite || projDetails.projectMockupLink
+  const background = require("../../images/project_thumbnails" +
+    projDetails.imgUrl)
+
+  const mockupLite =
+    projDBDetails.project_mockup_link_lite || projDetails.projectMockupLink
 
   const styles = {
     backgroundImage: `url(${background})`,

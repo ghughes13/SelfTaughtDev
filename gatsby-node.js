@@ -38,25 +38,25 @@ exports.createPages = ({ boundActionCreators }) => {
     }
     
     `,
-  }).then(res => console.log(JSON.stringify(res)))
+  }).then(
+    data.forEach(indvProjectData => {
+      let dbProjectInfo
 
-  data.forEach(indvProjectData => {
-    let dbProjectInfo
-
-    console.log(projectDlData)
-    for (let i = 0; i < projectDlData; i++) {
-      if (indvProjectData.projectTitle === DBProj[i].project_title) {
-        dbProjectInfo = DBProj[i]
+      console.log(projectDlData)
+      for (let i = 0; i < projectDlData; i++) {
+        if (indvProjectData.projectTitle === DBProj[i].project_title) {
+          dbProjectInfo = DBProj[i]
+        }
       }
-    }
 
-    createPage({
-      path: `/${indvProjectData.projectTitle}`,
-      component: slash(pageTemplate),
-      context: {
-        projectObs: indvProjectData,
-        downloadData: dbProjectInfo,
-      },
+      createPage({
+        path: `/${indvProjectData.projectTitle}`,
+        component: slash(pageTemplate),
+        context: {
+          projectObs: indvProjectData,
+          downloadData: dbProjectInfo,
+        },
+      })
     })
-  })
+  )
 }
