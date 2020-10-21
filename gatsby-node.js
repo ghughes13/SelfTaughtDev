@@ -27,7 +27,7 @@ exports.createPages = ({ boundActionCreators }) => {
     return result.data
   }
 
-  const projects = query({
+  const projectDlData = query({
     query: `
     query {
       Project_Data {
