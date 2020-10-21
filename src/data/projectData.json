@@ -48,6 +48,14 @@
     "projectMockupLink": "https://drive.google.com/file/d/112rAGAlr5ZDBdKniiYD83doqgSOy2SAa/view?usp=sharing"
   },
   {
+    "projectTitle": "Gify-R",
+    "imgUrl": "/gify-r.png",
+    "videoUrl": "https://youtu.be/Z5xEWt9ui1s",
+    "skills": "HTML, CSS, JavaScript",
+    "description": "In this project you're working for a company named Gify-R. You'll be using HTML, CSS, and JS, to build their flagship product. A GIF search tool.",
+    "projectMockupLink": "https://drive.google.com/file/d/1FNJ0HRzoz3fDemXPbtMltL927u4BjY2W/view?usp=sharing"
+  },
+  {
     "projectTitle": "Letter Guessing Game",
     "imgUrl": "/letterGuessingGame.png",
     "videoUrl": "https://youtu.be/x54478DCz6c",
