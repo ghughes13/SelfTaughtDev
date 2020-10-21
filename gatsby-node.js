@@ -43,11 +43,12 @@ exports.createPages = ({ boundActionCreators }) => {
   data.forEach(indvProjectData => {
     let dbProjectInfo
 
-    projectDlData.forEach(DBProj => {
-      if (indvProjectData.projectTitle === DBProj.project_title) {
-        dbProjectInfo = DBProj
+    console.log(projectDlData)
+    for (let i = 0; i < projectDlData; i++) {
+      if (indvProjectData.projectTitle === DBProj[i].project_title) {
+        dbProjectInfo = DBProj[i]
       }
-    })
+    }
 
     createPage({
       path: `/${indvProjectData.projectTitle}`,
