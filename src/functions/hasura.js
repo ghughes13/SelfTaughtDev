@@ -29,7 +29,7 @@ exports.handler = async () => {
     }
     
     `,
-  }).then(res => console.log(res))
+  }).then(res => console.log(JSON.stringify(res)))
 
   return {
     statusCode: 200,
