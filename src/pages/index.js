@@ -27,10 +27,10 @@ export default function IndexPage() {
         <DownArrows />
       </div>
       <div className="project-previews">
-        {/* {console.log(projectData)} */}
+        {console.log(projectData)}
         {projectData.map(project => {
-          let thingToReturn = <ProjectCard project={project} />
-          return thingToReturn
+          console.log(project)
+          return <ProjectCard project={project} />
         })}
       </div>
     </Layout>
