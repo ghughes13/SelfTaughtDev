@@ -1,14 +1,14 @@
 import fetch from "node-fetch"
 
 exports.handler = async () => {
-  async function query({ query, variables = {} }) {
+  async function query({ query }) {
     const result = await fetch(process.env.HASURA_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "X-Hasura-admin-secret": process.env.HASURA_ADMIN_SECRET,
       },
-      body: JSON.stringify({ query, variables }),
+      body: JSON.stringify({ query }),
     })
       .then(res => res.json())
       .catch(err => console.error(JSON.stringify(err, null, 2)))
