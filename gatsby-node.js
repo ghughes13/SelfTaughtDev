@@ -1,3 +1,5 @@
+import fetch from "node-fetch"
+
 const path = require(`path`)
 const { slash } = require(`gatsby-core-utils`)
 
