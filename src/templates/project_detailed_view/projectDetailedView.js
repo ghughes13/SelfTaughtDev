@@ -6,14 +6,11 @@ import LoginBtn from "../../components/login-btn/LoginBtn"
 import "./project-detailed-view.scss"
 
 export default function ProjectDetails(someProp) {
-  const [projData, setProjData] = useState([])
+  // const [projData, setProjData] = useState([])
 
-  useEffect(() => {
-    const movies = fetch("/.netlify/functions/hasura").then(res =>
-      console.log(res)
-    )
-  })
+  // useEffect(() => {})
 
+  console.log(someProp.pageContext.downloadData)
   const projDetails = someProp.pageContext.projectObs
 
   const background = require("../../images/project_thumbnails" +
