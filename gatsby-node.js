@@ -12,9 +12,33 @@ exports.createPages = ({ boundActionCreators }) => {
     "./src/templates/project_detailed_view/projectDetailedView.js"
   )
 
-  const projectDlData = fetch("/.netlify/functions/hasura").then(res =>
-    console.log(res)
-  )
+  async function query({ query }) {
+    const result = await fetch(process.env.HASURA_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Hasura-admin-secret": process.env.HASURA_ADMIN_SECRET,
+      },
+      body: JSON.stringify({ query }),
+    })
+      .then(res => res.json())
+      .catch(err => console.error(JSON.stringify(err, null, 2)))
+
+    return result.data
+  }
+
+  const projects = await query({
+    query: `
+    query {
+      Project_Data {
+        project_mockup_link_pro
+        project_mockup_link_lite
+        project_title
+      }
+    }
+    
+    `,
+  }).then(res => console.log(JSON.stringify(res)))
 
   data.forEach(indvProjectData => {
     createPage({
