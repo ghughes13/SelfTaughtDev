@@ -14,8 +14,9 @@ export default function ProjectDetails(someProp) {
   const background = require("../../images/project_thumbnails" +
     projDetails.imgUrl)
 
-  const mockupLite =
-    projDBDetails.project_mockup_link_lite || projDetails.projectMockupLink
+  const mockupLite = projDBDetails.project_mockup_link_lite
+    ? projDBDetails.project_mockup_link_lite
+    : projDetails.projectMockupLink
 
   const styles = {
     backgroundImage: `url(${background})`,
