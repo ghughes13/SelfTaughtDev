@@ -27,7 +27,7 @@ exports.createPages = ({ boundActionCreators }) => {
     return result.data
   }
 
-  const projectDlData = query({
+  query({
     query: `
     query {
       Project_Data {
@@ -38,7 +38,7 @@ exports.createPages = ({ boundActionCreators }) => {
     }
     
     `,
-  }).then(
+  }).then(projectDlData => {
     data.forEach(indvProjectData => {
       let dbProjectInfo
 
@@ -58,5 +58,5 @@ exports.createPages = ({ boundActionCreators }) => {
         },
       })
     })
-  )
+  })
 }
