@@ -41,12 +41,20 @@ exports.createPages = ({ boundActionCreators }) => {
   }).then(res => console.log(JSON.stringify(res)))
 
   data.forEach(indvProjectData => {
+    let dbProjectInfo
+
+    projectDlData.forEach(DBProj => {
+      if (indvProjectData.projectTitle === DBProj.project_title) {
+        dbProjectInfo = DBProj
+      }
+    })
+
     createPage({
       path: `/${indvProjectData.projectTitle}`,
       component: slash(pageTemplate),
       context: {
         projectObs: indvProjectData,
-        downloadData: projectDlData,
+        downloadData: dbProjectInfo,
       },
     })
   })
