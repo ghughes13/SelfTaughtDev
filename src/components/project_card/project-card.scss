@@ -28,6 +28,7 @@
     border-radius: 10px 10px 0 0;
     object-fit: cover;
     height: 300px;
+    width: 100%;
 
     @media screen and (max-width: 767px) {
       min-height: 200px;

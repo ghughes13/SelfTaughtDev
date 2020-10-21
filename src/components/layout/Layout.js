@@ -1,26 +1,22 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-// import { IdentityContextProvider } from "react-netlify-identity-widget"
+// import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "../header"
 import "./layout.scss"
 
 const Layout = ({ children, footer = "" }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
-  console.log("identity should be avail")
+  // const data = useStaticQuery(graphql`
+  //   query SiteTitleQuery {
+  //     site {
+  //       siteMetadata {
+  //         title
+  //       }
+  //     }
+  //   }
+  // `)
 
   return (
-    // <IdentityContextProvider url={"https://selftaught-dev.com/"}> 
     <>
       <Header />
       <div>
@@ -37,7 +33,6 @@ const Layout = ({ children, footer = "" }) => {
           </p>
         </footer>
       </div>
-    {/* </IdentityContextProvider> */}
     </>
   )
 }

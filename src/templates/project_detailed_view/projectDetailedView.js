@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import Layout from "../../components/layout/Layout"
 import { useIdentityContext } from "react-netlify-identity-widget"
 import LoginBtn from "../../components/login-btn/LoginBtn"
@@ -6,17 +6,23 @@ import LoginBtn from "../../components/login-btn/LoginBtn"
 import "./project-detailed-view.scss"
 
 export default function ProjectDetails(someProp) {
-  console.log(someProp.pageContext.downloadData)
-
   const projDetails = someProp.pageContext.projectObs
   const projDBDetails = someProp.pageContext.downloadData
 
   const background = require("../../images/project_thumbnails" +
     projDetails.imgUrl)
 
-  const mockupLite = projDBDetails.project_mockup_link_lite
-    ? projDBDetails.project_mockup_link_lite
-    : projDetails.projectMockupLink
+  let mockupLite = projDetails.projectMockupLink
+  if (projDBDetails !== undefined) {
+    projDBDetails.Project_Data.forEach(project => {
+      // console.log(project.project_title)
+      // console.log(projDetails.projectTitle)
+      if (project.project_title === projDetails.projectTitle) {
+        mockupLite = projDBDetails.Project_Data[0].project_mockup_link_lite
+      }
+    })
+    // console.log(projDBDetails.Project_Data[0])
+  }
 
   const styles = {
     backgroundImage: `url(${background})`,
@@ -49,8 +55,8 @@ export default function ProjectDetails(someProp) {
 function IsLoggedIn({ mockupLink }) {
   const identity = useIdentityContext()
 
-  console.log("project detailed view")
-  console.log(identity && identity.isLoggedIn)
+  // console.log("project detailed view")
+  // console.log(identity && identity.isLoggedIn)
 
   return (
     <>
