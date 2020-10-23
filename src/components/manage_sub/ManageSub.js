@@ -15,14 +15,14 @@ export default function ManageSub({ innerText, classList }) {
       },
     })
       .then(res => res.json())
-      .then(link => {
-        window.location.href = link
-      })
+      // .then(link => {
+      //   window.location.href = link
+      // })
       .catch(err => console.error(err))
   }
 
   return (
-    <button className="manage-sub-btn" onClick={redirectToManage()}>
+    <button className="manage-sub-btn" onClick={redirectToManage}>
       {btnText}
     </button>
   )

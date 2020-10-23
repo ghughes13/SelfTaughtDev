@@ -16,13 +16,10 @@ export default function ProjectDetails(someProp) {
   let mockupLite = projDetails.projectMockupLink
   if (projDBDetails !== undefined) {
     projDBDetails.Project_Data.forEach(project => {
-      // console.log(project.project_title)
-      // console.log(projDetails.projectTitle)
       if (project.project_title === projDetails.projectTitle) {
         mockupLite = projDBDetails.Project_Data[0].project_mockup_link_lite
       }
     })
-    // console.log(projDBDetails.Project_Data[0])
   }
 
   const styles = {
@@ -56,17 +53,16 @@ export default function ProjectDetails(someProp) {
 function IsLoggedIn({ mockupLink }) {
   const identity = useIdentityContext()
   identity.getFreshJWT(true)
-  // console.log("project detailed view")
-  console.log(identity)
-  console.log(identity.isLoggedIn)
+  // console.log(identity)
+  // console.log(identity.isLoggedIn)
 
   if (
     identity.user &&
     identity.user.app_metadata &&
     identity.user.app_metadata.roles
   ) {
-    console.log(identity.user.app_metadata.roles[0] === "lite")
-    console.log(identity.user.app_metadata.roles[0] === "pro")
+    // console.log(identity.user.app_metadata.roles[0] === "lite")
+    // console.log(identity.user.app_metadata.roles[0] === "pro")
   }
 
   return (
@@ -88,7 +84,6 @@ function IsLoggedIn({ mockupLink }) {
           innerText={"Log In To Download Project Files"}
           classList="btn-style-1 demo-btn"
         />
-        // <a className="btn-style-1 demo-btn">Log In To Download Project Files</a>
       )}
     </>
   )
