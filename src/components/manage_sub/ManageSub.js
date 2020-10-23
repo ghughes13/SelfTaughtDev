@@ -5,8 +5,9 @@ export default function ManageSub({ innerText, classList }) {
   const btnText = innerText || "Manage Subscription"
   const identity = useIdentityContext()
 
+  console.log(identity.user.token.access_token)
   function redirectToManage() {
-    const token = identity.user.token
+    const token = identity.user.token.access_token
 
     fetch("/.netlify/functions/create-manage-link", {
       method: "POST",
