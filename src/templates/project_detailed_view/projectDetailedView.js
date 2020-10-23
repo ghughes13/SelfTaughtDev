@@ -2,6 +2,7 @@ import React from "react"
 import Layout from "../../components/layout/Layout"
 import { useIdentityContext } from "react-netlify-identity-widget"
 import LoginBtn from "../../components/login-btn/LoginBtn"
+import ManageSub from "../../components/manage_sub/ManageSub"
 
 import "./project-detailed-view.scss"
 
@@ -71,14 +72,17 @@ function IsLoggedIn({ mockupLink }) {
   return (
     <>
       {identity && identity.isLoggedIn ? (
-        <a
-          href={mockupLink}
-          className="btn-style-1 demo-btn"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Download Project Files
-        </a>
+        <>
+          <a
+            href={mockupLink}
+            className="btn-style-1 demo-btn"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Download Project Files
+          </a>
+          <ManageSub innerText="Upgrade To Pro" />
+        </>
       ) : (
         <LoginBtn
           innerText={"Log In To Download Project Files"}

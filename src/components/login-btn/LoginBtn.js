@@ -48,8 +48,6 @@ function AuthStatusView({ innerText, classList }) {
           onLogin={user => {
             console.log("hello ", user?.user_metadata)
             identity.getFreshJWT(true)
-            console.log(user)
-            console.log(identity)
           }}
           onSignup={user => {
             console.log("welcome ", user?.user_metadata)
