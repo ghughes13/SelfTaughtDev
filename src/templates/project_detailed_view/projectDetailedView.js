@@ -56,7 +56,8 @@ function IsLoggedIn({ mockupLink }) {
   const identity = useIdentityContext()
 
   // console.log("project detailed view")
-  // console.log(identity && identity.isLoggedIn)
+  console.log(identity)
+  console.log(identity.isLoggedIn)
 
   return (
     <>
