@@ -15,7 +15,7 @@ export default function ManageSub({ innerText, classList }) {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(res => res.json())
+      .then(res => console.log("made it back to manageSub"))
       // .then(link => {
       //   window.location.href = link
       // })

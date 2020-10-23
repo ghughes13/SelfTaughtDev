@@ -1,6 +1,7 @@
-const fetch = require("node-fetch")
+import fetch from "node-fetch"
 
-exports.faunaFetch = async ({ query, variables }) => {
+exports.faunaFetch = async (query, variables) => {
+  console.log("IN THE FUNC")
   return await fetch("https://graphql.fauna.com/graphql", {
     method: "POST",
     headers: {
@@ -11,6 +12,6 @@ exports.faunaFetch = async ({ query, variables }) => {
       variables,
     }),
   })
-    .then(res => res.json())
+    .then(res => console.log("RAN IT"))
     .catch(err => console.error(JSON.stringify(err, null, 2)))
 }

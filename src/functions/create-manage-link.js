@@ -1,9 +1,10 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
-import faunaFetch from "./utils/fauna"
+const faunaFetch = require("./fauna").default
 
 exports.handler = async (event, context) => {
-  console.log(context)
   const { user } = context.clientContext
+
+  console.log(user)
 
   const query = `
   query ($netlifyID: ID!) {
@@ -16,12 +17,15 @@ exports.handler = async (event, context) => {
 
   const variables = { netlifyID: user.sub }
 
-  const result = await faunaFetch({ query, variables })
+  console.log(
+    "==========================MADE IT TO THE AWAIT============================="
+  )
+  const result = await faunaFetch(query, variables)
 
-  const stripeID = result.data.getUserByNetlifyID.stripeID
+  // const stripeID = result.data.getUserByNetlifyID.stripeID
 
-  console.log(result)
-  console.log(stripeID)
+  // console.log(result)
+  // console.log(stripeID)
 
   return {
     statusCode: 200,
