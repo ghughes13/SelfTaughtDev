@@ -45,7 +45,12 @@ function AuthStatusView({ innerText, classList }) {
         <IdentityModal
           showDialog={dialog}
           onCloseDialog={() => setDialog(false)}
-          onLogin={user => console.log("hello ", user?.user_metadata)}
+          onLogin={user => {
+            console.log("hello ", user?.user_metadata)
+            identity.getFreshJWT(true)
+            console.log(user)
+            console.log(identity)
+          }}
           onSignup={user => {
             console.log("welcome ", user?.user_metadata)
             user.logout()

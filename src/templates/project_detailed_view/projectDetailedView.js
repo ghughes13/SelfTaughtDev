@@ -58,8 +58,15 @@ function IsLoggedIn({ mockupLink }) {
   // console.log("project detailed view")
   console.log(identity)
   console.log(identity.isLoggedIn)
-  console.log(identity.user.app_metadata.roles[0] === "lite")
-  console.log(identity.user.app_metadata.roles[0] === "pro")
+
+  if (
+    identity.user &&
+    identity.user.app_metadata &&
+    identity.user.app_metadata.roles
+  ) {
+    console.log(identity.user.app_metadata.roles[0] === "lite")
+    console.log(identity.user.app_metadata.roles[0] === "pro")
+  }
 
   return (
     <>
