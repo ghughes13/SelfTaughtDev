@@ -2,6 +2,7 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 const { faunaFetch } = require("./utils/fauna")
 
 exports.handler = async (event, context) => {
+  console.log(context)
   const { user } = context.clientContext
 
   const query = `
