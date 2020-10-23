@@ -54,10 +54,12 @@ export default function ProjectDetails(someProp) {
 
 function IsLoggedIn({ mockupLink }) {
   const identity = useIdentityContext()
-
+  identity.getFreshJWT(true)
   // console.log("project detailed view")
   console.log(identity)
   console.log(identity.isLoggedIn)
+  console.log(identity.user.app_metadata.roles[0] === "lite")
+  console.log(identity.user.app_metadata.roles[0] === "pro")
 
   return (
     <>
