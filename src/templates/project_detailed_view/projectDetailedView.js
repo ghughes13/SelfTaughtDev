@@ -52,17 +52,17 @@ export default function ProjectDetails(someProp) {
 
 function IsLoggedIn({ mockupLink }) {
   const identity = useIdentityContext()
+  let showProContent = false
+
   identity.getFreshJWT(true)
-  // console.log(identity)
-  // console.log(identity.isLoggedIn)
 
   if (
     identity.user &&
     identity.user.app_metadata &&
-    identity.user.app_metadata.roles
+    identity.user.app_metadata.roles &&
+    identity.user.app_metadata.roles[0] === "pro"
   ) {
-    // console.log(identity.user.app_metadata.roles[0] === "lite")
-    // console.log(identity.user.app_metadata.roles[0] === "pro")
+    showProContent = true
   }
 
   return (
@@ -77,7 +77,7 @@ function IsLoggedIn({ mockupLink }) {
           >
             Download Project Files
           </a>
-          <ManageSub innerText="Upgrade To Pro" />
+          {/* {showProContent ? <ManageSub innerText="Upgrade To Pro" /> */}
         </>
       ) : (
         <LoginBtn

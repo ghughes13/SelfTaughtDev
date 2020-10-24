@@ -1,5 +1,5 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
-const fetch = require("node-fetch")
+const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET_KEY)
+import fetch from "node-fetch"
 
 exports.handler = async (event, context) => {
   const { user } = context.clientContext
@@ -32,10 +32,16 @@ exports.handler = async (event, context) => {
   const result = await faunaFetch({ query, variables })
 
   console.log(JSON.stringify(result))
-  // console.log(stripeID)
+
+  const stripeID = result.data.getUserByNetlifyID.stripeID
+
+  const link = await stripe.billingPortal.sessions.create({
+    customer: stripeID,
+    return_url: process.env.URL,
+  })
 
   return {
     statusCode: 200,
-    body: JSON.stringify(result),
+    body: JSON.stringify(link.url),
   }
 }
