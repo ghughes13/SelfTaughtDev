@@ -1,4 +1,5 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
+import fetch from "node-fetch"
 const faunaFetch = require("./fauna").default
 
 exports.handler = async (event, context) => {
@@ -20,11 +21,28 @@ exports.handler = async (event, context) => {
   console.log(
     "==========================MADE IT TO THE AWAIT============================="
   )
-  const result = await faunaFetch(query, variables)
+
+  const result = async (query, variables) => {
+    return await fetch("https://graphql.fauna.com/graphql", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
+      },
+      body: JSON.stringify({
+        query,
+        variables,
+      }),
+    })
+      .then(res => console.log(res))
+      .catch(err => {
+        console.log("error")
+        console.error(JSON.stringify(err, null, 2))
+      })
+  }
 
   // const stripeID = result.data.getUserByNetlifyID.stripeID
 
-  // console.log(result)
+  console.log(result)
   // console.log(stripeID)
 
   return {
