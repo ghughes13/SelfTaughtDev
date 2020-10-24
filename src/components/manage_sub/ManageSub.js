@@ -5,7 +5,7 @@ export default function ManageSub({ innerText, classList }) {
   const btnText = innerText || "Manage Subscription"
   const identity = useIdentityContext()
 
-  console.log(identity.user.token.access_token)
+  // console.log(identity.user.token.access_token)
   function redirectToManage() {
     const token = identity.user.token.access_token
 
@@ -15,10 +15,10 @@ export default function ManageSub({ innerText, classList }) {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then(res => {
-        console.log("made it back to manageSub")
-        console.log(res.body)
-      })
+      // .then(res => {
+      //   res.json()
+      // })
+      .then(res => console.log(res))
       // .then(link => {
       //   window.location.href = link
       // })

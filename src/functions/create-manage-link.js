@@ -1,28 +1,13 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
-import fetch from "node-fetch"
-const faunaFetch = require("./fauna").default
+// const { faunaFetch } = require("./fauna")
+const fetch = require("node-fetch")
 
 exports.handler = async (event, context) => {
   const { user } = context.clientContext
 
-  console.log(user)
+  // console.log(user)
 
-  const query = `
-  query ($netlifyID: ID!) {
-    getUserByNetlifyID(netlifyID: $netlifyID) {
-      stripeID
-      netlifyID
-    }
-  }
-  `
-
-  const variables = { netlifyID: user.sub }
-
-  console.log(
-    "==========================MADE IT TO THE AWAIT============================="
-  )
-
-  const result = async (query, variables) => {
+  const faunaFetch = async ({ query, variables }) => {
     return await fetch("https://graphql.fauna.com/graphql", {
       method: "POST",
       headers: {
@@ -33,16 +18,29 @@ exports.handler = async (event, context) => {
         variables,
       }),
     })
-      .then(res => console.log(res))
-      .catch(err => {
-        console.log("error")
-        console.error(JSON.stringify(err, null, 2))
-      })
+      .then(res => res.json())
+      .catch(err => console.error(JSON.stringify(err, null, 2)))
   }
 
-  // const stripeID = result.data.getUserByNetlifyID.stripeID
+  const query = `
+    query ($netlifyID: ID!) {
+      getUserByNetlifyID(netlifyID: $netlifyID){
+        stripeID
+        netlifyID
+      }
+    }
+  `
+  const variables = { netlifyID: user.sub }
 
-  console.log(result)
+  const result = faunaFetch({ query, variables })
+
+  // const stripeID = result.data.getUserByNetlifyID.stripeID
+  // const link = await stripe.billingPortal.sessions.create({
+  //   customer: stripeID,
+  //   return_url: process.env.URL,
+  // })
+
+  console.log(JSON.stringify(result))
   // console.log(stripeID)
 
   return {
