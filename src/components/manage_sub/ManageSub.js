@@ -17,7 +17,7 @@ export default function ManageSub({ innerText, classList }) {
     })
       .then(res => {
         console.log("made it back to manageSub")
-        console.log(res)
+        console.log(res.body)
       })
       // .then(link => {
       //   window.location.href = link
