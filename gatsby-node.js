@@ -2,8 +2,6 @@ const fetch = require(`node-fetch`)
 const path = require(`path`)
 const { slash } = require(`gatsby-core-utils`)
 
-// import * as data from "./src/data/projectData.json"
-
 exports.createPages = ({ boundActionCreators }) => {
   const data = require("./src/data/projectData.json")
   const { createPage } = boundActionCreators
@@ -27,7 +25,7 @@ exports.createPages = ({ boundActionCreators }) => {
     return result.data
   }
 
-  const projectDlData = query({
+  query({
     query: `
     query {
       Project_Data {
@@ -40,21 +38,8 @@ exports.createPages = ({ boundActionCreators }) => {
     `,
   }).then(res => {
     data.forEach(indvProjectData => {
+      console.log(res)
       let dbProjectInfo = res
-
-      // for (let i = 0; i < res.project_Data; i++) {
-      //   console.log("Proj Title indv")
-      //   console.log(indvProjectData.projectTitle)
-
-      //   console.log("Proj Title res")
-      //   console.log(res[i].project_title)
-      //   if (indvProjectData.projectTitle === res[i].project_title) {
-      //     dbProjectInfo = res[i]
-      //   }
-
-      //   consolg.log("inner loop")
-      //   console.log(dbProjectInfo)
-      // }
 
       createPage({
         path: `/${indvProjectData.projectTitle}`,
