@@ -1,4 +1,4 @@
-.mailing-list-signup {
+.login-screen {
   background: url("../../images/hero.png") no-repeat center center;
   background-size: cover;
   text-align: center;
@@ -27,10 +27,6 @@
     flex-direction: column;
     padding: 50px 100px;
     margin-top: 25px;
-
-    label {
-      display: none;
-    }
 
     .optin-box {
       display: flex;

@@ -11,11 +11,11 @@ const mailingListSignup = ({
   successMessage,
 }) => (
   <div className="mailing-list-signup">
-    <img
+    {/* <img
       className="logo"
       src={require("../../svgs/selftaughtdev-logo-mini.svg")}
       alt="logo"
-    />
+    /> */}
     <h1>{pageTitle}</h1>
     <form
       id={formTitle}
@@ -59,19 +59,28 @@ const mailingListSignup = ({
       <div className="form-info-div">
         <input type="hidden" name="form-name" value={formTitle} />
         <input type="hidden" name="bot-field" id="bot" />
-        <label htmlFor="name">Name
-        <input type="text" placeholder="Name" name="name" id="name" /></label>
-        <label htmlFor="email">email
-        <input
-          className="margin-top-input"
-          type="email"
-          name="email"
-          placeholder="Email"
-          id="email"
-        /></label>
+        <label htmlFor="name">
+          <input
+            type="text"
+            placeholder="Name"
+            name="name"
+            id="name"
+            required
+          />
+        </label>
+        <label htmlFor="email">
+          <input
+            className="margin-top-input"
+            type="email"
+            name="email"
+            placeholder="Email"
+            id="email"
+            required
+          />
+        </label>
         <div className="optin-box">
-        <label htmlFor="optin" id="optin-label">
           <input type="checkbox" name="optin" id="optin" required />
+          <label htmlFor="optin" id="optin-label">
             I acknowledge that I am also signing up for the SelfTaughtDev free
             email newsletter.{" "}
           </label>

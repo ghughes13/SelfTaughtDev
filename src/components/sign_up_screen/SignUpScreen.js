@@ -1,5 +1,5 @@
 import React from "react"
-import GoTrue from 'gotrue-js';
+import GoTrue from "gotrue-js"
 
 import "./sign-up-screen.scss"
 import Loader from "../loader/Loader"
@@ -11,36 +11,35 @@ const SignUpScreen = ({
   btnText,
   successMessage,
 }) => {
-
   const auth = new GoTrue({
-    APIUrl: 'https://selftaught-dev.com/.netlify/identity',
-    audience: '',
+    APIUrl: "https://selftaught-dev.com/.netlify/identity",
+    audience: "",
     setCookie: true,
-  });
+  })
 
-  const submitForm = () => { 
-    console.log('submitting');
+  const submitForm = () => {
+    console.log("submitting")
 
-      const password = document.getElementById("password").value;
-      const email = document.getElementById("email").value;
-      
-      console.log(password, email)
+    const password = document.getElementById("password").value
+    const email = document.getElementById("email").value
 
-      auth
+    console.log(password, email)
+
+    auth
       .signup(email, password)
       .then(response => {
         console.log(response)
         if (response) {
-          console.log('User should be created');
+          console.log("User should be created")
           console.log(password, email)
           auth
-          .login(password, email, true)
-          .then((response) => {
-            console.log('Success! Response: ' + JSON.stringify({ response }))
-            document.querySelector('.new-user').style.display = "block"
-            document.querySelector('form').style.display = "none";
-          })
-          .catch((error) => console.log('Failed :( ' + JSON.stringify(error) ));
+            .login(password, email, true)
+            .then(response => {
+              console.log("Success! Response: " + JSON.stringify({ response }))
+              document.querySelector(".new-user").style.display = "block"
+              document.querySelector("form").style.display = "none"
+            })
+            .catch(error => console.log("Failed :( " + JSON.stringify(error)))
         }
       })
       // .then((response) => {
@@ -50,7 +49,7 @@ const SignUpScreen = ({
       //   })
       //   .then(response => {
       //     if (response.status === 200) {
-            
+
       //     }
       //   })
       //   .catch(error => {
@@ -58,17 +57,20 @@ const SignUpScreen = ({
       //     console.log("FAILED ): <- Sad face for failure")
       //   })
       // })
-      .catch((error) => {
-        if(JSON.stringify(error.json.msg) === '"A user with this email address has already been registered"') {
-          console.log('email error');
-          document.querySelector('.email-error').style.display = "block"
+      .catch(error => {
+        if (
+          JSON.stringify(error.json.msg) ===
+          '"A user with this email address has already been registered"'
+        ) {
+          console.log("email error")
+          document.querySelector(".email-error").style.display = "block"
         }
         console.log(error)
-      });   
+      })
   }
 
   return (
-    <div className="mailing-list-signup">
+    <div className="signup-screen">
       <h1>Sign Up</h1>
       <form
         id="new-user"
@@ -81,51 +83,70 @@ const SignUpScreen = ({
         netlify="true"
         netlify-honeypot="bot-field"
       >
-            <input type="hidden" name="bot-field" id="bot" />
+        <input type="hidden" name="bot-field" id="bot" />
         <div className="form-info-div">
-          <label htmlFor="name">First Name
-          <input
-            type="text"
-            placeholder="First Name"
-            name="firstName"
-            id="firstName"
-            required
-          /></label>
-          <label htmlFor="name">Last Name
-          <input
-            type="text"
-            placeholder="Last Name"
-            name="lastName"
-            id="lastName"
-            required
-          /></label>
-          <label htmlFor="email">Email
-          <input type="email" name="email" placeholder="Email" id="email" autoComplete="email" required/></label>
-          <p className="email-error">A user with this email is already registered</p>
-          <label htmlFor="name">Username
-          <input
-            type="text"
-            placeholder="Username"
-            name="username"
-            id="username"
-            autoComplete="username"
-            required
-          /></label>
-          <label htmlFor="name">Password
-          <input
-            type="password"
-            placeholder="Password"
-            id="password"
-            autoComplete="new-password"
-            required
-          /></label>
+          <label htmlFor="name">
+            First Name
+            <input
+              type="text"
+              placeholder="First Name"
+              name="firstName"
+              id="firstName"
+              required
+            />
+          </label>
+          <label htmlFor="name">
+            Last Name
+            <input
+              type="text"
+              placeholder="Last Name"
+              name="lastName"
+              id="lastName"
+              required
+            />
+          </label>
+          <label htmlFor="email">
+            Email
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              id="email"
+              autoComplete="email"
+              required
+            />
+          </label>
+          <p className="email-error">
+            A user with this email is already registered
+          </p>
+          <label htmlFor="name">
+            Username
+            <input
+              type="text"
+              placeholder="Username"
+              name="username"
+              id="username"
+              autoComplete="username"
+              required
+            />
+          </label>
+          <label htmlFor="name">
+            Password
+            <input
+              type="password"
+              placeholder="Password"
+              id="password"
+              autoComplete="new-password"
+              required
+            />
+          </label>
           <button id="sbmt-form-btn" type="submit">
             Login
           </button>
         </div>
         <div id="thanks" className="new-user">
           <p>
-            Your account has successfully been created. You are now logged in. 
+            Your account has successfully been created. You are now logged in.
           </p>
         </div>
         <Loader />
