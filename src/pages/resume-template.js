@@ -6,7 +6,7 @@ import MailingListSignup from "../components/mailing_list_signup/MailingListSign
 
 const archiveNotificationLP = () => (
   <Layout footer="transparent">
-    <SEO title="Archive Notification LP" />
+    <SEO title="Resume Template" />
     <MailingListSignup
       pageTitle="Get My Resume Template Sent To Your Inbox"
       formTitle="Resume Template LP"

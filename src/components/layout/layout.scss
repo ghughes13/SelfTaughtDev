@@ -659,6 +659,10 @@ h4 {
   color: #fff;
   font-family: "Poppins", sans-serif;
   font-size: 35px;
+
+  .large-h4 {
+    font-size: 40px;
+  }
 }
 
 h5 {
@@ -672,8 +676,25 @@ a {
   font-family: "poppins", sans-serif;
 }
 
+li {
+  font-family: "poppins", sans-serif;
+  color: #fff;
+}
+
+.omit-list-style {
+  list-style: none;
+}
+
 .mint-green {
   color: #3bb99b;
+}
+
+.regular {
+  font-weight: 400;
+}
+
+.bold {
+  font-weight: 700;
 }
 
 /*******************/

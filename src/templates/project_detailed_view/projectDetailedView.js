@@ -41,8 +41,43 @@ export default function ProjectDetails(someProp) {
           >
             Demo Video
           </a>
-          <div className="project-download">
-            <IsLoggedIn mockupLink={mockupLite} />
+          <div className="plan-comparison">
+            <div className="lite plan-option">
+              <h4 className="larger-h4 regular">LITE - $0.00/Month</h4>
+              <ul className="omit-list-style">
+                <li>Desktop Mockup</li>
+                <li className="exclude">Tablet Mockup</li>
+                <li className="exclude">Mobile Mockup</li>
+                <li>Project Demo Video</li>
+                <li>Lv 1 Requirements</li>
+                <li className="exclude">Lv 2 Requirements</li>
+                <li className="exclude">
+                  Lv 3 Requirements
+                  <span>(If Applicable)</span>
+                </li>
+              </ul>
+              <div className="project-download">
+                <IsLoggedIn contentType="lite" mockupLink={mockupLite} />
+              </div>
+            </div>
+            <div className="lite plan-option">
+              <h4 className="larger-h4 regular">Pro - $19.99/Month</h4>
+              <ul className="omit-list-style">
+                <li>Desktop Mockup</li>
+                <li>Tablet Mockup</li>
+                <li>Mobile Mockup</li>
+                <li>Project Demo Video</li>
+                <li>Lv 1 Requirements</li>
+                <li>Lv 2 Requirements</li>
+                <li>
+                  Lv 3 Requirements
+                  <span>(If Applicable)</span>
+                </li>
+              </ul>
+              <div className="project-download">
+                <IsLoggedIn contentType="pro" mockupLink={mockupLite} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -50,11 +85,13 @@ export default function ProjectDetails(someProp) {
   )
 }
 
-function IsLoggedIn({ mockupLink }) {
+function IsLoggedIn({ mockupLink, contentType }) {
   const identity = useIdentityContext()
   let showProContent = false
 
-  identity.getFreshJWT(true)
+  // if (identity) {
+  //   identity.getFreshJWT(true)
+  // }
 
   if (
     identity.user &&
@@ -65,26 +102,41 @@ function IsLoggedIn({ mockupLink }) {
     showProContent = true
   }
 
-  return (
-    <>
-      {identity && identity.isLoggedIn ? (
-        <>
-          <a
-            href={mockupLink}
-            className="btn-style-1 demo-btn"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Download Project Files
-          </a>
-          {/* {showProContent ? <ManageSub innerText="Upgrade To Pro" /> */}
-        </>
-      ) : (
-        <LoginBtn
-          innerText={"Log In To Download Project Files"}
-          classList="btn-style-1 demo-btn"
-        />
-      )}
-    </>
-  )
+  if (contentType === "lite") {
+    return (
+      <>
+        {identity && identity.isLoggedIn ? (
+          <>
+            <a
+              href={mockupLink}
+              className="btn-style-1 demo-btn"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Download Project Files
+            </a>{" "}
+          </>
+        ) : (
+          <LoginBtn
+            innerText={"Log In To Download Project Files"}
+            classList="btn-style-1 demo-btn"
+          />
+        )}
+      </>
+    )
+  } else if (contentType === "pro") {
+    console.log(identity && identity.isLoggedIn)
+    return (
+      <>
+        {identity && identity.isLoggedIn ? (
+          <>{!showProContent ? <ManageSub innerText="Upgrade To Pro" /> : ""}</>
+        ) : (
+          <LoginBtn
+            innerText={"Log In To Download Project Files"}
+            classList="btn-style-1 demo-btn"
+          />
+        )}
+      </>
+    )
+  }
 }

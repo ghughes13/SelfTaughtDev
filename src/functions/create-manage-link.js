@@ -2,7 +2,11 @@ const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET_KEY)
 import fetch from "node-fetch"
 
 exports.handler = async (event, context) => {
+  console.log(
+    "=================================================================================="
+  )
   const { user } = context.clientContext
+  console.log(context)
 
   const faunaFetch = async ({ query, variables }) => {
     return await fetch("https://graphql.fauna.com/graphql", {

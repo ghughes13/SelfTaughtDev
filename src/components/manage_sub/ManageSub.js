@@ -5,26 +5,48 @@ export default function ManageSub({ innerText, classList }) {
   const btnText = innerText || "Manage Subscription"
   const identity = useIdentityContext()
 
-  // console.log(identity.user.token.access_token)
   function redirectToManage() {
-    const token = identity.user.token.access_token
+    console.log(identity)
 
-    fetch("/.netlify/functions/create-manage-link", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-      .then(res => res.json())
-      .then(link => {
-        window.location.href = link
+    if (identity.user) {
+      console.log(identity.verifyToken())
+    }
+
+    console.log(identity.user)
+
+    console.log(identity.user.token)
+
+    if (
+      identity &&
+      identity.user &&
+      identity.user.token &&
+      identity.user.token.access_token
+    ) {
+      console.log(identity.user.token.access_token)
+
+      const token = identity.user.token.access_token
+      console.log(token)
+      fetch("/.netlify/functions/create-manage-link", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
-      .catch(err => console.error(err))
+        .then(res => res.json())
+        .then(link => {
+          window.location.href = link
+        })
+        .catch(err => console.error(err))
+    } else {
+    }
   }
 
   return (
-    <button className="manage-sub-btn" onClick={redirectToManage}>
+    <a
+      className="manage-sub-btn btn-style-1 demo-btn"
+      onClick={redirectToManage}
+    >
       {btnText}
-    </button>
+    </a>
   )
 }

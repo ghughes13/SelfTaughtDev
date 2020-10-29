@@ -48,10 +48,16 @@ function AuthStatusView({ innerText, classList }) {
           onLogin={user => {
             console.log("hello ", user?.user_metadata)
             identity.getFreshJWT(true)
+            console.log("identity")
+            console.log(identity)
           }}
           onSignup={user => {
             console.log("welcome ", user?.user_metadata)
-            user.logout()
+            console.log(user)
+            identity.getFreshJWT(true)
+            console.log("identity")
+            console.log(identity)
+            // window.location.href = "http://localhost:8888/"
           }}
           onLogout={() => console.log("bye ", name)}
         />
