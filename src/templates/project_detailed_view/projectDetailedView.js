@@ -93,6 +93,8 @@ function IsLoggedIn({ mockupLink, contentType }) {
   //   identity.getFreshJWT(true)
   // }
 
+  console.log(identity.user)
+
   if (
     identity.user &&
     identity.user.app_metadata &&

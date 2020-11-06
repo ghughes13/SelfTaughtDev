@@ -9,8 +9,6 @@ exports.handler = async ({ body, headers }, context) => {
       process.env.STRIPE_WEBHOOK_SECRET
     )
 
-    console.log("error most likely in stripe webhook constructor")
-
     if (stripeEvent.type === "customer.subscription.updated") {
       const subscription = stripeEvent.data.object
 
@@ -26,8 +24,6 @@ exports.handler = async ({ body, headers }, context) => {
         console.log("cheap free user")
         role = "pro"
       }
-
-      console.log(role)
 
       const faunaFetch = async ({ query, variables }) => {
         return await fetch("https://graphql.fauna.com/graphql", {
