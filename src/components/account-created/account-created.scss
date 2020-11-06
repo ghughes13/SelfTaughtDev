@@ -1,0 +1,117 @@
+.mailing-list-signup {
+  background: url("../../images/hero.png") no-repeat center center;
+  background-size: cover;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 100px;
+  padding-top: 88px;
+
+  h1 {
+    font-size: 50px;
+    max-width: 650px;
+    margin-top: 25px;
+    padding-top: 0;
+  }
+
+  .logo {
+    margin-top: 25px;
+  }
+
+  form {
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    padding: 50px 100px;
+    margin-top: 25px;
+
+    .optin-box {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    input[type="checkbox"] {
+      height: 25px;
+      width: 25px;
+    }
+
+    #optin-label {
+      margin-left: 10px;
+      text-align: left;
+      display: inline-block;
+      font-size: 14px;
+      line-height: 18px;
+      color: white;
+      font-family: "poppins", sans-serif;
+      max-width: 310px;
+      white-space: normal;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 25px;
+      line-height: 25px;
+      text-align: center;
+      font-family: "poppins", sans-serif;
+      width: 100%;
+
+      &.margin-top-input {
+        margin-top: 30px;
+      }
+    }
+
+    button {
+      margin-top: 30px;
+      background: #3bb99b;
+      border: none;
+      color: white;
+      padding: 15px;
+      font-family: "poppins", sans-serif;
+    }
+  }
+
+  .form-info-div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #error-msg {
+    max-width: 350px;
+    font-size: 16px;
+    color: red;
+    font-family: "poppins", sans-serif;
+    margin-top: 25px;
+    margin-bottom: -25px;
+    display: none;
+  }
+
+  #thanks {
+    max-width: 350px;
+    background: #3bb99b;
+    color: white;
+    padding: 0 30px;
+    font-family: "poppins", sans-serif;
+    display: none;
+    p {
+      margin-top: 1.45rem;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    h1 {
+      font-size: 35px;
+      padding: 0 25px;
+    }
+
+    form {
+      padding: 50px 30px;
+      max-width: 100%;
+    }
+  }
+}

@@ -47,17 +47,10 @@ function AuthStatusView({ innerText, classList }) {
           onCloseDialog={() => setDialog(false)}
           onLogin={user => {
             console.log("hello ", user?.user_metadata)
-            identity.getFreshJWT(true)
-            console.log("identity")
-            console.log(identity)
           }}
           onSignup={user => {
             console.log("welcome ", user?.user_metadata)
-            console.log(user)
-            identity.getFreshJWT(true)
-            console.log("identity")
-            console.log(identity)
-            // window.location.href = "http://localhost:8888/"
+            window.location.href = "/account-created"
           }}
           onLogout={() => console.log("bye ", name)}
         />
