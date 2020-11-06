@@ -9,6 +9,8 @@ exports.handler = async ({ body, headers }, context) => {
       process.env.STRIPE_WEBHOOK_SECRET
     )
 
+    console.log("error most likely in stripe webhook constructor")
+
     if (stripeEvent.type === "customer.subscription.updated") {
       const subscription = stripeEvent.data.object
 
@@ -24,6 +26,8 @@ exports.handler = async ({ body, headers }, context) => {
         console.log("cheap free user")
         role = "pro"
       }
+
+      console.log(role)
 
       const faunaFetch = async ({ query, variables }) => {
         return await fetch("https://graphql.fauna.com/graphql", {
@@ -41,19 +45,18 @@ exports.handler = async ({ body, headers }, context) => {
       }
 
       const query = `
-      query ($stripeID: ID!) {
-        getUserByNetlifyID(stripeID: $stripeID){
-          netlifyID
+        query ($stripeID: ID!) {
+          getUserByStripeID(stripeID: $stripeID){
+            netlifyID
+          }
         }
-      }
-    `
+      `
       const variables = { stripeID }
 
       const result = await faunaFetch({ query, variables })
       const netlifyID = result.data.getUserByStripeID.netlifyID
 
       const { identity } = context.clientContext
-
       const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
         method: "PUT",
         headers: {
@@ -82,10 +85,5 @@ exports.handler = async ({ body, headers }, context) => {
       statusCode: 400,
       body: `Webhook Error: ${err.message}`,
     }
-  }
-
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ app_metadata: { roles: ["free"] } }),
   }
 }
