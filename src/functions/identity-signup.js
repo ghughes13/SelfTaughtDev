@@ -14,7 +14,6 @@ exports.handler = async event => {
   const netlifyID = user.id
   const stripeID = customer.id
 
-  // TODO create a customer record in Fauna
   const response = await fetch("https://graphql.fauna.com/graphql", {
     method: "POST",
     headers: {
@@ -42,6 +41,6 @@ exports.handler = async event => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ app_metadata: { roles: ["sub:free"] } }),
+    body: JSON.stringify({ app_metadata: { roles: ["free"] } }),
   }
 }

@@ -19,10 +19,10 @@ exports.handler = async ({ body, headers }, context) => {
 
       if (plan === "prod_IEpyz9rFw9BajF") {
         console.log("pro now u r")
-        role = "free"
+        role = "pro"
       } else if (plan === "prod_IEpydWylJ6pcS8") {
         console.log("cheap free user")
-        role = "pro"
+        role = "free"
       }
 
       const faunaFetch = async ({ query, variables }) => {
