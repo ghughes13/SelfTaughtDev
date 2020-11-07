@@ -93,8 +93,8 @@ function IsLoggedIn({ mockupLink, contentType }) {
 
   if (identity) {
     console.log("Getting Fresh Token")
-    identity.getFreshJWT(true)
-    console.log(identity)
+    identity.getFreshJWT(true).then(console.log(identity))
+    console.log(identity.getFreshJWT(true))
   }
 
   if (
