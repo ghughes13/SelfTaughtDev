@@ -111,41 +111,41 @@ function IsLoggedIn({ mockupLink, contentType }) {
     showProContent = true
   }
 
-  if (contentType === "lite") {
-    return (
-      <>
-        {identity && identity.isLoggedIn ? (
-          <>
-            <a
-              href={mockupLink}
-              className="btn-style-1 demo-btn"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Download Project Files
-            </a>{" "}
-          </>
-        ) : (
-          <LoginBtn
-            innerText={"Log In To Download Project Files"}
-            classList="btn-style-1 demo-btn"
-          />
-        )}
-      </>
-    )
-  } else if (contentType === "pro") {
-    console.log(identity && identity.isLoggedIn)
-    return (
-      <>
-        {identity && identity.isLoggedIn ? (
-          <>{!showProContent ? <ManageSub innerText="Upgrade To Pro" /> : ""}</>
-        ) : (
-          <LoginBtn
-            innerText={"Log In To Download Project Files"}
-            classList="btn-style-1 demo-btn"
-          />
-        )}
-      </>
-    )
-  }
+  // if (contentType === "lite") {
+  return (
+    <>
+      {identity && identity.isLoggedIn ? (
+        <>
+          <a
+            href={mockupLink}
+            className="btn-style-1 demo-btn"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Download Project Files
+          </a>{" "}
+        </>
+      ) : (
+        <LoginBtn
+          innerText={"Log In To Download Project Files"}
+          classList="btn-style-1 demo-btn"
+        />
+      )}
+    </>
+  )
+  // } else if (contentType === "pro") {
+  //   console.log(identity && identity.isLoggedIn)
+  //   return (
+  //     <>
+  //       {identity && identity.isLoggedIn ? (
+  //         <>{!showProContent ? <ManageSub innerText="Upgrade To Pro" /> : ""}</>
+  //       ) : (
+  //         <LoginBtn
+  //           innerText={"Log In To Download Project Files"}
+  //           classList="btn-style-1 demo-btn"
+  //         />
+  //       )}
+  //     </>
+  //   )
+  // }
 }
