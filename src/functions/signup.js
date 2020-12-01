@@ -1,4 +1,4 @@
-import fetch from "node-fetch"
+// import fetch from "node-fetch"
 const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET_KEY)
 
 console.log("testing")
