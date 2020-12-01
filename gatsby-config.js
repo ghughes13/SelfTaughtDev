@@ -16,7 +16,7 @@ module.exports = {
     title: `SelfTaughtDev`,
     description: `Build Projects and Learn To Code`,
     author: `@ghughes139`,
-    siteUrl: `https://selftaught-dev.com`
+    siteUrl: `https://selftaught-dev.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -24,7 +24,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
-        host: "https://selftaught-dev.com/",
+        host: "https://selftaught-dev.com",
         sitemap: "https://selftaught-dev.com/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },

@@ -23,8 +23,6 @@ const mailingListSignup = ({
     const password = document.getElementById("password").value
     const email = document.getElementById("email").value
 
-    console.log(password, email)
-
     auth
       .login(password, email, true)
       .then(response => {
