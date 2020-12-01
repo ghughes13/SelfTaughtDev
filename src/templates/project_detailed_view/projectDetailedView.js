@@ -60,7 +60,7 @@ export default function ProjectDetails(someProp) {
                 <IsLoggedIn contentType="lite" mockupLink={mockupLite} />
               </div>
             </div>
-            <div className="lite plan-option">
+            {/* <div className="lite plan-option">
               <h4 className="larger-h4 regular">Pro - $19.99/Month</h4>
               <ul className="omit-list-style">
                 <li>Desktop Mockup</li>
@@ -77,7 +77,7 @@ export default function ProjectDetails(someProp) {
               <div className="project-download">
                 <IsLoggedIn contentType="pro" mockupLink={mockupLite} />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
@@ -111,41 +111,41 @@ function IsLoggedIn({ mockupLink, contentType }) {
     showProContent = true
   }
 
-  // if (contentType === "lite") {
-  return (
-    <>
-      {identity && identity.isLoggedIn ? (
-        <>
-          <a
-            href={mockupLink}
-            className="btn-style-1 demo-btn"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Download Project Files
-          </a>{" "}
-        </>
-      ) : (
-        <LoginBtn
-          innerText={"Log In To Download Project Files"}
-          classList="btn-style-1 demo-btn"
-        />
-      )}
-    </>
-  )
-  // } else if (contentType === "pro") {
-  //   console.log(identity && identity.isLoggedIn)
-  //   return (
-  //     <>
-  //       {identity && identity.isLoggedIn ? (
-  //         <>{!showProContent ? <ManageSub innerText="Upgrade To Pro" /> : ""}</>
-  //       ) : (
-  //         <LoginBtn
-  //           innerText={"Log In To Download Project Files"}
-  //           classList="btn-style-1 demo-btn"
-  //         />
-  //       )}
-  //     </>
-  //   )
-  // }
+  if (contentType === "lite") {
+    return (
+      <>
+        {identity && identity.isLoggedIn ? (
+          <>
+            <a
+              href={mockupLink}
+              className="btn-style-1 demo-btn"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Download Project Files
+            </a>{" "}
+          </>
+        ) : (
+          <LoginBtn
+            innerText={"Log In To Download Project Files"}
+            classList="btn-style-1 demo-btn"
+          />
+        )}
+      </>
+    )
+  } else if (contentType === "pro") {
+    console.log(identity && identity.isLoggedIn)
+    return (
+      <>
+        {identity && identity.isLoggedIn ? (
+          <>{!showProContent ? <ManageSub innerText="Upgrade To Pro" /> : ""}</>
+        ) : (
+          <LoginBtn
+            innerText={"Log In To Download Project Files"}
+            classList="btn-style-1 demo-btn"
+          />
+        )}
+      </>
+    )
+  }
 }
