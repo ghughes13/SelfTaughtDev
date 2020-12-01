@@ -1,6 +1,8 @@
 import fetch from "node-fetch"
 const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET_KEY)
 
+console.log("testing")
+
 exports.handler = async event => {
   // console.log("hit route")
   // const { user } = JSON.parse(event.body)
@@ -42,6 +44,7 @@ exports.handler = async event => {
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ app_metadata: { roles: ["free"] } }),
+    body: "",
+    // body: JSON.stringify({ app_metadata: { roles: ["free"] } }),
   }
 }
