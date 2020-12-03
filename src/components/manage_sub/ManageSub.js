@@ -8,9 +8,9 @@ export default function ManageSub({ innerText, classList }) {
   function redirectToManage() {
     console.log(identity)
 
-    if (identity.user) {
-      console.log(identity.verifyToken())
-    }
+    // if (identity.user) {
+    //   console.log(identity.verifyToken(identity.user.token.refresh_token))
+    // }
 
     console.log(identity.user)
 

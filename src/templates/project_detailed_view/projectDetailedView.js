@@ -60,7 +60,7 @@ export default function ProjectDetails(someProp) {
                 <IsLoggedIn contentType="lite" mockupLink={mockupLite} />
               </div>
             </div>
-            {/* <div className="lite plan-option">
+            <div className="lite plan-option">
               <h4 className="larger-h4 regular">Pro - $19.99/Month</h4>
               <ul className="omit-list-style">
                 <li>Desktop Mockup</li>
@@ -77,7 +77,7 @@ export default function ProjectDetails(someProp) {
               <div className="project-download">
                 <IsLoggedIn contentType="pro" mockupLink={mockupLite} />
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
@@ -92,10 +92,9 @@ function IsLoggedIn({ mockupLink, contentType }) {
   console.log(identity.user)
 
   if (identity) {
-    console.log("Getting Fresh Token")
     try {
       identity.getFreshJWT(true).then(console.log(identity))
-      console.log(identity.getFreshJWT(true))
+      // console.log(identity.getFreshJWT(true))
     } catch (err) {
       console.log(err)
     }
@@ -134,7 +133,7 @@ function IsLoggedIn({ mockupLink, contentType }) {
       </>
     )
   } else if (contentType === "pro") {
-    console.log(identity && identity.isLoggedIn)
+    console.log("Pro")
     return (
       <>
         {identity && identity.isLoggedIn ? (
