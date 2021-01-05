@@ -40,7 +40,7 @@ exports.createPages = ({ boundActionCreators }) => {
     data.forEach(indvProjectData => {
       let dbProjectInfo = res
 
-      createPage({
+      await createPage({
         path: `/${indvProjectData.projectTitle}`,
         component: slash(pageTemplate),
         context: {
