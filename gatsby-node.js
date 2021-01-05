@@ -10,8 +10,8 @@ exports.createPages = ({ boundActionCreators }) => {
     "./src/templates/project_detailed_view/projectDetailedView.js"
   )
 
-  async function query({ query }) {
-    const result = await fetch(process.env.HASURA_API_URL, {
+  function query({ query }) {
+    const result = fetch(process.env.HASURA_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -25,7 +25,7 @@ exports.createPages = ({ boundActionCreators }) => {
     return result.data
   }
 
-  await query({
+  query({
     query: `
     query {
       Project_Data {
