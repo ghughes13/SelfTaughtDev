@@ -42,7 +42,6 @@
 
 // return {
 //   statusCode: 200,
-//   body: "",
 // body: JSON.stringify({ app_metadata: { roles: ["free"] } }),
 //   }
 // }
@@ -51,6 +50,6 @@ exports.handler = async (event, context) => {
   console.log("IT WORKED?!")
   return {
     statusCode: 200,
-    body: "We are now split testing!",
+    body: JSON.stringify({ app_metadata: { roles: ["free"] } }),
   }
 }
