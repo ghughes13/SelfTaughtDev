@@ -89,12 +89,9 @@ function IsLoggedIn({ mockupLink, contentType }) {
   const identity = useIdentityContext()
   let showProContent = false
 
-  console.log(identity.user)
-
   if (identity) {
     try {
       identity.getFreshJWT(true).then(console.log(identity))
-      // console.log(identity.getFreshJWT(true))
     } catch (err) {
       console.log(err)
     }
@@ -106,7 +103,6 @@ function IsLoggedIn({ mockupLink, contentType }) {
     identity.user.app_metadata.roles &&
     identity.user.app_metadata.roles[0] === "pro"
   ) {
-    console.log("show pro content = true")
     showProContent = true
   }
 
