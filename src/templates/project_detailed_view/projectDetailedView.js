@@ -89,13 +89,13 @@ function IsLoggedIn({ mockupLink, contentType }) {
   const identity = useIdentityContext()
   let showProContent = false
 
-  if (identity) {
-    try {
-      identity.getFreshJWT(true).then(console.log(identity))
-    } catch (err) {
-      console.log(err)
-    }
-  }
+  // if (identity) {
+  //   try {
+  //     identity.getFreshJWT(true).then(console.log(identity))
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
   if (
     identity.user &&
