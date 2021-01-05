@@ -25,7 +25,7 @@ exports.createPages = ({ boundActionCreators }) => {
     return result.data
   }
 
-  query({
+  await query({
     query: `
     query {
       Project_Data {
@@ -40,7 +40,7 @@ exports.createPages = ({ boundActionCreators }) => {
     data.forEach(indvProjectData => {
       let dbProjectInfo = res
 
-      await createPage({
+      createPage({
         path: `/${indvProjectData.projectTitle}`,
         component: slash(pageTemplate),
         context: {
