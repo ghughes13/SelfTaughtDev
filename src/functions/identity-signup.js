@@ -1,7 +1,6 @@
-exports.handler = async (event, context) => {
-  console.log("IT WORKED IN SIGNUP?!")
-  return {
+exports.handler = function (event, context, callback) {
+  callback(null, {
     statusCode: 200,
-    body: JSON.stringify({ app_metadata: { roles: ["free"] } }),
-  }
+    body: "Hello, World",
+  })
 }
