@@ -18,8 +18,6 @@ const mailingListSignup = ({
   })
 
   const submitForm = () => {
-    console.log("submitting")
-
     const password = document.getElementById("password").value
     const email = document.getElementById("email").value
 

@@ -11,11 +11,6 @@ const mailingListSignup = ({
   successMessage,
 }) => (
   <div className="mailing-list-signup">
-    {/* <img
-      className="logo"
-      src={require("../../svgs/selftaughtdev-logo-mini.svg")}
-      alt="logo"
-    /> */}
     <h1>{pageTitle}</h1>
     <form
       id={formTitle}

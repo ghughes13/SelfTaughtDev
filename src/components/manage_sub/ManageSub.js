@@ -6,26 +6,13 @@ export default function ManageSub({ innerText, classList }) {
   const identity = useIdentityContext()
 
   function redirectToManage() {
-    console.log(identity)
-
-    // if (identity.user) {
-    //   console.log(identity.verifyToken(identity.user.token.refresh_token))
-    // }
-
-    console.log(identity.user)
-
-    console.log(identity.user.token)
-
     if (
       identity &&
       identity.user &&
       identity.user.token &&
       identity.user.token.access_token
     ) {
-      console.log(identity.user.token.access_token)
-
       const token = identity.user.token.access_token
-      console.log(token)
       fetch("/.netlify/functions/create-manage-link", {
         method: "POST",
         headers: {
@@ -38,6 +25,7 @@ export default function ManageSub({ innerText, classList }) {
         })
         .catch(err => console.error(err))
     } else {
+      console.log("not logged in")
     }
   }
 

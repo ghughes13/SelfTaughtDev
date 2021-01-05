@@ -38,7 +38,6 @@ exports.createPages = ({ boundActionCreators }) => {
     `,
   }).then(res => {
     data.forEach(indvProjectData => {
-      console.log(res)
       let dbProjectInfo = res
 
       createPage({
