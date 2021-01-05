@@ -8,7 +8,7 @@
     "@reach/dialog": "^0.11.2",
     "@reach/tabs": "^0.11.2",
     "@reach/visually-hidden": "^0.11.1",
-    "axios": "^0.20.0",
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "framer-motion": "^2.3.0",
