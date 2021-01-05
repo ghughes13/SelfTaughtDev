@@ -2,7 +2,7 @@
 // const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET_KEY)
 
 exports.handler = async event => {
-  // console.log("hit route")
+  console.log("hit route")
   // const { user } = JSON.parse(event.body)
 
   // const customer = await stripe.customers.create({ email: user.email })
