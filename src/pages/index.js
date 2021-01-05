@@ -4,7 +4,7 @@ import Layout from "../components/layout/Layout"
 import SEO from "../components/seo"
 import DownArrows from "../components/down-arrows/DownArrows"
 
-import * as projectData from "../data/projectData.json"
+import ProjectData from "../data/projectData"
 
 import ProjectCard from "../components/project_card/ProjectCard"
 
@@ -28,7 +28,7 @@ export default function IndexPage() {
         <DownArrows />
       </div>
       <div className="project-previews">
-        {projectData.map(project => {
+        {ProjectData.map(project => {
           return <ProjectCard project={project} />
         })}
       </div>
