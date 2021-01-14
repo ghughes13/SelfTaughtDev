@@ -60,7 +60,7 @@ export default function ProjectDetails(someProp) {
                 <IsLoggedIn contentType="lite" mockupLink={mockupLite} />
               </div>
             </div>
-            <div className="lite plan-option">
+            {/* <div className="lite plan-option">
               <h4 className="larger-h4 regular">Pro - $19.99/Month</h4>
               <ul className="omit-list-style">
                 <li>Desktop Mockup</li>
@@ -77,7 +77,7 @@ export default function ProjectDetails(someProp) {
               <div className="project-download">
                 <IsLoggedIn contentType="pro" mockupLink={mockupLite} />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

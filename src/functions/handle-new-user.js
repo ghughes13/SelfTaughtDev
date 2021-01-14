@@ -45,13 +45,3 @@ exports.handler = async event => {
     body: JSON.stringify({ app_metadata: { roles: ["free"] } }),
   }
 }
-
-// exports.handler = async (event, context) => {
-//   console.log("IT WORKED?!")
-//   console.log(event)
-//   console.log(context)
-//   return {
-//     statusCode: 200,
-//     body: "",
-//   }
-// }
