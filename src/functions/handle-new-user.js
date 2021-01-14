@@ -47,7 +47,7 @@
 // }
 
 exports.handler = async (event, context) => {
-  console.log("IT WORKED?!")
+  console.log("handle-new-user.js")
   console.log(event)
   console.log(context)
   return {
