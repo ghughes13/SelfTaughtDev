@@ -90,7 +90,7 @@ function IsLoggedIn({ mockupLink, contentType }) {
   const identity = useIdentityContext()
   let showProContent = false
 
-  auth = new GoTrue({
+  const auth = new GoTrue({
     APIUrl: "https://selftaught-dev.com/.netlify/identity",
     audience: "",
     setCookie: true,

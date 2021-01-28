@@ -10,8 +10,8 @@ exports.createPages = async ({ boundActionCreators }) => {
     "./src/templates/project_detailed_view/projectDetailedView.js"
   )
 
-  function query({ query }) {
-    const result = fetch(process.env.HASURA_API_URL, {
+  async function query({ query }) {
+    const result = await fetch(process.env.HASURA_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,10 +37,10 @@ exports.createPages = async ({ boundActionCreators }) => {
     
     `,
   }).then(res => {
-    data.forEach(indvProjectData => {
+    data.map(async indvProjectData => {
       let dbProjectInfo = res
 
-      createPage({
+      await createPage({
         path: `/${indvProjectData.projectTitle}`,
         component: slash(pageTemplate),
         context: {
