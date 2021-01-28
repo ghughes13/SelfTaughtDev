@@ -2,7 +2,7 @@ const fetch = require(`node-fetch`)
 const path = require(`path`)
 const { slash } = require(`gatsby-core-utils`)
 
-exports.createPages = ({ boundActionCreators }) => {
+exports.createPages = async ({ boundActionCreators }) => {
   const data = require("./src/data/projectData.json")
   const { createPage } = boundActionCreators
 
