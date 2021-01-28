@@ -98,7 +98,7 @@ function IsLoggedIn({ mockupLink, contentType }) {
 
   const user = auth.currentUser()
 
-  user.jwt(forceRefresh)
+  // user.jwt(forceRefresh)
 
   if (
     identity.user &&
