@@ -10,8 +10,8 @@ exports.createPages = async ({ boundActionCreators }) => {
     "./src/templates/project_detailed_view/projectDetailedView.js"
   )
 
-  async function query({ query }) {
-    const result = await fetch(process.env.HASURA_API_URL, {
+  function query({ query }) {
+    const result = fetch(process.env.HASURA_API_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
