@@ -1,6 +1,7 @@
 import React from "react"
 import Layout from "../../components/layout/Layout"
 import { useIdentityContext } from "react-netlify-identity-widget"
+import GoTrue from "gotrue-js"
 import LoginBtn from "../../components/login-btn/LoginBtn"
 import ManageSub from "../../components/manage_sub/ManageSub"
 
@@ -60,7 +61,7 @@ export default function ProjectDetails(someProp) {
                 <IsLoggedIn contentType="lite" mockupLink={mockupLite} />
               </div>
             </div>
-            {/* <div className="lite plan-option">
+            <div className="lite plan-option">
               <h4 className="larger-h4 regular">Pro - $19.99/Month</h4>
               <ul className="omit-list-style">
                 <li>Desktop Mockup</li>
@@ -77,7 +78,7 @@ export default function ProjectDetails(someProp) {
               <div className="project-download">
                 <IsLoggedIn contentType="pro" mockupLink={mockupLite} />
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
@@ -89,13 +90,15 @@ function IsLoggedIn({ mockupLink, contentType }) {
   const identity = useIdentityContext()
   let showProContent = false
 
-  // if (identity) {
-  //   try {
-  //     identity.getFreshJWT(true).then(console.log(identity))
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+  auth = new GoTrue({
+    APIUrl: "https://selftaught-dev.com/.netlify/identity",
+    audience: "",
+    setCookie: true,
+  })
+
+  console.log(auth.currentUser())
+
+  console.log(useIdentityContext())
 
   if (
     identity.user &&
