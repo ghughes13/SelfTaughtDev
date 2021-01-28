@@ -96,9 +96,9 @@ function IsLoggedIn({ mockupLink, contentType }) {
     setCookie: true,
   })
 
-  console.log(auth.currentUser())
+  const user = auth.currentUser()
 
-  console.log(useIdentityContext())
+  user.jwt(forceRefresh)
 
   if (
     identity.user &&
