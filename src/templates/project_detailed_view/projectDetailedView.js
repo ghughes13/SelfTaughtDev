@@ -1,6 +1,9 @@
 import React from "react"
 import Layout from "../../components/layout/Layout"
-import { useIdentityContext } from "react-netlify-identity-widget"
+import {
+  useIdentityContext,
+  useNetlifyIdentity,
+} from "react-netlify-identity-widget"
 import GoTrue from "gotrue-js"
 import LoginBtn from "../../components/login-btn/LoginBtn"
 import ManageSub from "../../components/manage_sub/ManageSub"
@@ -96,10 +99,9 @@ function IsLoggedIn({ mockupLink, contentType }) {
     setCookie: true,
   })
 
-  console.log(auth.currentUser())
-  console.log(auth.currentUser().getFreshJWT())
-
-  console.log(useIdentityContext())
+  const ntlIdent = useNetlifyIdentity()
+  console.log(ntlIdent)
+  let newToken = ntlIdent ? console.log(ntlIdent.getFreshJWT()) : ""
 
   if (
     identity.user &&
