@@ -97,9 +97,13 @@ function IsLoggedIn({ mockupLink, contentType }) {
   })
 
   console.log(auth.currentUser())
+  console.log(auth.currentUser().jwt(true))
 
   console.log(useIdentityContext())
 
+  const token = user ? await netlifyIdentity.currentUser().jwt(true) : false;
+  console.log(token)
+  
   if (
     identity.user &&
     identity.user.app_metadata &&
