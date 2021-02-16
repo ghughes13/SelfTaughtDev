@@ -1,9 +1,6 @@
 import React from "react"
 import Layout from "../../components/layout/Layout"
-import {
-  useIdentityContext,
-  useNetlifyIdentity,
-} from "react-netlify-identity-widget"
+import { useIdentityContext } from "react-netlify-identity-gotrue"
 import GoTrue from "gotrue-js"
 import LoginBtn from "../../components/login-btn/LoginBtn"
 import ManageSub from "../../components/manage_sub/ManageSub"

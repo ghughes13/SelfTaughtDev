@@ -1,10 +1,10 @@
 import React from "react"
-import { IdentityContextProvider } from "react-netlify-identity-widget"
+import { NetlifyIdentityContext } from "react-netlify-identity-gotrue"
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <IdentityContextProvider url={"https://selftaught-dev.com"}>
+    <NetlifyIdentityContext url={"https://selftaught-dev.com"}>
       {element}
-    </IdentityContextProvider>
+    </NetlifyIdentityContext>
   )
 }
