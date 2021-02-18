@@ -116,19 +116,19 @@
       a {
         margin-top: 15px;
       }
-    }
 
-    .demo-btn {
-      margin-top: 50px;
-      display: inline-block;
-      border-radius: 10px;
-      text-decoration: none;
-      min-width: 300px;
-      font-size: 24px;
-      transition-duration: 0.25s;
-      cursor: pointer;
-      &:hover {
-        background: darken(#3bb99b, 20%);
+      .demo-btn {
+        margin-top: 50px;
+        display: inline-block;
+        border-radius: 10px;
+        text-decoration: none;
+        min-width: 300px;
+        font-size: 24px;
+        transition-duration: 0.25s;
+        cursor: pointer;
+        &:hover {
+          background: darken(#3bb99b, 20%);
+        }
       }
     }
   }

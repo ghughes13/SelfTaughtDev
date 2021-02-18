@@ -1,11 +1,11 @@
 import React from "react"
 import Layout from "../../components/layout/Layout"
-import { useIdentityContext } from "react-netlify-identity-gotrue"
-import GoTrue from "gotrue-js"
-import LoginBtn from "../../components/login-btn/LoginBtn"
+import { Link } from "gatsby"
 import ManageSub from "../../components/manage_sub/ManageSub"
 
 import "./project-detailed-view.scss"
+
+import { useIdentityContext } from "react-netlify-identity-gotrue"
 
 export default function ProjectDetails(someProp) {
   const projDetails = someProp.pageContext.projectObs
@@ -88,17 +88,13 @@ export default function ProjectDetails(someProp) {
 
 function IsLoggedIn({ mockupLink, contentType }) {
   const identity = useIdentityContext()
+  if (identity.user) {
+    console.log("ture")
+  }
+
+  console.log(identity)
+
   let showProContent = false
-
-  const auth = new GoTrue({
-    APIUrl: "https://selftaught-dev.com/.netlify/identity",
-    audience: "",
-    setCookie: true,
-  })
-
-  const ntlIdent = useNetlifyIdentity()
-  console.log(ntlIdent)
-  let newToken = ntlIdent ? console.log(ntlIdent.getFreshJWT()) : ""
 
   if (
     identity.user &&
@@ -106,13 +102,14 @@ function IsLoggedIn({ mockupLink, contentType }) {
     identity.user.app_metadata.roles &&
     identity.user.app_metadata.roles[0] === "pro"
   ) {
+    console.log("shouldn b etru")
     showProContent = true
   }
 
   if (contentType === "lite") {
     return (
-      <>
-        {identity && identity.isLoggedIn ? (
+      <p>
+        {identity.user ? (
           <>
             <a
               href={mockupLink}
@@ -124,26 +121,23 @@ function IsLoggedIn({ mockupLink, contentType }) {
             </a>{" "}
           </>
         ) : (
-          <LoginBtn
-            innerText={"Log In To Download Project Files"}
-            classList="btn-style-1 demo-btn"
-          />
+          <Link to="/login" className="btn-style-1 btn demo-btn">
+            Login To Download Project Files
+          </Link>
         )}
-      </>
+      </p>
     )
   } else if (contentType === "pro") {
-    console.log("Pro")
     return (
-      <>
-        {identity && identity.isLoggedIn ? (
+      <p>
+        {identity.user ? (
           <>{!showProContent ? <ManageSub innerText="Upgrade To Pro" /> : ""}</>
         ) : (
-          <LoginBtn
-            innerText={"Log In To Download Project Files"}
-            classList="btn-style-1 demo-btn"
-          />
+          <Link to="/login" className="btn-style-1 demo-btn">
+            Login To Download Project Files
+          </Link>
         )}
-      </>
+      </p>
     )
   }
 }

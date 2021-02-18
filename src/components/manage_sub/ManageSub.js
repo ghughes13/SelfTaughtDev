@@ -1,24 +1,16 @@
 import React from "react"
-import { useIdentityContext } from "react-netlify-identity-widget"
+import { useIdentityContext } from "react-netlify-identity-gotrue"
 
 export default function ManageSub({ innerText, classList }) {
   const btnText = innerText || "Manage Subscription"
   const identity = useIdentityContext()
 
   function redirectToManage() {
-    if (
-      identity &&
-      identity.user &&
-      identity.user.token &&
-      identity.user.token.access_token
-    ) {
-      const token = identity.user.token.access_token
-      fetch("/.netlify/functions/create-manage-link", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+    if (identity.user) {
+      identity
+        .authorizedFetch("/.netlify/functions/create-manage-link", {
+          method: "POST",
+        })
         .then(res => res.json())
         .then(link => {
           window.location.href = link

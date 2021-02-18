@@ -2,13 +2,13 @@ import React from "react"
 
 import Layout from "../components/layout/Layout"
 import SEO from "../components/seo"
-import LoginScreen from "../components/login_screen/LoginScreen"
+import NewUser from "../components/new_user/NewUser"
 
-const LoginPage = () => {
+const NewUserPage = () => {
   return (
     <Layout footer="transparent">
       <SEO title="Archive Notification LP" />
-      <LoginScreen
+      <NewUser
         pageTitle="Get My Resume Template Sent To Your Inbox"
         formTitle="Resume Template LP"
         urlToPostTo="/resume-template/#thanks"
@@ -19,4 +19,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default NewUserPage

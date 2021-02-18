@@ -1,11 +1,18 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useEffect } from "react"
-import LoginBtn from "./login-btn/LoginBtn"
+import { useIdentityContext } from "react-netlify-identity-gotrue"
+
 import "@reach/dialog/styles.css"
 
 const Header = ({ siteTitle }) => {
   useEffect(() => {}, [])
+
+  const identity = useIdentityContext()
+  if (identity.user) {
+    console.log("hero")
+    console.log(identity)
+  }
 
   return (
     <header>
@@ -26,7 +33,15 @@ const Header = ({ siteTitle }) => {
             alt="logo"
           />
         </Link>
-        <LoginBtn />
+        {identity.user ? (
+          <button onClick={identity.logout} className="login-btn">
+            Logout
+          </button>
+        ) : (
+          <Link to="/login" className="login-text">
+            Login
+          </Link>
+        )}
       </div>
     </header>
   )

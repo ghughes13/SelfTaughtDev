@@ -22,11 +22,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-netlify-identity-gotrue`,
       options: {
-        url: `https://selftaught-dev.com`, // ❗REQUIRED❗
-        // Do _not_ include any path (/.netlify/identity, etc.) and
-        // leave the trailing slash off.
+        url: `https://selftaught-dev.com`,
       },
-    }`gatsby-plugin-react-helmet`,
+    },
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     {
       resolve: "gatsby-plugin-robots-txt",

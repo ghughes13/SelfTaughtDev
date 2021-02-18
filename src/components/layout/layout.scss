@@ -719,9 +719,14 @@ li {
     margin: 0;
   }
 
-  .log-btn a {
-    color: white;
+  .login-btn {
+    color: #3bb99b;
     text-decoration: none;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    background: none;
+    border: none;
+    cursor: pointer;
   }
 
   .App-header .btn {
@@ -730,6 +735,11 @@ li {
     color: white;
     font-family: Poppins;
     cursor: pointer;
+  }
+
+  .login-text {
+    color: white;
+    text-decoration: none;
   }
 }
 
@@ -754,7 +764,7 @@ footer {
 
   &.transparent {
     background: rgba(0, 0, 0, 0.3);
-    margin-top: -102px;
+    margin-top: -84px;
     z-index: 9;
     position: relative;
     @media screen and (max-width: 767px) {
@@ -765,7 +775,8 @@ footer {
   p {
     margin-bottom: 25px;
     margin-top: 25px;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 16px;
     width: 225px;
     text-align: center;
   }
@@ -798,6 +809,15 @@ footer {
   color: white;
   padding: 15px;
   font-family: "poppins", sans-serif;
+  text-align: center;
+  border-radius: 10px;
+  display: block;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  text-decoration: none;
+  transition-duration: 0.25s;
 }
 
 /*******************/

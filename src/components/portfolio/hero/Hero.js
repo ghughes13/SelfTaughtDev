@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import "./hero.scss"
-import DownArrows from "../../down-arrows/DownArrows"
+import DownArrows from "../../animations/down-arrows/DownArrows"
 
 const Hero = () => {
   useEffect(() => {

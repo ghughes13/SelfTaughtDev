@@ -2,7 +2,7 @@ import React from "react"
 import "./about.scss"
 
 import WistiaInline from "../../wistiaIn_Inline_video/WistiaInline"
-import DownArrows from "../../down-arrows/DownArrows"
+import DownArrows from "../../animations/down-arrows/DownArrows"
 
 const About = () => {
   return (

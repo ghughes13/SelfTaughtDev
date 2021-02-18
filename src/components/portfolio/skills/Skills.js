@@ -1,6 +1,6 @@
 import React from "react"
 import "./skills.scss"
-import DownArrows from "../../down-arrows/DownArrows"
+import DownArrows from "../../animations/down-arrows/DownArrows"
 
 const Skills = () => {
   return (

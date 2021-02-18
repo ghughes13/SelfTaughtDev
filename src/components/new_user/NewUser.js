@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useIdentityContext } from "react-netlify-identity-gotrue"
 import { useForm } from "react-hook-form"
-import { navigate, Link } from "gatsby"
+import { navigate } from "gatsby"
 
-import "./login-screen.scss"
+import "./new-user.scss"
 import Loader from "../animations/loader/Loader"
 
-const LoginForm = ({
+const NewUser = ({
   pageTitle,
   formTitle,
   urlToPostTo,
@@ -17,32 +17,27 @@ const LoginForm = ({
   const identity = useIdentityContext()
   const { register, handleSubmit, errors } = useForm()
   const [formError, setFormError] = useState(false)
-  const [loggingIn, setLoggingIn] = useState(false)
-
-  useEffect(() => {
-    navigateTarget && identity.user && navigate(navigateTarget)
-  }, [navigateTarget, identity.user])
+  const [signingUp, setSigningUp] = useState(false)
 
   const onSubmit = async data => {
-    setLoggingIn(true)
+    setSigningUp(true)
     setFormError(false)
 
-    await identity
-      .login({ email: data.email, password: data.password })
-      .then(res => {
-        console.log(res)
-        setLoggingIn(false)
-        navigateTarget && navigate(navigateTarget)
+    identity
+      .signup(data)
+      .then(() => {
+        setSigningUp(false)
+        navigate("/")
       })
       .catch(e => {
-        setLoggingIn(false)
         setFormError(e.message)
+        setSigningUp(false)
       })
   }
 
   return (
-    <div className="login-screen">
-      <h1>Sign In</h1>
+    <div className="new-user">
+      <h1>Become A Self Taught Dev.</h1>
       <form
         id={formTitle}
         method="POST"
@@ -52,6 +47,17 @@ const LoginForm = ({
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="form-info-div">
+          <label htmlFor="user_metadata.full_name">
+            <input
+              ref={register({ required: true })}
+              type="text"
+              placeholder="Full Name"
+              name="user_metadata.full_name"
+            ></input>
+          </label>
+          {errors.user_metadata?.full_name && (
+            <p className="error-msg">Name is required</p>
+          )}
           <label htmlFor="email">
             <input
               ref={register({
@@ -60,6 +66,7 @@ const LoginForm = ({
               })}
               type="email"
               placeholder="Email"
+              className="margin-top-input"
               name="email"
               id="email"
             />
@@ -78,13 +85,9 @@ const LoginForm = ({
               <p className="error-msg">Password is required</p>
             )}
           </label>
-          {loggingIn ? (
-            <Loader />
-          ) : (
-            <button id="sbmt-form-btn" type="submit">
-              Login
-            </button>
-          )}
+          <button id="sbmt-form-btn" type="submit">
+            Login
+          </button>
         </div>
         <div id="thanks">
           <p>
@@ -93,19 +96,16 @@ const LoginForm = ({
           </p>
         </div>
         <Loader />
-        {formError && (
-          <p id="error-msg" class="error-msg">
-            Error submitting form. <br />
-            Ensure all fields are filled out.
-          </p>
-        )}
-        <div className="other-options">
-          <Link to="/new-user">Create Account</Link>
-          <Link to="/new-user">Forgot Password</Link>
+        <div className="pt-2">
+          {formError && (
+            <p className="error-msg">
+              Looks like something went wrong. Please try again!
+            </p>
+          )}
         </div>
       </form>
     </div>
   )
 }
 
-export default LoginForm
+export default NewUser

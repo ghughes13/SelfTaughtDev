@@ -1,5 +1,5 @@
 import React from "react"
-import { NetlifyIdentityContext } from "react-netlify-identity-gotrue"
+import NetlifyIdentityContext from "react-netlify-identity-gotrue"
 
 export const wrapRootElement = ({ element }) => {
   return (

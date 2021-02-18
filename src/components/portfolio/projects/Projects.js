@@ -1,6 +1,6 @@
 import React from "react"
 import "./projects.scss"
-import DownArrows from "../../down-arrows/DownArrows"
+import DownArrows from "../../animations/down-arrows/DownArrows"
 import Project from "../project/Project"
 
 const Projects = () => {

@@ -1,14 +1,20 @@
 import React from "react"
+import { useIdentityContext } from "react-netlify-identity-gotrue"
 
 import Layout from "../components/layout/Layout"
 import SEO from "../components/seo"
-import DownArrows from "../components/down-arrows/DownArrows"
-
+import DownArrows from "../components/animations/down-arrows/DownArrows"
 import ProjectData from "../data/projectData"
-
 import ProjectCard from "../components/project_card/ProjectCard"
 
 export default function IndexPage() {
+  const identity = useIdentityContext()
+  if (identity.user) {
+    console.log(identity)
+    console.log(identity.user)
+    // identity.refreshUser
+  }
+
   return (
     <Layout>
       <SEO title="Project Archive" />
@@ -29,7 +35,7 @@ export default function IndexPage() {
       </div>
       <div className="project-previews">
         {ProjectData.map(project => {
-          return <ProjectCard project={project} />
+          return <ProjectCard project={project} key={project.imgUrl} />
         })}
       </div>
     </Layout>

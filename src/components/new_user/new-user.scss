@@ -1,4 +1,4 @@
-.login-screen {
+.new-user {
   background: url("../../images/hero.png") no-repeat center center;
   background-size: cover;
   text-align: center;
@@ -13,9 +13,10 @@
 
   h1 {
     font-size: 50px;
-    max-width: 650px;
+    max-width: 750px;
     margin-top: 25px;
     padding-top: 0;
+    font-weight: 400;
   }
 
   .logo {
@@ -26,7 +27,7 @@
     background: rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
-    padding: 50px 100px 25px;
+    padding: 50px 100px;
     margin-top: 25px;
     border-radius: 10px;
 
@@ -63,7 +64,7 @@
       border: none;
 
       &.margin-top-input {
-        margin-top: 30px;
+        margin-top: 15px;
       }
     }
 
@@ -105,9 +106,8 @@
     color: red;
     font-style: italic;
     font-family: "poppins", sans-serif;
-    margin-top: 5px;
-    margin-bottom: -25px;
-    // display: none;
+    margin-top: 0px;
+    margin-bottom: -15px;
   }
 
   #thanks {

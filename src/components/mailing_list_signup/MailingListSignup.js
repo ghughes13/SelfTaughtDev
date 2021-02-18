@@ -1,7 +1,7 @@
 import React from "react"
 
 import "./mailing-list-signup.scss"
-import Loader from "../loader/Loader"
+import Loader from "../animations/loader/Loader"
 
 const mailingListSignup = ({
   pageTitle,
@@ -74,9 +74,9 @@ const mailingListSignup = ({
           />
         </label>
         <div className="optin-box">
-          <input type="checkbox" name="optin" id="optin" required />
           <label htmlFor="optin" id="optin-label">
-            I acknowledge that I am also signing up for the SelfTaughtDev free
+            <input type="checkbox" name="optin" id="optin" required />I
+            acknowledge that I am also signing up for the SelfTaughtDev free
             email newsletter.{" "}
           </label>
         </div>
