@@ -9,10 +9,6 @@ const Header = ({ siteTitle }) => {
   useEffect(() => {}, [])
 
   const identity = useIdentityContext()
-  if (identity.user) {
-    console.log("hero")
-    console.log(identity)
-  }
 
   return (
     <header>

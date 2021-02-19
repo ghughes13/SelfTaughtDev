@@ -2,19 +2,20 @@ import React from "react"
 import Layout from "../../components/layout/Layout"
 import { Link } from "gatsby"
 import ManageSub from "../../components/manage_sub/ManageSub"
+import { useIdentityContext } from "react-netlify-identity-gotrue"
 
 import "./project-detailed-view.scss"
-
-import { useIdentityContext } from "react-netlify-identity-gotrue"
 
 export default function ProjectDetails(someProp) {
   const projDetails = someProp.pageContext.projectObs
   const projDBDetails = someProp.pageContext.downloadData
-
+  console.log(projDBDetails)
   const background = require("../../images/project_thumbnails" +
     projDetails.imgUrl)
 
   let mockupLite = projDetails.projectMockupLink
+  let mockupPro = projDBDetails.Project_Data[0].project_mockup_link_pro
+
   if (projDBDetails !== undefined) {
     projDBDetails.Project_Data.forEach(project => {
       if (project.project_title === projDetails.projectTitle) {
@@ -76,7 +77,7 @@ export default function ProjectDetails(someProp) {
                 </li>
               </ul>
               <div className="project-download">
-                <IsLoggedIn contentType="pro" mockupLink={mockupLite} />
+                <IsLoggedIn contentType="pro" mockupLink={mockupPro} />
               </div>
             </div>
           </div>
@@ -88,11 +89,6 @@ export default function ProjectDetails(someProp) {
 
 function IsLoggedIn({ mockupLink, contentType }) {
   const identity = useIdentityContext()
-  if (identity.user) {
-    console.log("ture")
-  }
-
-  console.log(identity)
 
   let showProContent = false
 
@@ -102,7 +98,6 @@ function IsLoggedIn({ mockupLink, contentType }) {
     identity.user.app_metadata.roles &&
     identity.user.app_metadata.roles[0] === "pro"
   ) {
-    console.log("shouldn b etru")
     showProContent = true
   }
 
@@ -117,8 +112,8 @@ function IsLoggedIn({ mockupLink, contentType }) {
               target="_blank"
               rel="noreferrer"
             >
-              Download Project Files
-            </a>{" "}
+              Download Lite Project Files
+            </a>
           </>
         ) : (
           <Link to="/login" className="btn-style-1 btn demo-btn">
@@ -128,10 +123,26 @@ function IsLoggedIn({ mockupLink, contentType }) {
       </p>
     )
   } else if (contentType === "pro") {
+    console.log(showProContent)
     return (
       <p>
         {identity.user ? (
-          <>{!showProContent ? <ManageSub innerText="Upgrade To Pro" /> : ""}</>
+          <>
+            {!showProContent ? (
+              <ManageSub innerText="Upgrade To Pro" />
+            ) : (
+              <>
+                <a
+                  href={mockupLink}
+                  className="btn-style-1 demo-btn"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Download Pro Project Files
+                </a>
+              </>
+            )}
+          </>
         ) : (
           <Link to="/login" className="btn-style-1 demo-btn">
             Login To Download Project Files

@@ -9,11 +9,6 @@ import ProjectCard from "../components/project_card/ProjectCard"
 
 export default function IndexPage() {
   const identity = useIdentityContext()
-  if (identity.user) {
-    console.log(identity)
-    console.log(identity.user)
-    // identity.refreshUser
-  }
 
   return (
     <Layout>
