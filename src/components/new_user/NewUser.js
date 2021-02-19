@@ -27,13 +27,14 @@ const NewUser = ({
       .signup(data)
       .then(() => {
         setSigningUp(false)
-        navigate("/")
       })
       .catch(e => {
         setFormError(e.message)
         setSigningUp(false)
       })
   }
+
+  let isLoggedIn = identity.user
 
   return (
     <div className="new-user">
@@ -46,56 +47,68 @@ const NewUser = ({
         action={urlToPostTo}
         onSubmit={handleSubmit(onSubmit)}
       >
-        <div className="form-info-div">
-          <label htmlFor="user_metadata.full_name">
-            <input
-              ref={register({ required: true })}
-              type="text"
-              placeholder="Full Name"
-              name="user_metadata.full_name"
-            ></input>
-          </label>
-          {errors.user_metadata?.full_name && (
-            <p className="error-msg">Name is required</p>
-          )}
-          <label htmlFor="email">
-            <input
-              ref={register({
-                required: true,
-                pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-              })}
-              type="email"
-              placeholder="Email"
-              className="margin-top-input"
-              name="email"
-              id="email"
-            />
-            {errors.email && <p className="error-msg">Email is required</p>}
-          </label>
-          <label htmlFor="password">
-            <input
-              ref={register({ required: true })}
-              className="margin-top-input"
-              type="password"
-              name="password"
-              placeholder="Password"
-              id="password"
-            />
-            {errors.password && (
-              <p className="error-msg">Password is required</p>
+        {isLoggedIn ? (
+          <p class="white-text">
+            New Account Created. <br />
+            You are currently logged in as: <br />
+            {identity.user.user_metadata.full_name}{" "}
+          </p>
+        ) : (
+          <div className="form-info-div">
+            <label htmlFor="user_metadata.full_name">
+              <input
+                ref={register({ required: true })}
+                type="text"
+                placeholder="Full Name"
+                name="user_metadata.full_name"
+              ></input>
+            </label>
+            {errors.user_metadata?.full_name && (
+              <p className="error-msg">Name is required</p>
             )}
-          </label>
-          <button id="sbmt-form-btn" type="submit">
-            Login
-          </button>
-        </div>
+            <label htmlFor="email">
+              <input
+                ref={register({
+                  required: true,
+                  pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                })}
+                type="email"
+                placeholder="Email"
+                className="margin-top-input"
+                name="email"
+                id="email"
+              />
+              {errors.email && <p className="error-msg">Email is required</p>}
+            </label>
+            <label htmlFor="password">
+              <input
+                ref={register({ required: true })}
+                className="margin-top-input"
+                type="password"
+                name="password"
+                placeholder="Password"
+                id="password"
+              />
+              {errors.password && (
+                <p className="error-msg">Password is required</p>
+              )}
+            </label>
+            {signingUp ? (
+              <Loader />
+            ) : (
+              <button id="sbmt-form-btn" type="submit">
+                Login
+              </button>
+            )}
+          </div>
+        )}
         <div id="thanks">
           <p>
             This shouldn't show up. You should just be taken to the project
             archive main screen
           </p>
         </div>
-        <Loader />
+
         <div className="pt-2">
           {formError && (
             <p className="error-msg">
