@@ -790,6 +790,12 @@ footer {
     text-decoration: none;
   }
 
+  .manage-sub-btn {
+    background: transparent;
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+
   @media screen and (max-width: 767px) {
     flex-direction: column;
     margin-top: 0px;

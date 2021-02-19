@@ -33,9 +33,11 @@ exports.handler = async (event, context) => {
 
   const stripeID = result.data.getUserByNetlifyID.stripeID
 
+  const returnTo = "https://selftaught-dev.com/payment-plan-change-notice"
+
   const link = await stripe.billingPortal.sessions.create({
     customer: stripeID,
-    return_url: process.env.URL,
+    return_url: returnTo,
   })
 
   return {
