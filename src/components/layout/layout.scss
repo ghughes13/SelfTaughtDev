@@ -745,6 +745,25 @@ li {
     color: white;
     text-decoration: none;
   }
+
+  .nav-links {
+    max-width: 900px;
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+
+    a {
+      margin-left: 7%;
+    }
+
+    @media screen and (max-width: 1024px) {
+      width: 90%;
+    }
+
+    @media screen and (max-width: 767px) {
+      display: none;
+    }
+  }
 }
 
 /*******************/
@@ -785,6 +804,11 @@ footer {
     line-height: 16px;
     width: 225px;
     text-align: center;
+
+    @media screen and (max-width: 767px) {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
   }
 
   a {
@@ -801,6 +825,9 @@ footer {
   @media screen and (max-width: 767px) {
     flex-direction: column;
     margin-top: 0px;
+    &.transparent {
+      position: relative;
+    }
   }
 }
 
@@ -848,6 +875,10 @@ footer {
   min-height: 90vh;
   position: relative;
 
+  @media screen and (max-width: 1024px) {
+    min-height: 80vh;
+  }
+
   @media screen and (max-width: 767px) {
     padding: 200px 0 100px;
     min-height: initial;
@@ -876,6 +907,10 @@ footer {
 h1 {
   padding-top: 75px;
 
+  @media screen and (max-width: 1024px) {
+    font-size: 64px;
+  }
+
   @media screen and (max-width: 767px) {
     font-size: 34px;
   }
@@ -883,6 +918,10 @@ h1 {
 
 .page-title {
   padding-top: 75px;
+
+  @media screen and (max-width: 1024px) {
+    padding-top: 0px;
+  }
 }
 
 .project-previews {
