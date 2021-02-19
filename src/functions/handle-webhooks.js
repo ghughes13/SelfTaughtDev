@@ -72,7 +72,7 @@ exports.handler = async ({ body, headers }, context) => {
 
       const stripeID = subscription.customer
 
-      let role = free
+      let role = "free"
 
       const faunaFetch = async ({ query, variables }) => {
         return await fetch("https://graphql.fauna.com/graphql", {
