@@ -752,7 +752,8 @@ li {
     display: flex;
     justify-content: flex-end;
 
-    a {
+    a,
+    .login-btn {
       margin-left: 7%;
     }
 
