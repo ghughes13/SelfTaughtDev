@@ -8,7 +8,7 @@ exports.handler = async event => {
 
   await stripe.subscriptions.create({
     customer: customer.id,
-    items: [{ plan: "price_1HeMItJqkXITmJSI0cxr1KCc" }],
+    items: [{ plan: "price_1IO5eDJqkXITmJSIBkFV2W9e" }],
   })
 
   const netlifyID = user.id
