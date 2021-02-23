@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { useIdentityContext } from "react-netlify-identity-gotrue"
 import { useForm } from "react-hook-form"
-import { navigate } from "gatsby"
 
 import "./new-user.scss"
 import Loader from "../animations/loader/Loader"

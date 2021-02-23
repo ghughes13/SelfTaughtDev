@@ -2,65 +2,88 @@
   {
     "projectTitle": "Flooble Homepage",
     "imgUrl": "/googleHomepage.png",
-    "videoUrl": "https://www.youtube.com/watch?v=3egZHuLO2g0&feature=youtu.be",
+    "videoUrl": "https://youtu.be/8mukVpWKIUs",
     "skills": "HTML, CSS",
-    "description": "This is a great starter project. All that we’ll be using is HTML and CSS to recreate Floogle's homepage. It’s a nice simple site with a header, a footer, and a little content in the center. It doesn’t need any JavaScript functionality but you’re welcome to go above and beyond to add it.",
-    "projectMockupLink": "https://drive.google.com/file/d/1_xM0YAPEZaFJEzepso_XgA9RSGW4iQFg/view?usp=sharing"
+    "isFreeProject": "free"
   },
   {
     "projectTitle": "JavaScript Clock",
     "imgUrl": "/javascriptClock.png",
     "videoUrl": "https://youtu.be/dCJq6L02u0M",
     "skills": "HTML, CSS, JavaScript",
-    "description": "In this project you’ll be building a JavaScript clock with a military time mode and a 12 hour mode. It’ll also track the day of the week. Feel free to customize the design but the functionality should stay the same.",
-    "projectMockupLink": "https://drive.google.com/file/d/1PkodmrXK-znpg7JDeFlYRKYgjg0MT0Ml/view?usp=sharing"
-  },
-  {
-    "projectTitle": "Memory Game",
-    "imgUrl": "/memoryGame.png",
-    "videoUrl": "https://youtu.be/pU_ljDH-NzQ",
-    "skills": "HTML, CSS, JavaScript",
-    "description": "Ever played the old memory/matching game before? We'll be recreating that in this project. You'll give the user different levels of difficulty to choose from and connect with an API for the matching images.",
-    "projectMockupLink": "https://drive.google.com/file/d/1yuKEMo7biYa3RE8aiEIg8AudeKkU9pj4/view?usp=sharing"
-  },
-  {
-    "projectTitle": "Pokedex",
-    "imgUrl": "/reactPokedex.png",
-    "videoUrl": "https://youtu.be/JDmMCztRqxg",
-    "skills": "HTML, CSS, JavaScript",
-    "description": "You can't find a Pokemon API and NOT build a pokedex. In this project you'll be pulling data from the pokeAPI and basically recreating a pokedex. The right side will change based on what pokemon is clicked and display that pokemon's stats.",
-    "projectMockupLink": "https://drive.google.com/file/d/1TF4iH5xQ3CCeU8Q5ZYR-WFphxr63mgjM/view?usp=sharing"
-  },
-  {
-    "projectTitle": "Weather App",
-    "imgUrl": "/weatherApp.png",
-    "videoUrl": "https://www.youtube.com/watch?v=JRGzlRW1mNM&feature=youtu.be",
-    "skills": "HTML, CSS, JavaScript",
-    "description": "With this project you'll be taking input form a user (Their zip code), display the current weather in that area, and the weather for the next few days.",
-    "projectMockupLink": "https://drive.google.com/file/d/1t5SO71G4K18oGjlxAHbKyz4kekg0qGis/view?usp=sharing"
+    "isFreeProject": "free"
   },
   {
     "projectTitle": "To-Do List App",
     "imgUrl": "/toDoList.png",
     "videoUrl": "https://youtu.be/JEiUoLzjBiA",
     "skills": "HTML, CSS, JavaScript",
-    "description": "When you learn a new programming language, this is one of the first projects you should build. A to-do list will teach you the basic functions in that language (How to create, read, update, and delete things).",
-    "projectMockupLink": "https://drive.google.com/file/d/112rAGAlr5ZDBdKniiYD83doqgSOy2SAa/view?usp=sharing"
+    "isFreeProject": "free"
+  },
+
+  {
+    "projectTitle": "Issue Tracker",
+    "imgUrl": "/issue-tracker.png",
+    "videoUrl": "https://youtu.be/pU_ljDH-NzQ",
+    "skills": "HTML, CSS, JavaScript",
+    "isFreeProject": ""
   },
   {
-    "projectTitle": "Gify-R",
+    "projectTitle": "Stonks",
+    "imgUrl": "/stocks.png",
+    "videoUrl": "https://youtu.be/x54478DCz6c",
+    "skills": "HTML, CSS, JavaScript",
+    "isFreeProject": "free"
+  },
+  {
+    "projectTitle": "Sudoku",
+    "imgUrl": "/sudoku.png",
+    "videoUrl": "https://youtu.be/x54478DCz6c",
+    "skills": "HTML, CSS, JavaScript",
+    "isFreeProject": ""
+  },
+  {
+    "projectTitle": "Pokedex",
+    "imgUrl": "/reactPokedex.png",
+    "videoUrl": "https://youtu.be/JDmMCztRqxg",
+    "skills": "HTML, CSS, JavaScript",
+    "isFreeProject": ""
+  },
+
+  {
+    "projectTitle": "Memory Game",
+    "imgUrl": "/memoryGame.png",
+    "videoUrl": "https://youtu.be/pU_ljDH-NzQ",
+    "skills": "HTML, CSS, JavaScript",
+    "isFreeProject": ""
+  },
+  {
+    "projectTitle": "Weather App",
+    "imgUrl": "/weatherApp.png",
+    "videoUrl": "https://www.youtube.com/watch?v=JRGzlRW1mNM&feature=youtu.be",
+    "skills": "HTML, CSS, JavaScript",
+    "isFreeProject": ""
+  },
+
+  {
+    "projectTitle": "Gif Search Tool",
     "imgUrl": "/gify-r.png",
     "videoUrl": "https://youtu.be/Z5xEWt9ui1s",
     "skills": "HTML, CSS, JavaScript",
-    "description": "In this project you're working for a company named Gify-R. You'll be using HTML, CSS, and JS, to build their flagship product. A GIF search tool.",
-    "projectMockupLink": "https://drive.google.com/file/d/1FNJ0HRzoz3fDemXPbtMltL927u4BjY2W/view?usp=sharing"
+    "isFreeProject": ""
   },
   {
-    "projectTitle": "Letter Guessing Game",
-    "imgUrl": "/letterGuessingGame.png",
+    "projectTitle": "Phrase Guessing Game",
+    "imgUrl": "/phrase-guessing-game.png",
     "videoUrl": "https://youtu.be/x54478DCz6c",
     "skills": "HTML, CSS, JavaScript",
-    "description": "In this project you'll learn a little bit about manipulating SVGS. As the player gets letters wrong you'll draw in the SVG until it's fully drawn in. When it is you'll notify the player that they have lost and give them the option to restart",
-    "projectMockupLink": "https://drive.google.com/file/d/1trkaA8JtafduYkgO8POgL2dwJPAG0Hv9/view?usp=sharing"
+    "isFreeProject": ""
+  },
+  {
+    "projectTitle": "Pattern Matching Game",
+    "imgUrl": "/patt3rn.png",
+    "videoUrl": "https://youtu.be/x54478DCz6c",
+    "skills": "HTML, CSS, JavaScript",
+    "isFreeProject": ""
   }
 ]

@@ -2,9 +2,9 @@ import React from "react"
 import { Link } from "gatsby"
 import "./project-card.scss"
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ project, addClass }) => {
   return (
-    <div className="project-card">
+    <div className={"project-card " + addClass}>
       <div className="preview-img">
         <img
           src={require("../../images/project_thumbnails" + project.imgUrl)}

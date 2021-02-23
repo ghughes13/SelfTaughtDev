@@ -29,23 +29,32 @@ exports.createPages = async ({ boundActionCreators }) => {
     query: `
     query {
       Project_Data {
-        project_mockup_link_pro
-        project_mockup_link_lite
         project_title
+        project_img_relative_url
+        project_skills
+        project_description
+        free_project
+        project_files_link
       }
     }
     
     `,
   }).then(res => {
     data.map(async indvProjectData => {
-      let dbProjectInfo = res
+      let projectToPassDown
+
+      res.Project_Data.forEach(project => {
+        if (project.project_title === indvProjectData.projectTitle) {
+          projectToPassDown = project
+        }
+      })
 
       await createPage({
         path: `/${indvProjectData.projectTitle}`,
         component: slash(pageTemplate),
         context: {
           projectObs: indvProjectData,
-          downloadData: dbProjectInfo,
+          downloadData: projectToPassDown,
         },
       })
     })

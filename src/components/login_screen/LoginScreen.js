@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { useIdentityContext } from "react-netlify-identity-gotrue"
 import { useForm } from "react-hook-form"
-import { navigate, Link } from "gatsby"
+import { Link } from "gatsby"
 import Loader from "../animations/loader/Loader"
 
 import "./login-screen.scss"
