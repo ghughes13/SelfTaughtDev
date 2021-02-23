@@ -26,6 +26,7 @@ const MailingListSignup = ({
       body: new FormData(document.getElementById(formTitle)),
     })
       .then(res => {
+        setSigningUp(false)
         if (res.status === 200) {
           document.querySelector(".form-info-div").style.display = "none"
           document.getElementById("thanks").style.display = "flex"
@@ -89,10 +90,14 @@ const MailingListSignup = ({
         <div id="thanks">
           <p>{successMessage}</p>
         </div>
-        <p id="error-msg">
-          Error submitting form. <br />
-          Ensure all fields are filled out.
-        </p>
+        {errors ? (
+          <p id="error-msg">
+            Error submitting form. <br />
+            Ensure all fields are filled out.
+          </p>
+        ) : (
+          ""
+        )}
       </form>
     </div>
   )
