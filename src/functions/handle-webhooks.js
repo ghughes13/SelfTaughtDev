@@ -2,9 +2,6 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 import fetch from "node-fetch"
 
 exports.handler = async ({ body, headers }, context) => {
-  console.log(context.clientContext)
-  console.log(body)
-  console.log(headers)
   try {
     const stripeEvent = stripe.webhooks.constructEvent(
       body,

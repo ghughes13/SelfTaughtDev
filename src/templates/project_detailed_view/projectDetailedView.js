@@ -9,7 +9,6 @@ import "./project-detailed-view.scss"
 export default function ProjectDetails(someProp) {
   const projDetails = someProp.pageContext.projectObs
   const projectDetails = someProp.pageContext.downloadData
-  console.log(someProp)
 
   const title = projectDetails.project_title
   const description = projectDetails.project_description
