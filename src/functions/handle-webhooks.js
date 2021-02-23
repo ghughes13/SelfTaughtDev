@@ -17,9 +17,9 @@ exports.handler = async ({ body, headers }, context) => {
 
       let role
 
-      if (plan === "prod_IEpyz9rFw9BajF") {
+      if (plan === "prod_J05sMaenVdWTHl") {
         role = "pro"
-      } else if (plan === "prod_IEpydWylJ6pcS8") {
+      } else if (plan === "prod_J05pFp9K321yhx") {
         role = "free"
       }
 

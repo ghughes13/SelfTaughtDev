@@ -12,7 +12,7 @@ const archiveNotificationLP = () => (
       formTitle="Resume Template LP"
       urlToPostTo="/resume-template/#thanks"
       btnText="Get The Template"
-      successMessage="Thanks for signing up to the SelfTaughtDev Newsletter. If you don't receive the resume template within a few minutes, be sure to check your spam folder."
+      successMessage="Thanks for signing up to the SelfTaughtDev Newsletter. You should recieve my resume template in 5-10 minutes. Be sure to check your spam folder."
     />
   </Layout>
 )
