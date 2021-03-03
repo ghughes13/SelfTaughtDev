@@ -23,6 +23,12 @@ exports.handler = async ({ body, headers }, context) => {
         role = "free"
       }
 
+      // if (plan === "prod_J31BiV5A48O0s3") {
+      //   role = "flooble-homepage"
+      // } else if (plan === "prod_J05pFp9K321yhx") {
+      //   role = "free"
+      // }
+
       const faunaFetch = async ({ query, variables }) => {
         return await fetch("https://graphql.fauna.com/graphql", {
           method: "POST",
@@ -51,6 +57,7 @@ exports.handler = async ({ body, headers }, context) => {
       const netlifyID = result.data.getUserByStripeID.netlifyID
 
       const { identity } = context.clientContext
+      console.log(identity)
       const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
         method: "PUT",
         headers: {
