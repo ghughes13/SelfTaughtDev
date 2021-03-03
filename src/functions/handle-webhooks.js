@@ -118,6 +118,19 @@ exports.handler = async ({ body, headers }, context) => {
       const netlifyID = result.data.getUserByStripeID.netlifyID
 
       const { identity } = context.clientContext
+
+      await fetch(`${identity.url}/admin/users/${netlifyID}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${identity.token}`,
+        },
+        body: JSON.stringify({
+          app_metadata: {
+            roles: [role],
+          },
+        }),
+      }).then(res => console.log(res))
+
       const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
         method: "PUT",
         headers: {
@@ -131,18 +144,6 @@ exports.handler = async ({ body, headers }, context) => {
       })
         .then(res => res.json())
         .catch(err => console.error(err))
-
-      const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${identity.token}`,
-        },
-        body: JSON.stringify({
-          app_metadata: {
-            roles: [role],
-          },
-        }),
-      }).then(res => console.log(res)
     }
 
     return {
