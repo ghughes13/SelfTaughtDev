@@ -66,9 +66,22 @@ exports.handler = async ({ body, headers }, context) => {
       console.log(context.clientContext)
 
       const { identity } = context.clientContext
+
+      await fetch(`${identity.url}/admin/users/${netlifyID}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${identity.token}`,
+        },
+        body: JSON.stringify({
+          app_metadata: {
+            roles: ["free"],
+          },
+        }),
+      }).then(res => console.log(res))
+
       const { user } = context.clientContext
-      const currentRoles = user.app_metadata.roles
-      currentRoles.push(newRole)
+      // const currentRoles = user.app_metadata.roles
+      // currentRoles.push(newRole)
 
       const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
         method: "PUT",
@@ -77,7 +90,7 @@ exports.handler = async ({ body, headers }, context) => {
         },
         body: JSON.stringify({
           app_metadata: {
-            roles: currentRoles,
+            roles: ["free"],
           },
         }),
       })
@@ -118,18 +131,6 @@ exports.handler = async ({ body, headers }, context) => {
       const netlifyID = result.data.getUserByStripeID.netlifyID
 
       const { identity } = context.clientContext
-
-      await fetch(`${identity.url}/admin/users/${netlifyID}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${identity.token}`,
-        },
-        body: JSON.stringify({
-          app_metadata: {
-            roles: [role],
-          },
-        }),
-      }).then(res => console.log(res))
 
       const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
         method: "PUT",
