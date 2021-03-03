@@ -131,6 +131,18 @@ exports.handler = async ({ body, headers }, context) => {
       })
         .then(res => res.json())
         .catch(err => console.error(err))
+
+      const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${identity.token}`,
+        },
+        body: JSON.stringify({
+          app_metadata: {
+            roles: [role],
+          },
+        }),
+      }).then(res => console.log(res)
     }
 
     return {
