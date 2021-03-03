@@ -63,11 +63,12 @@ exports.handler = async ({ body, headers }, context) => {
       const result = await faunaFetch({ query, variables })
       const netlifyID = result.data.getUserByStripeID.netlifyID
 
+      console.log(context.clientContext)
+
       const { identity } = context.clientContext
       const { user } = context.clientContext
       const currentRoles = user.app_metadata.roles
       currentRoles.push(newRole)
-      console.log(identity)
 
       const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
         method: "PUT",
