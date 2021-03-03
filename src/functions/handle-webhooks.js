@@ -1,4 +1,4 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
+const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET_KEY)
 import fetch from "node-fetch"
 
 exports.handler = async ({ body, headers }, context) => {
@@ -6,7 +6,7 @@ exports.handler = async ({ body, headers }, context) => {
     const stripeEvent = stripe.webhooks.constructEvent(
       body,
       headers["stripe-signature"],
-      process.env.STRIPE_WEBHOOK_SECRET_LIVE
+      process.env.STRIPE_WEBHOOK_SECRET
     )
 
     if (stripeEvent.type === "customer.subscription.updated") {
@@ -17,9 +17,16 @@ exports.handler = async ({ body, headers }, context) => {
 
       let role
 
-      if (plan === "prod_J05sMaenVdWTHl") {
+      // if (plan === "prod_J05sMaenVdWTHl") {
+      //   role = "pro"
+      // } else if (plan === "prod_J05pFp9K321yhx") {
+      //   role = "free"
+      // }
+
+      if (plan === "prod_IEpyz9rFw9BajF") {
+        //TEST PRODUCTS
         role = "pro"
-      } else if (plan === "prod_J05pFp9K321yhx") {
+      } else if (plan === "prod_IEpydWylJ6pcS8") {
         role = "free"
       }
 

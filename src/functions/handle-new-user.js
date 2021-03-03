@@ -1,5 +1,5 @@
 import fetch from "node-fetch"
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
+const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET_KEY)
 
 exports.handler = async event => {
   const { user } = JSON.parse(event.body)
@@ -8,7 +8,7 @@ exports.handler = async event => {
 
   await stripe.subscriptions.create({
     customer: customer.id,
-    items: [{ plan: "price_1IO5eDJqkXITmJSIBkFV2W9e" }],
+    items: [{ plan: "price_1HeMItJqkXITmJSI0cxr1KCc" }],
   })
 
   const netlifyID = user.id
