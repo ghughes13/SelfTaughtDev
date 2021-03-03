@@ -72,11 +72,6 @@ exports.handler = async ({ body, headers }, context) => {
         headers: {
           Authorization: `Bearer ${identity.token}`,
         },
-        body: JSON.stringify({
-          app_metadata: {
-            roles: ["free"],
-          },
-        }),
       }).then(res => console.log(res))
 
       const { user } = context.clientContext
