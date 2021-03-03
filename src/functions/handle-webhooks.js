@@ -15,7 +15,7 @@ exports.handler = async ({ body, headers }, context) => {
       const stripeID = subscription.customer
       const plan = subscription.items.data[0].plan.product
 
-      let role
+      let newRole
 
       // if (plan === "prod_J05sMaenVdWTHl") {
       //   role = "pro"
@@ -25,9 +25,9 @@ exports.handler = async ({ body, headers }, context) => {
 
       if (plan === "prod_IEpyz9rFw9BajF") {
         //TEST PRODUCTS
-        role = "pro"
+        newRole = "pro"
       } else if (plan === "prod_IEpydWylJ6pcS8") {
-        role = "free"
+        newRole = "free"
       }
 
       // if (plan === "prod_J31BiV5A48O0s3") {
@@ -64,7 +64,11 @@ exports.handler = async ({ body, headers }, context) => {
       const netlifyID = result.data.getUserByStripeID.netlifyID
 
       const { identity } = context.clientContext
+      const { user } = context.clientContext
+      const currentRoles = user.app_metadata.roles
+      currentRoles.push(newRole)
       console.log(identity)
+
       const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
         method: "PUT",
         headers: {
@@ -72,7 +76,7 @@ exports.handler = async ({ body, headers }, context) => {
         },
         body: JSON.stringify({
           app_metadata: {
-            roles: [role],
+            roles: currentRoles,
           },
         }),
       })
