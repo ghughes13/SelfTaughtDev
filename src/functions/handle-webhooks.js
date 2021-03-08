@@ -76,7 +76,7 @@ exports.handler = async ({ body, headers }, context) => {
         headers: {
           Authorization: `Bearer ${identity.token}`,
         },
-      }).then(res => console.log(res))
+      }).then(res => console.log(res.body))
 
       const { user } = context.clientContext
       // const currentRoles = user.app_metadata.roles
