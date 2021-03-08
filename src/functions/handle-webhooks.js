@@ -71,7 +71,7 @@ exports.handler = async ({ body, headers }, context) => {
 
       const { identity } = context.clientContext
 
-      await fetch(`${identity.url}/admin/users/${netlifyID}`, {
+      fetch(`${identity.url}/admin/users/${netlifyID}`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${identity.token}`,
