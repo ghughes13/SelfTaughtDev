@@ -50,7 +50,7 @@ exports.createPages = async ({ boundActionCreators }) => {
       })
 
       await createPage({
-        path: `/${indvProjectData.projectTitle}`,
+        path: `/${indvProjectData.projectTitle.trim()}`,
         component: slash(pageTemplate),
         context: {
           projectObs: indvProjectData,

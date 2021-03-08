@@ -21,7 +21,7 @@ const ProjectCard = ({ project, addClass }) => {
         })}
       </div>
       <h4>{project.projectTitle}</h4>
-      <Link className="btn-style-1" to={project.projectTitle}>
+      <Link className="btn-style-1" to={project.projectTitle.trim()}>
         Learn More
       </Link>
     </div>
