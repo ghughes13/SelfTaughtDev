@@ -69,17 +69,21 @@ exports.handler = async ({ body, headers }, context) => {
       console.log("it bout to run")
       console.log(context.clientContext)
 
-      const var1 = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${identity.token}`,
-        },
-      }).then(res => {
-        res.json()
-      })
+      const userRoles = await fetch(
+        `${identity.url}/admin/users/${netlifyID}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${identity.token}`,
+          },
+        }
+      )
+        .then(res => {
+          res.json()
+        })
+        .then(resJson => resJson.app_metadata)
 
-      console.log(var1)
-      console.log("=========2")
+      console.log(userRoles)
 
       const { user } = context.clientContext
       // const currentRoles = user.app_metadata.roles
