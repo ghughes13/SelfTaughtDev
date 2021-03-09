@@ -78,7 +78,7 @@ exports.handler = async ({ body, headers }, context) => {
         }
       )
         .then(res => res.json())
-        .then(data => console.log(data.app_metadata.roles))
+        .then(data => data.app_metadata.roles)
 
       const { user } = context.clientContext
       // const currentRoles = user.app_metadata.roles
