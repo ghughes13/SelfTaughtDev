@@ -65,9 +65,8 @@ exports.handler = async ({ body, headers }, context) => {
 
       const { identity } = context.clientContext
 
-      console.log(context)
-      console.log("it bout to run")
       console.log(context.clientContext)
+      console.log("================")
 
       const userRoles = await fetch(
         `${identity.url}/admin/users/${netlifyID}`,
@@ -78,12 +77,8 @@ exports.handler = async ({ body, headers }, context) => {
           },
         }
       )
-        .then(res => {
-          res.json()
-        })
-        .then(resJson => resJson.app_metadata)
-
-      console.log(userRoles)
+        .then(res => res.json())
+        .then(data => console.log(data))
 
       const { user } = context.clientContext
       // const currentRoles = user.app_metadata.roles
