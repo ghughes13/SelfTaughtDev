@@ -49,10 +49,10 @@ exports.createPages = async ({ boundActionCreators }) => {
         }
       })
 
-      console.log(indvProjectData.projectTitle.trim())
+      console.log(indvProjectData.projectTitle.replace(/\s/g, ""))
 
       await createPage({
-        path: `/${indvProjectData.projectTitle.trim()}`,
+        path: `/${indvProjectData.projectTitle.replace(/\s/g, "")}`,
         component: slash(pageTemplate),
         context: {
           projectObs: indvProjectData,
