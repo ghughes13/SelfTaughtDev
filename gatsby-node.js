@@ -49,8 +49,6 @@ exports.createPages = async ({ boundActionCreators }) => {
         }
       })
 
-      console.log(indvProjectData.projectTitle.replace(/\s/g, ""))
-
       await createPage({
         path: `/${indvProjectData.projectTitle.replace(/\s/g, "")}`,
         component: slash(pageTemplate),

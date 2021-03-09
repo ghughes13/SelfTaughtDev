@@ -74,9 +74,9 @@ export default function ProjectDetails(someProp) {
               </ul>
               <div className="project-download">
                 <ShouldContentLinkBeDisplayed
-                  contentType="lite"
                   mockupLink={fileLink}
                   isFreeProject={isFreeProject}
+                  projectTitle={title}
                 />
               </div>
             </div>
@@ -89,19 +89,25 @@ export default function ProjectDetails(someProp) {
 
 function ShouldContentLinkBeDisplayed({
   mockupLink,
-  contentType,
+  projectTitle,
   isFreeProject,
 }) {
   const identity = useIdentityContext()
 
-  let isUserPro = false
+  let showProjectLink = false
   let isUserSignedIn = identity.user
 
-  if (identity.user && identity.user.app_metadata.roles[0] === "pro") {
-    isUserPro = true
+  if (
+    identity.user &&
+    identity.user.app_metadata.roles.includes(projectTitle.replace(/\s/g, ""))
+  ) {
+    showProjectLink = true
   }
 
-  if ((isUserSignedIn && isUserPro) || (isUserSignedIn && isFreeProject)) {
+  if (
+    (isUserSignedIn && showProjectLink) ||
+    (isUserSignedIn && isFreeProject)
+  ) {
     return (
       <p>
         <a
@@ -125,7 +131,7 @@ function ShouldContentLinkBeDisplayed({
   } else {
     return (
       <p>
-        <ManageSub innerText="Upgrade to Pro to Unlock" />
+        <ManageSub innerText="Click Here To Purchase And Unlock This Project" />
       </p>
     )
   }

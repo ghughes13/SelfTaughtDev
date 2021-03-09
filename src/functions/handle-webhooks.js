@@ -19,40 +19,40 @@ exports.handler = async ({ body, headers }, context) => {
 
       if (plan === "prod_J31BiV5A48O0s3") {
         //Flooble Homepage
-        newRole = "flooble_homepage"
+        newRole = "FloobleHomepage"
       } else if (plan === "prod_J31DcDunyXG7qG") {
         //JavaScript Clock
-        newRole = "js_clock"
+        newRole = "JavaScriptClock"
       } else if (plan === "prod_J31EHFHuvLiCxe") {
         //To-Do List App
-        newRole = "todo_list"
+        newRole = "To-DoListApp"
       } else if (plan === "prod_J31EZti9Iv8x5A") {
         //Stock Quote App
-        newRole = "stock_quote_app"
+        newRole = "Stonks"
       } else if (plan === "prod_J31EYrgJg2dvJf") {
         //Issue Tracker
-        newRole = "issue_tracker"
+        newRole = "IssueTracker"
       } else if (plan === "prod_J31FDwc9xbeAEO") {
         //Sudoku
-        newRole = "sudoku"
+        newRole = "Sudoku"
       } else if (plan === "prod_J31GrQGlLLzHw0") {
         //Pokedex
-        newRole = "pokedex"
+        newRole = "Pokedex"
       } else if (plan === "prod_J31H33OC5MBsda") {
         //Memory Game
-        newRole = "memory"
+        newRole = "MemoryGame"
       } else if (plan === "prod_J31HUVBgLkIJEX") {
         //Weather App
-        newRole = "weather_app"
+        newRole = "WeatherApp"
       } else if (plan === "prod_J31IRLfOgay1sd") {
         //GIF Search Tool
-        newRole = "gif_search_tool"
+        newRole = "GifSearchTool"
       } else if (plan === "prod_J31INdMFMiVMyc") {
         //Phrase Guessing Game
-        newRole = "phrase_guessing_game"
+        newRole = "PhraseGuessingGame"
       } else if (plan === "prod_J31Icr6VxBvdef") {
         //Pattern Matching Game
-        newRole = "pattern_matching_game"
+        newRole = "PatternMatchingGame"
       }
 
       const faunaFetch = async ({ query, variables }) => {

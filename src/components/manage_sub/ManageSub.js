@@ -1,19 +1,27 @@
 import React from "react"
 import { useIdentityContext } from "react-netlify-identity-gotrue"
+import { loadStripe } from "@stripe/stripe-js";
 
-export default function ManageSub({ innerText, classList }) {
+export default function ManageSub({ innerText, classList, productID}) {
   const btnText = innerText || "Manage Subscription"
   const identity = useIdentityContext()
+  const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY);
+  const stripe = await stripePromise;
 
-  function redirectToManage() {
+  function redirectToCheckoutSession() {
     if (identity.user) {
       identity
         .authorizedFetch("/.netlify/functions/create-manage-link", {
           method: "POST",
+          body: JSON.stringify({
+            product: productID
+          })
         })
         .then(res => res.json())
-        .then(link => {
-          window.location.href = link
+        .then(stripeSessionID => {
+          stripe.redirectToCheckout({
+            sessionID: stripeSessionID
+          })
         })
         .catch(err => console.error(err))
     } else {
@@ -24,7 +32,7 @@ export default function ManageSub({ innerText, classList }) {
   return (
     <a
       className="manage-sub-btn btn-style-1 demo-btn"
-      onClick={redirectToManage}
+      onClick={redirectToCheckoutSession}
     >
       {btnText}
     </a>
