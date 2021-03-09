@@ -65,7 +65,9 @@ exports.handler = async ({ body, headers }, context) => {
 
       const { identity } = context.clientContext
 
+      console.log(context)
       console.log("it bout to run")
+      console.log(context.clientContext)
 
       const var1 = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
         method: "GET",
