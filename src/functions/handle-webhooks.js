@@ -15,7 +15,7 @@ exports.handler = async ({ body, headers }, context) => {
       const stripeID = subscription.customer
       const plan = subscription.items.data[0].plan.product
 
-      let newRole
+      let newRole = "testing"
 
       // if (plan === "prod_J05sMaenVdWTHl") {
       //   role = "pro"
@@ -68,7 +68,7 @@ exports.handler = async ({ body, headers }, context) => {
       console.log(context.clientContext)
       console.log("================")
 
-      const userRoles = await fetch(
+      const userCurrentRoles = await fetch(
         `${identity.url}/admin/users/${netlifyID}`,
         {
           method: "GET",
@@ -91,7 +91,7 @@ exports.handler = async ({ body, headers }, context) => {
         },
         body: JSON.stringify({
           app_metadata: {
-            roles: ["free"],
+            roles: [...userCurrentRoles, newRole],
           },
         }),
       })
