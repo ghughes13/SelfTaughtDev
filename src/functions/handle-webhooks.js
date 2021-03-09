@@ -15,26 +15,45 @@ exports.handler = async ({ body, headers }, context) => {
       const stripeID = subscription.customer
       const plan = subscription.items.data[0].plan.product
 
-      let newRole = "testing"
+      let newRole
 
-      // if (plan === "prod_J05sMaenVdWTHl") {
-      //   role = "pro"
-      // } else if (plan === "prod_J05pFp9K321yhx") {
-      //   role = "free"
-      // }
-
-      if (plan === "prod_IEpyz9rFw9BajF") {
-        //TEST PRODUCTS
-        newRole = "pro"
-      } else if (plan === "prod_IEpydWylJ6pcS8") {
-        newRole = "free"
+      if (plan === "prod_J31BiV5A48O0s3") {
+        //Flooble Homepage
+        newRole = "flooble_homepage"
+      } else if (plan === "prod_J31DcDunyXG7qG") {
+        //JavaScript Clock
+        newRole = "js_clock"
+      } else if (plan === "prod_J31EHFHuvLiCxe") {
+        //To-Do List App
+        newRole = "todo_list"
+      } else if (plan === "prod_J31EZti9Iv8x5A") {
+        //Stock Quote App
+        newRole = "stock_quote_app"
+      } else if (plan === "prod_J31EYrgJg2dvJf") {
+        //Issue Tracker
+        newRole = "issue_tracker"
+      } else if (plan === "prod_J31FDwc9xbeAEO") {
+        //Sudoku
+        newRole = "sudoku"
+      } else if (plan === "prod_J31GrQGlLLzHw0") {
+        //Pokedex
+        newRole = "pokedex"
+      } else if (plan === "prod_J31H33OC5MBsda") {
+        //Memory Game
+        newRole = "memory"
+      } else if (plan === "prod_J31HUVBgLkIJEX") {
+        //Weather App
+        newRole = "weather_app"
+      } else if (plan === "prod_J31IRLfOgay1sd") {
+        //GIF Search Tool
+        newRole = "gif_search_tool"
+      } else if (plan === "prod_J31INdMFMiVMyc") {
+        //Phrase Guessing Game
+        newRole = "phrase_guessing_game"
+      } else if (plan === "prod_J31Icr6VxBvdef") {
+        //Pattern Matching Game
+        newRole = "pattern_matching_game"
       }
-
-      // if (plan === "prod_J31BiV5A48O0s3") {
-      //   role = "flooble-homepage"
-      // } else if (plan === "prod_J05pFp9K321yhx") {
-      //   role = "free"
-      // }
 
       const faunaFetch = async ({ query, variables }) => {
         return await fetch("https://graphql.fauna.com/graphql", {
@@ -64,9 +83,6 @@ exports.handler = async ({ body, headers }, context) => {
       const netlifyID = result.data.getUserByStripeID.netlifyID
 
       const { identity } = context.clientContext
-
-      console.log(context.clientContext)
-      console.log("================")
 
       const userCurrentRoles = await fetch(
         `${identity.url}/admin/users/${netlifyID}`,
@@ -81,8 +97,6 @@ exports.handler = async ({ body, headers }, context) => {
         .then(data => data.app_metadata.roles)
 
       const { user } = context.clientContext
-      // const currentRoles = user.app_metadata.roles
-      // currentRoles.push(newRole)
 
       const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
         method: "PUT",
@@ -92,55 +106,6 @@ exports.handler = async ({ body, headers }, context) => {
         body: JSON.stringify({
           app_metadata: {
             roles: [...userCurrentRoles, newRole],
-          },
-        }),
-      })
-        .then(res => res.json())
-        .catch(err => console.error(err))
-    } else if (stripeEvent.type === "customer.subscription.deleted") {
-      const subscription = stripeEvent.data.object
-
-      const stripeID = subscription.customer
-
-      let role = "free"
-
-      const faunaFetch = async ({ query, variables }) => {
-        return await fetch("https://graphql.fauna.com/graphql", {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
-          },
-          body: JSON.stringify({
-            query,
-            variables,
-          }),
-        })
-          .then(res => res.json())
-          .catch(err => console.error(JSON.stringify(err, null, 2)))
-      }
-
-      const query = `
-        query ($stripeID: ID!) {
-          getUserByStripeID(stripeID: $stripeID){
-            netlifyID
-          }
-        }
-      `
-      const variables = { stripeID }
-
-      const result = await faunaFetch({ query, variables })
-      const netlifyID = result.data.getUserByStripeID.netlifyID
-
-      const { identity } = context.clientContext
-
-      const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
-        method: "PUT",
-        headers: {
-          Authorization: `Bearer ${identity.token}`,
-        },
-        body: JSON.stringify({
-          app_metadata: {
-            roles: [role],
           },
         }),
       })
