@@ -5,7 +5,9 @@ import { loadStripe } from "@stripe/stripe-js"
 export default function ManageSub({ innerText, classList, productID }) {
   const btnText = innerText || "Manage Subscription"
   const identity = useIdentityContext()
-  const stripePromise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY)
+  const stripePromise = loadStripe(
+    "pk_live_51HOpV2JqkXITmJSIX9u1xJfBxbpWXDMbh6wl97LOvbDfCiD9v5hMW2lVyILd27448QFnJcZWpzZ8dDwTEWoEULbd006bvmFUIt"
+  )
   const stripe = stripePromise
 
   function redirectToCheckoutSession() {
