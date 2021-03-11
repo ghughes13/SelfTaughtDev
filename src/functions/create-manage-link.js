@@ -49,6 +49,9 @@ exports.handler = async (event, context) => {
     payment_method_types: ["card"],
     line_items: [{ price: "price_1ITnNDJqkXITmJSIK8hEo3zq", quantity: 1 }],
     mode: "payment",
+    metadata: {
+      product: "pattern",
+    },
   })
 
   console.log(session.id)
