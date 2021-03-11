@@ -1,16 +1,17 @@
 import React from "react"
 import { useIdentityContext } from "react-netlify-identity-gotrue"
 import { loadStripe } from "@stripe/stripe-js"
+const stripePromise = loadStripe(
+  "pk_test_51HOpV2JqkXITmJSIUBmz3VHCPFGOySQYVTPcZneMZxSqmm89VGzDYaYDU4nFEDlqJUUnEQiQ5SWU0PngWpyQSuIO00cABRxm8I"
+)
 
 export default function ManageSub({ innerText, classList, productID }) {
   const btnText = innerText || "Manage Subscription"
   const identity = useIdentityContext()
-  const stripePromise = loadStripe(
-    "pk_live_51HOpV2JqkXITmJSIX9u1xJfBxbpWXDMbh6wl97LOvbDfCiD9v5hMW2lVyILd27448QFnJcZWpzZ8dDwTEWoEULbd006bvmFUIt"
-  )
-  const stripe = stripePromise
 
-  function redirectToCheckoutSession() {
+  const redirectToCheckoutSession = async event => {
+    const stripe = await stripePromise
+
     if (identity.user) {
       identity
         .authorizedFetch("/.netlify/functions/create-manage-link", {
@@ -21,8 +22,9 @@ export default function ManageSub({ innerText, classList, productID }) {
         })
         .then(res => res.json())
         .then(stripeSessionID => {
+          console.log(stripeSessionID)
           stripe.redirectToCheckout({
-            sessionID: stripeSessionID,
+            sessionId: stripeSessionID.id,
           })
         })
         .catch(err => console.error(err))

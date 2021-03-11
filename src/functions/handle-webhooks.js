@@ -9,7 +9,13 @@ exports.handler = async ({ body, headers }, context) => {
       process.env.STRIPE_WEBHOOK_SECRET
     )
 
-    if (stripeEvent.type === "customer.subscription.updated") {
+    if (stripeEvent.type === "checkout.session.completed") {
+      console.log(stripeEvent)
+      console.log("======")
+      console.log(stripeEvent.data)
+      console.log("============")
+      console.log(stripeEvent.data.object)
+
       const subscription = stripeEvent.data.object
 
       const stripeID = subscription.customer
