@@ -1,4 +1,4 @@
-const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET_KEY)
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 import fetch from "node-fetch"
 
 exports.handler = async ({ body, headers }, context) => {

@@ -131,7 +131,10 @@ function ShouldContentLinkBeDisplayed({
   } else {
     return (
       <p>
-        <ManageSub innerText="Click Here To Purchase And Unlock This Project" />
+        <ManageSub
+          innerText="Click Here To Purchase And Unlock This Project"
+          projectTitle={projectTitle.replace(/\s/g, "")}
+        />
       </p>
     )
   }
