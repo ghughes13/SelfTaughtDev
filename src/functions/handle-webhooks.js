@@ -10,14 +10,7 @@ exports.handler = async ({ body, headers }, context) => {
     )
 
     if (stripeEvent.type === "checkout.session.completed") {
-      console.log(stripeEvent)
-      console.log("======")
-      console.log(stripeEvent.data)
-      console.log("============")
-      console.log(stripeEvent.data.object.metadata.product_id)
-
       const purchase = stripeEvent.data.object
-
       const stripeID = purchase.customer
       const productID = purchase.metadata.product_id
 
@@ -87,6 +80,10 @@ exports.handler = async ({ body, headers }, context) => {
       const variables = { stripeID }
 
       const result = await faunaFetch({ query, variables })
+
+      console.log(result)
+      console.log(result.data)
+
       const netlifyID = result.data.getUserByStripeID.netlifyID
 
       const { identity } = context.clientContext

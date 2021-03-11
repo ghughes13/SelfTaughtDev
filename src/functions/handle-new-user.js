@@ -6,11 +6,6 @@ exports.handler = async event => {
 
   const customer = await stripe.customers.create({ email: user.email })
 
-  await stripe.subscriptions.create({
-    customer: customer.id,
-    items: [{ plan: "price_1HeMItJqkXITmJSI0cxr1KCc" }],
-  })
-
   const netlifyID = user.id
   const stripeID = customer.id
 
