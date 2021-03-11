@@ -3,44 +3,44 @@ const stripe = require("stripe")(process.env.STRIPE_TEST_SECRET_KEY)
 
 exports.handler = async (event, context) => {
   // const projectName = event.body.product
-  // let projectID
+  // let priceID
 
   // if (plan === "FloobleHomepage") {
   //   //Flooble Homepage
-  //   projectID = "prod_J31BiV5A48O0s3"
+  //   priceID = "prod_J31BiV5A48O0s3"
   // } else if (plan === "prod_J31DcDunyXG7qG") {
   //   //JavaScript Clock
-  //   newRole = "JavaScriptClock"
+  //   priceID = "JavaScriptClock"
   // } else if (plan === "prod_J31EHFHuvLiCxe") {
   //   //To-Do List App
-  //   newRole = "To-DoListApp"
+  //   priceID = "To-DoListApp"
   // } else if (plan === "prod_J31EZti9Iv8x5A") {
   //   //Stock Quote App
-  //   newRole = "Stonks"
+  //   priceID = "Stonks"
   // } else if (plan === "prod_J31EYrgJg2dvJf") {
   //   //Issue Tracker
-  //   newRole = "IssueTracker"
+  //   priceID = "IssueTracker"
   // } else if (plan === "prod_J31FDwc9xbeAEO") {
   //   //Sudoku
-  //   newRole = "Sudoku"
+  //   priceID = "Sudoku"
   // } else if (plan === "prod_J31GrQGlLLzHw0") {
   //   //Pokedex
-  //   newRole = "Pokedex"
+  //   priceID = "Pokedex"
   // } else if (plan === "prod_J31H33OC5MBsda") {
   //   //Memory Game
-  //   newRole = "MemoryGame"
+  //   priceID = "MemoryGame"
   // } else if (plan === "prod_J31HUVBgLkIJEX") {
   //   //Weather App
-  //   newRole = "WeatherApp"
+  //   priceID = "WeatherApp"
   // } else if (plan === "prod_J31IRLfOgay1sd") {
   //   //GIF Search Tool
-  //   newRole = "GifSearchTool"
+  //   priceID = "GifSearchTool"
   // } else if (plan === "prod_J31INdMFMiVMyc") {
   //   //Phrase Guessing Game
-  //   newRole = "PhraseGuessingGame"
+  //   priceID = "PhraseGuessingGame"
   // } else if (plan === "prod_J31Icr6VxBvdef") {
   //   //Pattern Matching Game
-  //   newRole = "PatternMatchingGame"
+  //   priceID = "PatternMatchingGame"
   // }
 
   const session = await stripe.checkout.sessions.create({
@@ -50,7 +50,7 @@ exports.handler = async (event, context) => {
     line_items: [{ price: "price_1ITnNDJqkXITmJSIK8hEo3zq", quantity: 1 }],
     mode: "payment",
     metadata: {
-      product: "pattern",
+      product: "prod_J5zLyjuxivbVGa",
     },
   })
 

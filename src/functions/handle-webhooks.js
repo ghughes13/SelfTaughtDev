@@ -14,49 +14,49 @@ exports.handler = async ({ body, headers }, context) => {
       console.log("======")
       console.log(stripeEvent.data)
       console.log("============")
-      console.log(stripeEvent.data.object)
+      console.log(stripeEvent.data.object.metadata.product_id)
 
       const purchase = stripeEvent.data.object
 
       const stripeID = purchase.customer
-      const plan = purchase.items.data[0].plan.product
+      const productID = purchase.metadata.product_id
 
       let newRole
 
       if (plan === "prod_J31BiV5A48O0s3") {
         //Flooble Homepage
         newRole = "FloobleHomepage"
-      } else if (plan === "prod_J31DcDunyXG7qG") {
+      } else if (productID === "prod_J31DcDunyXG7qG") {
         //JavaScript Clock
         newRole = "JavaScriptClock"
-      } else if (plan === "prod_J31EHFHuvLiCxe") {
+      } else if (productID === "prod_J31EHFHuvLiCxe") {
         //To-Do List App
         newRole = "To-DoListApp"
-      } else if (plan === "prod_J31EZti9Iv8x5A") {
+      } else if (productID === "prod_J31EZti9Iv8x5A") {
         //Stock Quote App
         newRole = "Stonks"
-      } else if (plan === "prod_J31EYrgJg2dvJf") {
+      } else if (productID === "prod_J31EYrgJg2dvJf") {
         //Issue Tracker
         newRole = "IssueTracker"
-      } else if (plan === "prod_J31FDwc9xbeAEO") {
+      } else if (productID === "prod_J31FDwc9xbeAEO") {
         //Sudoku
         newRole = "Sudoku"
-      } else if (plan === "prod_J31GrQGlLLzHw0") {
+      } else if (productID === "prod_J31GrQGlLLzHw0") {
         //Pokedex
         newRole = "Pokedex"
-      } else if (plan === "prod_J31H33OC5MBsda") {
+      } else if (productID === "prod_J31H33OC5MBsda") {
         //Memory Game
         newRole = "MemoryGame"
-      } else if (plan === "prod_J31HUVBgLkIJEX") {
+      } else if (productID === "prod_J31HUVBgLkIJEX") {
         //Weather App
         newRole = "WeatherApp"
-      } else if (plan === "prod_J31IRLfOgay1sd") {
+      } else if (productID === "prod_J31IRLfOgay1sd") {
         //GIF Search Tool
         newRole = "GifSearchTool"
-      } else if (plan === "prod_J31INdMFMiVMyc") {
+      } else if (productID === "prod_J31INdMFMiVMyc") {
         //Phrase Guessing Game
         newRole = "PhraseGuessingGame"
-      } else if (plan === "prod_J5zLyjuxivbVGa") {
+      } else if (productID === "prod_J5zLyjuxivbVGa") {
         //Swap in LIVE
         //Pattern Matching Game
         newRole = "PatternMatchingGame"
