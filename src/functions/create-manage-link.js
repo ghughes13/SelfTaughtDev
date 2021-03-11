@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
   } else if (projectName === "GifSearchTool") {
     priceID = "price_1IQvFfJqkXITmJSIBZ45wOKs"
     productID = "prod_J31IRLfOgay1sd"
-  } else if (plprojectNamean === "PhraseGuessingGame") {
+  } else if (projectName === "PhraseGuessingGame") {
     priceID = "price_1IQvG1JqkXITmJSIaxAe1dXd"
     productID = "prod_J31INdMFMiVMyc"
   } else if (projectName === "PatternMatchingGame") {

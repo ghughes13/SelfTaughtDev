@@ -9,9 +9,9 @@ const AccountCreated = () => (
     <SEO title="Archive Notification LP" />
     <div className="mailing-list-signup">
       <h3>
-        Your account has been created.
+        Project Purchased.
         <br />
-        You may now log in.
+        You may now log back in.
       </h3>
     </div>
   </Layout>

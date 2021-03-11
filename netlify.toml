@@ -2,3 +2,9 @@
   command = " npm run build && npm i --prefix=functions"
   functions = "functions"
   publish = "public"
+
+[[redirects]]
+  from = "/cancel"
+  to = "/"
+  status = 301
+  force = true

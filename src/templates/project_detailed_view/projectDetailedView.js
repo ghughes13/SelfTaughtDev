@@ -50,14 +50,7 @@ export default function ProjectDetails(someProp) {
               {isFreeProject ? (
                 <h4 className="larger-h4 regular">Free Project</h4>
               ) : (
-                <h4 className="larger-h4 regular">Pro - $19.99/Month</h4>
-              )}
-              {!isUserPro && !isFreeProject ? (
-                <p className="upgrade-subtext">
-                  *Upgrade To Unlock Every Project
-                </p>
-              ) : (
-                ""
+                <h4 className="larger-h4 regular">$9.99</h4>
               )}
 
               <ul className="omit-list-style">
@@ -132,7 +125,7 @@ function ShouldContentLinkBeDisplayed({
     return (
       <p>
         <ManageSub
-          innerText="Click Here To Purchase And Unlock This Project"
+          innerText="Purchase And Unlock This Project"
           projectTitle={projectTitle.replace(/\s/g, "")}
         />
       </p>
