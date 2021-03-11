@@ -16,10 +16,10 @@ exports.handler = async ({ body, headers }, context) => {
       console.log("============")
       console.log(stripeEvent.data.object)
 
-      const subscription = stripeEvent.data.object
+      const purchase = stripeEvent.data.object
 
-      const stripeID = subscription.customer
-      const plan = subscription.items.data[0].plan.product
+      const stripeID = purchase.customer
+      const plan = purchase.items.data[0].plan.product
 
       let newRole
 
@@ -56,7 +56,8 @@ exports.handler = async ({ body, headers }, context) => {
       } else if (plan === "prod_J31INdMFMiVMyc") {
         //Phrase Guessing Game
         newRole = "PhraseGuessingGame"
-      } else if (plan === "prod_J31Icr6VxBvdef") {
+      } else if (plan === "prod_J5zLyjuxivbVGa") {
+        //Swap in LIVE
         //Pattern Matching Game
         newRole = "PatternMatchingGame"
       }
