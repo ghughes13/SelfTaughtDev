@@ -9,6 +9,8 @@ exports.handler = async event => {
   const netlifyID = user.id
   const stripeID = customer.id
 
+  console.log(stripeID, netlifyID)
+
   const response = await fetch("https://graphql.fauna.com/graphql", {
     method: "POST",
     headers: {
