@@ -23,7 +23,7 @@ exports.handler = async ({ body, headers }, context) => {
 
       let newRole
 
-      if (plan === "prod_J31BiV5A48O0s3") {
+      if (productID === "prod_J31BiV5A48O0s3") {
         //Flooble Homepage
         newRole = "FloobleHomepage"
       } else if (productID === "prod_J31DcDunyXG7qG") {

@@ -50,7 +50,7 @@ exports.handler = async (event, context) => {
     line_items: [{ price: "price_1ITnNDJqkXITmJSIK8hEo3zq", quantity: 1 }],
     mode: "payment",
     metadata: {
-      product: "prod_J5zLyjuxivbVGa",
+      product_id: "prod_J5zLyjuxivbVGa",
     },
   })
 
