@@ -1,12 +1,10 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
-// import fetch from "node-fetch"
 
 exports.handler = async (event, context) => {
   const parsedEventBody = JSON.parse(event.body)
   const stripeID = parsedEventBody.stripeID
   const projectName = parsedEventBody.projectTitle
 
-  console.log(projectName)
   let productID
   let priceID
 

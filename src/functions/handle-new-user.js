@@ -3,13 +3,9 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 exports.handler = async event => {
   const { user } = JSON.parse(event.body)
-
   const customer = await stripe.customers.create({ email: user.email })
-
   const netlifyID = user.id
   const stripeID = customer.id
-
-  console.log(stripeID, netlifyID)
 
   const response = await fetch("https://graphql.fauna.com/graphql", {
     method: "POST",
