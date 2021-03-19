@@ -2,9 +2,9 @@ const fetch = require(`node-fetch`)
 const path = require(`path`)
 const { slash } = require(`gatsby-core-utils`)
 
-exports.createPages = async ({ boundActionCreators }) => {
+exports.createPages = async ({ actions }) => {
   const data = require("./src/data/projectData.json")
-  const { createPage } = boundActionCreators
+  const { createPage } = actions
 
   const pageTemplate = path.resolve(
     "./src/templates/project_detailed_view/projectDetailedView.js"
