@@ -25,7 +25,7 @@ exports.createPages = async ({ actions }) => {
     return result.data
   }
 
-  query({
+  await query({
     query: `
     query {
       Project_Data {
@@ -40,7 +40,7 @@ exports.createPages = async ({ actions }) => {
     
     `,
   }).then(res => {
-    data.map(async indvProjectData => {
+    data.map(indvProjectData => {
       let projectToPassDown
 
       res.Project_Data.forEach(project => {
@@ -49,7 +49,7 @@ exports.createPages = async ({ actions }) => {
         }
       })
 
-      await createPage({
+      createPage({
         path: `/${indvProjectData.projectTitle.replace(/\s/g, "")}`,
         component: slash(pageTemplate),
         context: {
