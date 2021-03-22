@@ -48,9 +48,9 @@ export default function ProjectDetails(someProp) {
           <div className="plan-comparison">
             <div className="lite plan-option">
               {isFreeProject ? (
-                <h4 className="larger-h4 regular">Free Project</h4>
+                <h4 className="larger-h4 regular">{title} - Free</h4>
               ) : (
-                <h4 className="larger-h4 regular">$9.99</h4>
+                <h4 className="larger-h4 regular">{title} - $9.99</h4>
               )}
 
               <ul className="omit-list-style">
