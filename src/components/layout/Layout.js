@@ -14,14 +14,16 @@ const Layout = ({ children, footer = "" }) => {
         <footer className={footer}>
           <div className="footer col-1">
             <p>
-              <a href="/terms-of-service">Terms of Service</a>
+              <a href="/Terms">Terms of Service</a>
               <br />
               <a href="/privacy-policy">Privacy Policy</a>
             </p>
           </div>
           <p>Send bugs/feedback to selftdev@gmail.com</p>
           <p>
-            © {new Date().getFullYear()}, All Rights Reserved Self Taught Dev
+            <ManageSub classList="manage-sub-footer" />
+            <br />© {new Date().getFullYear()}, All Rights Reserved Self Taught
+            Dev
           </p>
         </footer>
       </div>
