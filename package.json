@@ -19,7 +19,6 @@
     "gatsby-plugin-google-tagmanager": "^2.3.11",
     "gatsby-plugin-gtag": "^1.0.13",
     "gatsby-plugin-manifest": "^2.4.14",
-    "gatsby-plugin-netlify-cms": "^5.1.0",
     "gatsby-plugin-netlify-identity-gotrue": "^0.3.3",
     "gatsby-plugin-offline": "^3.2.13",
     "gatsby-plugin-react-helmet": "^3.3.6",
