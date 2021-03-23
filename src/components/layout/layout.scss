@@ -860,6 +860,10 @@ footer {
   transition-duration: 0.25s;
 }
 
+.text-decoration-none {
+  text-decoration: none;
+}
+
 /*******************/
 /*******Main********/
 /*******************/
@@ -997,5 +1001,22 @@ h1 {
 
   a {
     color: #3bb99b;
+  }
+}
+
+/**********************/
+/****Discord Invite****/
+/**********************/
+
+.discord-invite {
+  h3 a {
+    display: flex;
+    align-items: center;
+  }
+  .discord-logo {
+    display: block;
+    width: 100px;
+    margin-bottom: 0;
+    margin-bottom: 0;
   }
 }
