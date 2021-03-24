@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21" height="21" viewBox="0 0 21 21">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_5116" data-name="Rectangle 5116" width="21" height="21" transform="translate(-18598 7237)" fill="#fff" stroke="#fff" stroke-width="1"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_42604" data-name="Path 42604" d="M0,0H70.1V32.823H0Z" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_25" data-name="Mask Group 25" transform="translate(18598 -7237)" clip-path="url(#clip-path)">
+    <g id="Mask_Group_24" data-name="Mask Group 24" transform="translate(-18622.551 7231.089)" clip-path="url(#clip-path-2)">
+      <g id="iconfinder_instagram_281827" transform="translate(26.811 8.732)">
+        <path id="Path_42603" data-name="Path 42603" d="M161.375,170.15h12.248a2.12,2.12,0,0,1,2.114,2.115v12.247a2.12,2.12,0,0,1-2.114,2.115H161.375a2.121,2.121,0,0,1-2.115-2.115V172.265a2.121,2.121,0,0,1,2.115-2.115Zm9.889,1.831a.744.744,0,0,0-.742.742V174.5a.743.743,0,0,0,.742.741h1.863a.743.743,0,0,0,.74-.741v-1.776a.743.743,0,0,0-.74-.742Zm2.611,5.137h-1.451a4.8,4.8,0,0,1,.212,1.415,5.124,5.124,0,0,1-10.243,0,4.826,4.826,0,0,1,.212-1.415h-1.513v6.96a.657.657,0,0,0,.655.656H173.22a.657.657,0,0,0,.654-.656v-6.96Zm-6.359-1.971a3.208,3.208,0,1,0,3.308,3.206A3.259,3.259,0,0,0,167.516,175.146Z" transform="translate(-159.261 -170.15)" fill="#fff" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>
