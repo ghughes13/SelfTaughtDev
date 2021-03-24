@@ -844,7 +844,7 @@ socket {
   margin: auto;
   margin-top: 25px;
 
-  div {
+  > div {
     width: 1000px;
     margin: auto;
     display: flex;
@@ -874,6 +874,31 @@ socket {
   svg {
     margin-bottom: 0;
     margin-left: 10px;
+  }
+
+  @media screen and (max-width: 767px) {
+    > div {
+      display: block;
+      text-align: center;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+    }
+
+    .socials a:first-child svg {
+      margin-left: 0;
+    }
+
+    .divider {
+      display: none;
+    }
+
+    a,
+    p {
+      display: block;
+    }
   }
 }
 
