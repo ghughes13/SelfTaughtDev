@@ -30,6 +30,13 @@ const BurgerMenu = () => {
       >
         CSS Tutorials
       </a>
+      <a
+        href="https://blog.selftaught-dev.com"
+        target="_blank"
+        className="login-text"
+      >
+        Blog
+      </a>
       {identity.user ? (
         <button onClick={identity.logout} className="login-btn">
           Logout

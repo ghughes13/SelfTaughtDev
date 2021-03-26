@@ -2,8 +2,9 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useEffect } from "react"
 import { useIdentityContext } from "react-netlify-identity-gotrue"
-import BurgerMenu from "./burger-menu/BurgerMenu"
+import BurgerMenu from "../burger-menu/BurgerMenu"
 
+import "./header.scss"
 import "@reach/dialog/styles.css"
 
 const Header = ({ siteTitle }) => {
@@ -25,7 +26,7 @@ const Header = ({ siteTitle }) => {
         <Link to="/">
           <img
             className="logo"
-            src={require("../svgs/selftaughtdev-logo-mini.svg")}
+            src={require("../../svgs/selftaughtdev-logo-mini.svg")}
             alt="logo"
           />
         </Link>
@@ -45,6 +46,13 @@ const Header = ({ siteTitle }) => {
             className="login-text"
           >
             CSS Tutorials
+          </a>
+          <a
+            href="https://blog.selftaught-dev.com"
+            target="_blank"
+            className="login-text"
+          >
+            Blog
           </a>
           {identity.user ? (
             <button onClick={identity.logout} className="login-btn">
