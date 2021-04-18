@@ -1,8 +1,8 @@
 import React from "react"
 
-import Layout from "../components/layout/Layout"
-import SEO from "../components/seo"
-import "../page_styles/account-created.scss"
+import Layout from "../../components/layout/Layout"
+import SEO from "../../components/seo"
+// import "../page_styles/account-created.scss"
 
 const AccountCreated = () => (
   <Layout footer="transparent">

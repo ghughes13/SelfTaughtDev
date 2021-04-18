@@ -1,8 +1,8 @@
 import React from "react"
 
-import Layout from "../components/layout/Layout"
-import SEO from "../components/seo"
-import MailingListSignup from "../components/mailing_list_signup/MailingListSignup"
+import Layout from "../../components/layout/Layout"
+import SEO from "../../components/seo"
+import MailingListSignup from "../../components/mailing_list_signup/MailingListSignup"
 
 const archiveNotificationLP = () => (
   <Layout footer="transparent">

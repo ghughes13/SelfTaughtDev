@@ -1,8 +1,8 @@
 import React from "react"
-import Layout from "../components/layout/Layout"
-import SEO from "../components/seo"
+import Layout from "../../components/layout/Layout"
+import SEO from "../../components/seo"
 
-import "../page_styles/account-created.scss"
+import "./account-created.scss"
 
 const DiscordInvitePage = () => {
   return (
@@ -20,7 +20,7 @@ const DiscordInvitePage = () => {
             Click Here To Join Our Discord - <br />
             <img
               class="discord-logo"
-              src={require("../svgs/discord-logo-white.svg")}
+              src={require("../../svgs/discord-logo-white.svg")}
             />{" "}
           </a>
         </h3>
