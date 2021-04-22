@@ -13,7 +13,7 @@ export default function ProjectArchive() {
       <div className="index-hero">
         <h1>
           <span className="mint-green">{"<"}</span>
-          SelfTaughtDev
+          Project Archive
           <span className="mint-green">{"/>"}</span>
         </h1>
         <h3 className="page-title">

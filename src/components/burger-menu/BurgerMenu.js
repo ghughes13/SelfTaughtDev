@@ -14,6 +14,9 @@ const BurgerMenu = () => {
       <a id="home" className="menu-item" href="/">
         Home
       </a>
+      <a id="archive" className="menu-item" href="/project-archive">
+        Project Archive
+      </a>
       <a
         href="https://youtube.com/playlist?list=PLIjhdtSXcP9Lpz0VJsb9QOFCrfSvl8K2I"
         target="_blank"

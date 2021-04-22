@@ -96,7 +96,7 @@ const NewUser = ({
               <Loader />
             ) : (
               <button id="sbmt-form-btn" type="submit">
-                Login
+                Create Account
               </button>
             )}
           </div>

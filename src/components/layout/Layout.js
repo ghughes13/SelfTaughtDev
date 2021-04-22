@@ -4,15 +4,15 @@ import Header from "../header/header"
 import Footer from "../footer/Footer.js"
 import "./layout.scss"
 
-const Layout = ({ children, footer = "" }) => {
+const Layout = ({ children, footer = "", className }) => {
   return (
-    <>
+    <div className={className}>
       <Header />
       <div>
         <main>{children}</main>
         <Footer footerClass={footer} />
       </div>
-    </>
+    </div>
   )
 }
 
