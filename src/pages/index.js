@@ -20,7 +20,7 @@ export default function ProjectArchive() {
             SelfTaughtDev
             <span className="mint-green">{"/>"}</span>
           </h1>
-          <button className="btn-style-1 min-width-200">How It Works</button>
+          {/* <button className="btn-style-1 min-width-200">How It Works</button> */}
           <DownArrows />
         </div>
         <div className="section-1 container">
