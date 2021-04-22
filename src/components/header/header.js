@@ -31,6 +31,9 @@ const Header = ({ siteTitle }) => {
           />
         </Link>
         <div className="nav-links">
+          <Link id="archive" className="login-text" to="/project-archive">
+            Project Archive
+          </Link>
           <a
             href="https://youtube.com/playlist?list=PLIjhdtSXcP9Lpz0VJsb9QOFCrfSvl8K2I"
             target="_blank"
