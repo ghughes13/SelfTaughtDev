@@ -793,11 +793,14 @@ html body {
   }
 
   @media screen and (max-width: 767px) {
-    width: 90%;
-    margin-right: 5%;
-    margin-left: 5%;
-    &:not(:first-child) {
-      margin-top: 50px;
+    &.one-third,
+    &.one-half {
+      width: 90%;
+      margin-right: 5%;
+      margin-left: 5%;
+      &:not(:first-child) {
+        margin-top: 50px;
+      }
     }
   }
 }
