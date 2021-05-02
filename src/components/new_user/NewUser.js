@@ -95,7 +95,7 @@ const NewUser = ({
             {signingUp ? (
               <Loader />
             ) : (
-              <button id="sbmt-form-btn" type="submit">
+              <button id="sbmt-form-btn" className="btn-style-1" type="submit">
                 Create Account
               </button>
             )}

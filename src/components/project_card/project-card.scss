@@ -90,14 +90,5 @@
     cursor: pointer;
     text-decoration: none;
     transition-duration: 0.25s;
-    &:hover {
-      // background: lighten(#3bb99b, 10%);
-      -webkit-box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.35);
-      -moz-box-shadow: 5px 5px 30px 0px rgba(0, 0, 0, 0.35);
-      box-shadow: 5px 5px 30px 0px rgba(0, 0, 0, 0.35);
-    }
-    &:active {
-      background: darken(#3bb99b, 20%);
-    }
   }
 }

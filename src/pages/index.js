@@ -8,6 +8,7 @@ import ProjectData from "../data/projectData"
 import ProjectCard from "../components/project_card/ProjectCard"
 import { Parallax, ParallaxProvider } from "react-scroll-parallax"
 import ParallaxImageHelper from "../components/ParallaxImageHelper/ParallaxImageHelper"
+import WistiaPopOut from "../components/wistia_popout_video/WistiaPopOut"
 
 export default function ProjectArchive() {
   return (
@@ -20,7 +21,9 @@ export default function ProjectArchive() {
             SelfTaughtDev
             <span className="mint-green">{"/>"}</span>
           </h1>
-          {/* <button className="btn-style-1 min-width-200">How It Works</button> */}
+          <WistiaPopOut>
+            <button className="btn-style-1 min-width-200">How It Works</button>
+          </WistiaPopOut>
           <DownArrows />
         </div>
         <div className="section-1 container">
