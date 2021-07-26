@@ -3,6 +3,9 @@ import fetch from "node-fetch"
 
 exports.handler = async ({ body, headers }, context) => {
   try {
+    console.log(headers)
+    console.log(context)
+    console.log(body)
     const stripeEvent = stripe.webhooks.constructEvent(
       body,
       headers["stripe-signature"],
@@ -59,6 +62,7 @@ exports.handler = async ({ body, headers }, context) => {
         //Pattern Matching Game
         newRole = "CheckoutForm"
       }
+
       console.log(newRole)
 
       const faunaFetch = async ({ query, variables }) => {
