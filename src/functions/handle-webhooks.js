@@ -89,7 +89,7 @@ exports.handler = async ({ body, headers }, context) => {
 
       const netlifyID = await faunaFetch({ query, variables }).then(res => {
         console.log(res)
-        return result.data.getUserByStripeID.netlifyID
+        return res.data.getUserByStripeID.netlifyID
       })
 
       const { identity } = context.clientContext
