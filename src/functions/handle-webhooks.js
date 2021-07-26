@@ -73,7 +73,7 @@ exports.handler = async ({ body, headers }, context) => {
         })
           .then(res => {
             console.log(res.json())
-            res.json()
+            // res.json()
           })
           .catch(err => console.error(JSON.stringify(err, null, 2)))
       }
@@ -87,7 +87,9 @@ exports.handler = async ({ body, headers }, context) => {
       `
       const variables = { stripeID }
 
-      const result = await faunaFetch({ query, variables })
+      const result = await faunaFetch({ query, variables }).catch(err =>
+        console.error(JSON.stringify(err, null, 2))
+      )
 
       const netlifyID = result.data.getUserByStripeID.netlifyID
 
