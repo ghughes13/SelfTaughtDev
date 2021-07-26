@@ -10,7 +10,6 @@ exports.handler = async ({ body, headers }, context) => {
     )
 
     if (stripeEvent.type === "checkout.session.completed") {
-      console.log(stripeEvent)
       const purchase = stripeEvent.data.object
       const stripeID = purchase.customer
       const productID = purchase.metadata.product_id
@@ -106,6 +105,7 @@ exports.handler = async ({ body, headers }, context) => {
           res.json()
         })
         .then(data => data.app_metadata.roles)
+        .catch(err => console.error(err))
 
       const { user } = context.clientContext
 
@@ -131,7 +131,7 @@ exports.handler = async ({ body, headers }, context) => {
       body: JSON.stringify({ received: true }),
     }
   } catch (err) {
-    console.log(`Stripe webhook failed with ${err}`)
+    console.error(`Stripe webhook failed with ${err}`)
 
     return {
       statusCode: 400,
