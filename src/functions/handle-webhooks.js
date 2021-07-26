@@ -86,10 +86,11 @@ exports.handler = async ({ body, headers }, context) => {
       `
       const variables = { stripeID }
 
-      const result = await faunaFetch({ query, variables })
-      console.log(result)
-      const netlifyID = result.data.getUserByStripeID.netlifyID
-      console.log(netlifyID)
+      const netlifyID = await faunaFetch({ query, variables }).then(res => {
+        console.log(res)
+        return result.data.getUserByStripeID.netlifyID
+      })
+
       const { identity } = context.clientContext
 
       const userCurrentRoles = await fetch(
