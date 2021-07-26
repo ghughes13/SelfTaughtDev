@@ -60,8 +60,8 @@ exports.handler = async ({ body, headers }, context) => {
         newRole = "CheckoutForm"
       }
 
-      const faunaFetch = ({ query, variables }) => {
-        return fetch("https://graphql.fauna.com/graphql", {
+      const faunaFetch = async ({ query, variables }) => {
+        return await fetch("https://graphql.fauna.com/graphql", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
@@ -72,7 +72,6 @@ exports.handler = async ({ body, headers }, context) => {
           }),
         })
           .then(res => {
-            console.log(res)
             res.json()
           })
           .catch(err => console.error(JSON.stringify(err, null, 2)))
@@ -87,10 +86,11 @@ exports.handler = async ({ body, headers }, context) => {
       `
       const variables = { stripeID }
 
-      const netlifyID = await faunaFetch({ query, variables }).then(res => {
+      const result = await faunaFetch({ query, variables }).then(res =>
         console.log(res)
-        return res.data.getUserByStripeID.netlifyID
-      })
+      )
+
+      const netlifyID = result.data.getUserByStripeID.netlifyID
 
       const { identity } = context.clientContext
 
@@ -135,18 +135,18 @@ exports.handler = async ({ body, headers }, context) => {
   } catch (err) {
     console.error(`Stripe webhook failed with ${err}`)
 
-    if (typeof err === "object") {
-      if (err.message) {
-        console.log("\nMessage: " + err.message)
-      }
-      if (err.stack) {
-        console.log("\nStacktrace:")
-        console.log("====================")
-        console.log(err.stack)
-      }
-    } else {
-      console.log("dumpError :: argument is not an object")
-    }
+    // if (typeof err === "object") {
+    //   if (err.message) {
+    //     console.log("\nMessage: " + err.message)
+    //   }
+    //   if (err.stack) {
+    //     console.log("\nStacktrace:")
+    //     console.log("====================")
+    //     console.log(err.stack)
+    //   }
+    // } else {
+    //   console.log("dumpError :: argument is not an object")
+    // }
 
     return {
       statusCode: 400,
