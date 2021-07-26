@@ -3,10 +3,6 @@ import fetch from "node-fetch"
 
 exports.handler = async ({ body, headers }, context) => {
   try {
-    console.log(headers)
-    console.log(context)
-    console.log(body)
-
     const stripeEvent = stripe.webhooks.constructEvent(
       body,
       headers["stripe-signature"],
@@ -14,6 +10,7 @@ exports.handler = async ({ body, headers }, context) => {
     )
 
     if (stripeEvent.type === "checkout.session.completed") {
+      console.log(stripeEvent)
       const purchase = stripeEvent.data.object
       const stripeID = purchase.customer
       const productID = purchase.metadata.product_id
