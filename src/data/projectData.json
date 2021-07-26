@@ -20,7 +20,6 @@
     "skills": "HTML, CSS, JavaScript",
     "isFreeProject": "free"
   },
-
   {
     "projectTitle": "Issue Tracker",
     "imgUrl": "/issue-tracker.png",
@@ -43,13 +42,26 @@
     "isFreeProject": ""
   },
   {
+    "projectTitle": "Quiz App",
+    "imgUrl": "/quiz-app.png",
+    "videoUrl": "https://youtu.be/3Zl0adR5suI",
+    "skills": "HTML, CSS, JavaScript",
+    "isFreeProject": ""
+  },
+  {
     "projectTitle": "Pokedex",
     "imgUrl": "/reactPokedex.png",
     "videoUrl": "https://youtu.be/JDmMCztRqxg",
     "skills": "HTML, CSS, JavaScript",
     "isFreeProject": ""
   },
-
+  {
+    "projectTitle": "Checkout Form",
+    "imgUrl": "/checkout-form-thumbnail.png",
+    "videoUrl": "https://youtu.be/gUyQYjH5tfQ",
+    "skills": "HTML, CSS, JavaScript",
+    "isFreeProject": ""
+  },
   {
     "projectTitle": "Memory Game",
     "imgUrl": "/memoryGame.png",

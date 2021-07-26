@@ -23,10 +23,7 @@ const ProjectCard = ({ project, addClass }) => {
       <h4>{project.projectTitle}</h4>
       <Link
         className="btn-style-1"
-        to={
-          "https://selftaught-dev.com/" +
-          project.projectTitle.replace(/\s/g, "")
-        }
+        to={"/" + project.projectTitle.replace(/\s/g, "")}
       >
         Learn More
       </Link>

@@ -32,6 +32,12 @@ exports.handler = async (event, context) => {
   } else if (projectName === "PatternMatchingGame") {
     priceID = "price_1IQvGMJqkXITmJSIIKwSAo43"
     productID = "prod_J31Icr6VxBvdef"
+  } else if (projectName === "QuizApp") {
+    priceID = "price_1JHYIKJqkXITmJSI14Dos9HH"
+    productID = "prod_JvP6WyIlOPtnh3"
+  } else if (projectName === "CheckoutForm") {
+    priceID = "price_1JHYpAJqkXITmJSI6Yg7obZE"
+    productID = "prod_JvPedxmGqF6dy7"
   }
 
   const session = await stripe.checkout.sessions.create({

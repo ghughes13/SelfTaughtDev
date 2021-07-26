@@ -5,7 +5,7 @@ import "./footer.scss"
 const Footer = ({ footerClass }) => {
   return (
     <footer className={footerClass}>
-      <socket>
+      <div className="socket">
         <div>
           <div className="socials">
             <a
@@ -32,7 +32,7 @@ const Footer = ({ footerClass }) => {
                     d="M335.128,733.434v9.677a.252.252,0,0,0,.252.252h3.593a.252.252,0,0,0,.252-.252v-9.835h2.605a.252.252,0,0,0,.251-.231l.251-2.963a.253.253,0,0,0-.251-.274h-2.856v-2.1a.892.892,0,0,1,.892-.892h2.008a.252.252,0,0,0,.252-.252V723.6a.252.252,0,0,0-.252-.252h-3.393a3.605,3.605,0,0,0-3.605,3.6v2.856h-1.8a.252.252,0,0,0-.252.252v2.963a.252.252,0,0,0,.252.252h1.8Z"
                     transform="translate(-333.079 -723.348)"
                     fill="#fff"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   />
                 </g>
               </svg>
@@ -58,7 +58,7 @@ const Footer = ({ footerClass }) => {
                       transform="translate(-18598 7237)"
                       fill="#fff"
                       stroke="#fff"
-                      stroke-width="1"
+                      strokeWidth="1"
                     />
                   </clipPath>
                   <clipPath id="clip-path-2">
@@ -74,13 +74,13 @@ const Footer = ({ footerClass }) => {
                   id="Mask_Group_25"
                   data-name="Mask Group 25"
                   transform="translate(18598 -7237)"
-                  clip-path="url(#clip-path)"
+                  clipPath="url(#clip-path)"
                 >
                   <g
                     id="Mask_Group_24"
                     data-name="Mask Group 24"
                     transform="translate(-18622.551 7231.089)"
-                    clip-path="url(#clip-path-2)"
+                    clipPath="url(#clip-path-2)"
                   >
                     <g
                       id="iconfinder_instagram_281827"
@@ -92,7 +92,7 @@ const Footer = ({ footerClass }) => {
                         d="M161.375,170.15h12.248a2.12,2.12,0,0,1,2.114,2.115v12.247a2.12,2.12,0,0,1-2.114,2.115H161.375a2.121,2.121,0,0,1-2.115-2.115V172.265a2.121,2.121,0,0,1,2.115-2.115Zm9.889,1.831a.744.744,0,0,0-.742.742V174.5a.743.743,0,0,0,.742.741h1.863a.743.743,0,0,0,.74-.741v-1.776a.743.743,0,0,0-.74-.742Zm2.611,5.137h-1.451a4.8,4.8,0,0,1,.212,1.415,5.124,5.124,0,0,1-10.243,0,4.826,4.826,0,0,1,.212-1.415h-1.513v6.96a.657.657,0,0,0,.655.656H173.22a.657.657,0,0,0,.654-.656v-6.96Zm-6.359-1.971a3.208,3.208,0,1,0,3.308,3.206A3.259,3.259,0,0,0,167.516,175.146Z"
                         transform="translate(-159.261 -170.15)"
                         fill="#fff"
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                       />
                     </g>
                   </g>
@@ -212,7 +212,7 @@ const Footer = ({ footerClass }) => {
                       d="M281.951,754.157Z"
                       transform="translate(-281.951 -754.157)"
                       fill="#fff"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                     />
                   </g>
                   <g
@@ -226,7 +226,7 @@ const Footer = ({ footerClass }) => {
                       d="M281.845,754.157c-.025,0-.321,0,0,0Z"
                       transform="translate(-281.696 -754.157)"
                       fill="#fff"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                     />
                   </g>
                   <g
@@ -240,7 +240,7 @@ const Footer = ({ footerClass }) => {
                       d="M283.076,754.176c0-.033.344,0,0,0C283.076,754.159,283.118,754.176,283.076,754.176Z"
                       transform="translate(-283.076 -754.161)"
                       fill="#fff"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                     />
                   </g>
                   <g
@@ -254,7 +254,7 @@ const Footer = ({ footerClass }) => {
                       d="M294.83,726.809a.071.071,0,0,1-.081,0Z"
                       transform="translate(-294.749 -726.809)"
                       fill="#fff"
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                     />
                   </g>
                 </g>
@@ -274,7 +274,7 @@ const Footer = ({ footerClass }) => {
             © {new Date().getFullYear()}, All Rights Reserved Self Taught Dev
           </p>
         </div>
-      </socket>
+      </div>
     </footer>
   )
 }

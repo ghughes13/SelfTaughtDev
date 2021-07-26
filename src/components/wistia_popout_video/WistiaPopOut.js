@@ -17,7 +17,7 @@ const WistiaPopOut = ({ id, children }) => {
   })
 
   return (
-    <span class="wistia_embed wistia_async_szz92zmrik popover=true popoverContent=link">
+    <span className="wistia_embed wistia_async_szz92zmrik popover=true popoverContent=link">
       <a href="#">{children}</a>
     </span>
   )
