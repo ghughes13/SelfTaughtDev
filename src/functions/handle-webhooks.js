@@ -52,7 +52,15 @@ exports.handler = async ({ body, headers }, context) => {
       } else if (productID === "prod_J5zLyjuxivbVGa") {
         //Pattern Matching Game
         newRole = "PatternMatchingGame"
-      }
+      } else if (productID === "prod_JvP6WyIlOPtnh3") {
+        //Pattern Matching Game
+        newRole = "QuizApp"
+      } else if (productID === "prod_JvPedxmGqF6dy7") {
+        //Pattern Matching Game
+        newRole = "CheckoutForm"
+      
+      console.log(newRole)
+
 
       const faunaFetch = async ({ query, variables }) => {
         return await fetch("https://graphql.fauna.com/graphql", {
