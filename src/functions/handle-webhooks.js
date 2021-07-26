@@ -50,7 +50,6 @@ exports.handler = async ({ body, headers }, context) => {
         //Phrase Guessing Game
         newRole = "PhraseGuessingGame"
       } else if (productID === "prod_J5zLyjuxivbVGa") {
-        //Swap in LIVE
         //Pattern Matching Game
         newRole = "PatternMatchingGame"
       }
@@ -66,7 +65,10 @@ exports.handler = async ({ body, headers }, context) => {
             variables,
           }),
         })
-          .then(res => res.json())
+          .then(res => {
+            console.log(res)
+            res.json()
+          })
           .catch(err => console.error(JSON.stringify(err, null, 2)))
       }
 
@@ -94,7 +96,10 @@ exports.handler = async ({ body, headers }, context) => {
           },
         }
       )
-        .then(res => res.json())
+        .then(res => {
+          console.log(res)
+          res.json()
+        })
         .then(data => data.app_metadata.roles)
 
       const { user } = context.clientContext
@@ -110,7 +115,10 @@ exports.handler = async ({ body, headers }, context) => {
           },
         }),
       })
-        .then(res => res.json())
+        .then(res => {
+          console.log(res)
+          res.json()
+        })
         .catch(err => console.error(err))
     }
 
