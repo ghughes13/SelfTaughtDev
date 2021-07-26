@@ -6,10 +6,11 @@ exports.handler = async ({ body, headers }, context) => {
     console.log(headers)
     console.log(context)
     console.log(body)
+
     const stripeEvent = stripe.webhooks.constructEvent(
       body,
       headers["stripe-signature"],
-      process.env.STRIPE_WEBHOOK_SECRET
+      process.env.STRIPE_WEBHOOK_SECRET_LIVE
     )
 
     if (stripeEvent.type === "checkout.session.completed") {
@@ -63,8 +64,6 @@ exports.handler = async ({ body, headers }, context) => {
         newRole = "CheckoutForm"
       }
 
-      console.log(newRole)
-
       const faunaFetch = async ({ query, variables }) => {
         return await fetch("https://graphql.fauna.com/graphql", {
           method: "POST",
@@ -77,7 +76,6 @@ exports.handler = async ({ body, headers }, context) => {
           }),
         })
           .then(res => {
-            console.log(res)
             res.json()
           })
           .catch(err => console.error(JSON.stringify(err, null, 2)))
@@ -108,7 +106,6 @@ exports.handler = async ({ body, headers }, context) => {
         }
       )
         .then(res => {
-          console.log(res)
           res.json()
         })
         .then(data => data.app_metadata.roles)
@@ -127,7 +124,6 @@ exports.handler = async ({ body, headers }, context) => {
         }),
       })
         .then(res => {
-          console.log(res)
           res.json()
         })
         .catch(err => console.error(err))
