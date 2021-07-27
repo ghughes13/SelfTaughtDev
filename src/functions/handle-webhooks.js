@@ -38,9 +38,10 @@ exports.handler = ({ body, headers }, context) => {
         .then(res => res.json())
         .then(json => {
           console.log(json.data.getUserByStripeID.netlifyID)
+          const netlifyID = json.data.getUserByStripeID.netlifyID
 
-          const { netlifyID } = json.data.getUserByStripeID
-
+          console.log(context)
+          console.log(context.clientContext)
           const { identity } = context.clientContext
 
           const userCurrentRoles = fetch(
@@ -55,7 +56,10 @@ exports.handler = ({ body, headers }, context) => {
             .then(res => {
               res.json()
             })
-            .then(data => data.app_metadata.roles)
+            .then(data => {
+              console.log(data)
+              data.app_metadata.roles
+            })
             .catch(err => console.error(err))
 
           const { user } = context.clientContext
