@@ -37,7 +37,7 @@ exports.handler = ({ body, headers }, context) => {
       })
         .then(res => res.json())
         .then(json => {
-          json
+          console.log(json)
 
           const { netlifyID } = json.data.getUserByStripeID
 
