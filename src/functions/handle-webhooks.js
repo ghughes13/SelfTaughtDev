@@ -60,8 +60,8 @@ exports.handler = async ({ body, headers }, context) => {
         newRole = "CheckoutForm"
       }
 
-      const faunaFetch = ({ query, variables }) => {
-        fetch("https://graphql.fauna.com/graphql", {
+      const faunaFetch = async ({ query, variables }) => {
+        await fetch("https://graphql.fauna.com/graphql", {
           method: "POST",
           headers: {
             Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
@@ -87,7 +87,7 @@ exports.handler = async ({ body, headers }, context) => {
       `
       const variables = { stripeID }
 
-      const result = await faunaFetch({ query, variables })
+      const result = faunaFetch({ query, variables })
 
       const netlifyID = result.data.getUserByStripeID.netlifyID
 
