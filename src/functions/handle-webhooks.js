@@ -25,7 +25,7 @@ exports.handler = ({ body, headers }, context) => {
           query,
           variables,
         }),
-      }).then(res => console.log(res))
+      }).then(res => console.log(res.json()))
     }
 
     const query = `
