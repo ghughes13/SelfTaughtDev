@@ -69,7 +69,7 @@ exports.handler = async ({ body, headers }, context) => {
       `
       const variables = { stripeID }
 
-      const result = await fetch("https://graphql.fauna.com/graphql", {
+      let result = await fetch("https://graphql.fauna.com/graphql", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
@@ -79,11 +79,8 @@ exports.handler = async ({ body, headers }, context) => {
           variables,
         }),
       })
-        .then(res => {
-          console.log(res.json())
-          res.json()
-        })
-        .catch(err => console.error(JSON.stringify(err, null, 2)))
+
+      result = result.json()
 
       const netlifyID = result.data.getUserByStripeID.netlifyID
 
