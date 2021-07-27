@@ -69,7 +69,7 @@ exports.handler = async ({ body, headers }, context) => {
       `
       const variables = { stripeID }
 
-      let result = await fetch("https://graphql.fauna.com/graphql", {
+      let result = fetch("https://graphql.fauna.com/graphql", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
