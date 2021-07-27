@@ -80,8 +80,10 @@ exports.handler = async ({ body, headers }, context) => {
         }),
       })
 
-      console.log(result)
+      console.log("FIRSTTTT")
+      console.log(result.json())
       result = result.json()
+      console.log("SECONDDDD")
       console.log(result)
 
       const netlifyID = result.data.getUserByStripeID.netlifyID
