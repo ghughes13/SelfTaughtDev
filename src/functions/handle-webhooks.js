@@ -70,12 +70,10 @@ exports.handler = async ({ body, headers }, context) => {
             query,
             variables,
           }),
+        }).then(res => {
+          console.log(res.json())
+          // res.json()
         })
-          .then(res => {
-            console.log(res.json())
-            // res.json()
-          })
-          .catch(err => console.error(JSON.stringify(err, null, 2)))
       }
 
       const query = `
