@@ -1,7 +1,7 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 import fetch from "node-fetch"
 
-exports.handler = async ({ body, headers }, context) => {
+exports.handler = ({ body, headers }, context) => {
   try {
     const stripeEvent = stripe.webhooks.constructEvent(
       body,
@@ -14,6 +14,48 @@ exports.handler = async ({ body, headers }, context) => {
     const purchase = stripeEvent.data.object
     const stripeID = purchase.customer
     const productID = purchase.metadata.product_id
+
+    const faunaFetch = ({ query, variables }) => {
+      fetch("https://graphql.fauna.com/graphql", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
+        },
+        body: JSON.stringify({
+          query,
+          variables,
+        }),
+      })
+    }
+
+    const query = `
+        query ($stripeID: ID!) {
+          getUserByStripeID(stripeID: $stripeID){
+            netlifyID
+          }
+        }
+      `
+    const variables = { stripeID }
+
+    const result = faunaFetch({ query, variables })
+
+    const { netlifyID } = result.data.getUserByStripeID
+
+    const { identity } = context.clientContext
+
+    const userCurrentRoles = fetch(`${identity.url}/admin/users/${netlifyID}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${identity.token}`,
+      },
+    })
+      .then(res => {
+        res.json()
+      })
+      .then(data => data.app_metadata.roles)
+      .catch(err => console.error(err))
+
+    const { user } = context.clientContext
 
     let newRole
 
@@ -61,52 +103,7 @@ exports.handler = async ({ body, headers }, context) => {
       newRole = "CheckoutForm"
     }
 
-    const faunaFetch = async ({ query, variables }) => {
-      await fetch("https://graphql.fauna.com/graphql", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
-        },
-        body: JSON.stringify({
-          query,
-          variables,
-        }),
-      })
-    }
-
-    const query = `
-        query ($stripeID: ID!) {
-          getUserByStripeID(stripeID: $stripeID){
-            netlifyID
-          }
-        }
-      `
-    const variables = { stripeID }
-
-    const result = await faunaFetch({ query, variables })
-
-    const { netlifyID } = result.data.getUserByStripeID
-
-    const { identity } = context.clientContext
-
-    const userCurrentRoles = await fetch(
-      `${identity.url}/admin/users/${netlifyID}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${identity.token}`,
-        },
-      }
-    )
-      .then(res => {
-        res.json()
-      })
-      .then(data => data.app_metadata.roles)
-      .catch(err => console.error(err))
-
-    const { user } = context.clientContext
-
-    const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
+    const response = fetch(`${identity.url}/admin/users/${netlifyID}`, {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${identity.token}`,
