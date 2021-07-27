@@ -70,7 +70,7 @@ exports.handler = async ({ body, headers }, context) => {
         }
       `
     const variables = { stripeID }
-    console.log(variables)
+    console.log(stripeID)
 
     const faunaFetch = async ({ query, variables }) => {
       await fetch("https://graphql.fauna.com/graphql", {
@@ -84,7 +84,6 @@ exports.handler = async ({ body, headers }, context) => {
         }),
       })
         .then(res => {
-          console.log(res.json())
           res.json()
         })
         .catch(err => console.error(JSON.stringify(err, null, 2)))
@@ -93,6 +92,9 @@ exports.handler = async ({ body, headers }, context) => {
     const result = faunaFetch({ query, variables })
 
     const netlifyID = result.data.getUserByStripeID.netlifyID
+    console.log("=======")
+    console.log(result)
+    console.log(result.data)
 
     const { identity } = context.clientContext
 
