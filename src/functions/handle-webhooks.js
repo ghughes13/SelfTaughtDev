@@ -88,7 +88,7 @@ exports.handler = async ({ body, headers }, context) => {
 
           return {
             statusCode: 200,
-            body: JSON.stringify({ received: true }),
+            body: JSON.stringify(res.json()),
           }
         })
         .catch(err => console.error(JSON.stringify(err, null, 2)))
