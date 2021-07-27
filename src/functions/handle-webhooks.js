@@ -60,7 +60,7 @@ exports.handler = async ({ body, headers }, context) => {
         newRole = "CheckoutForm"
       }
 
-      const faunaFetch = async ({ query, variables }) => {
+      const faunaFetch = ({ query, variables }) => {
         await fetch("https://graphql.fauna.com/graphql", {
           method: "POST",
           headers: {
