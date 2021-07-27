@@ -37,12 +37,13 @@ exports.handler = ({ body, headers }, context) => {
       })
         .then(res => res.json())
         .then(json => {
-          console.log(json.data.getUserByStripeID.netlifyID)
           const netlifyID = json.data.getUserByStripeID.netlifyID
 
-          console.log(context)
-          console.log(context.clientContext)
-          const { identity } = context.clientContext
+          const identity = context.clientContext.identity
+
+          console.log(netlifyID)
+          console.log("===")
+          console.log(identity)
 
           const userCurrentRoles = fetch(
             `${identity.url}/admin/users/${netlifyID}`,
@@ -57,6 +58,7 @@ exports.handler = ({ body, headers }, context) => {
               res.json()
             })
             .then(data => {
+              console.log("data")
               console.log(data)
               data.app_metadata.roles
             })
