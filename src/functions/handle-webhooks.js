@@ -27,7 +27,7 @@ exports.handler = ({ body, headers }, context) => {
         }),
       })
         .then(res => res.json())
-        .then(json => console.log(json))
+        .then(json => json)
     }
 
     const query = `
@@ -41,9 +41,9 @@ exports.handler = ({ body, headers }, context) => {
 
     const result = faunaFetch({ query, variables })
 
-    // const { netlifyID } = result.data.getUserByStripeID
+    const { netlifyID } = result.data.getUserByStripeID
 
-    // const { identity } = context.clientContext
+    const { identity } = context.clientContext
 
     // const userCurrentRoles = fetch(`${identity.url}/admin/users/${netlifyID}`, {
     //   method: "GET",
