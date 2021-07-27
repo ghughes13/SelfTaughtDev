@@ -12,19 +12,19 @@ const DiscordInvitePage = () => {
         <h3>
           <a
             href="https://discord.gg/hE2JZcj"
-            class="white-text text-decoration-none"
+            className="white-text text-decoration-none"
             target="_blank"
             rel="noreferrer"
           >
             {" "}
             Click Here To Join Our Discord - <br />
             <img
-              class="discord-logo"
+              className="discord-logo"
               src={require("../../svgs/discord-logo-white.svg")}
             />{" "}
           </a>
         </h3>
-        <p class="white-text">
+        <p className="white-text">
           *If the link above stops working, please let us know by email at
           selftdev@gmail.com
         </p>

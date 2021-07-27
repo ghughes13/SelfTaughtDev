@@ -41,23 +41,14 @@ exports.handler = ({ body, headers }, context) => {
 
           const identity = context.clientContext.identity
 
-          console.log(netlifyID)
-          console.log("===")
-          console.log(identity)
-
-          const userCurrentRoles = fetch(
-            `${identity.url}/admin/users/${netlifyID}`,
-            {
-              method: "GET",
-              headers: {
-                Authorization: `Bearer ${identity.token}`,
-              },
-            }
-          )
+          fetch(`${identity.url}/admin/users/${netlifyID}`, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${identity.token}`,
+            },
+          })
             .then(res => res.json())
             .then(data => {
-              console.log("data")
-              console.log(data)
               let roles = data.app_metadata.roles
 
               const { user } = context.clientContext
@@ -108,20 +99,17 @@ exports.handler = ({ body, headers }, context) => {
                 newRole = "CheckoutForm"
               }
 
-              const response = fetch(
-                `${identity.url}/admin/users/${netlifyID}`,
-                {
-                  method: "PUT",
-                  headers: {
-                    Authorization: `Bearer ${identity.token}`,
+              fetch(`${identity.url}/admin/users/${netlifyID}`, {
+                method: "PUT",
+                headers: {
+                  Authorization: `Bearer ${identity.token}`,
+                },
+                body: JSON.stringify({
+                  app_metadata: {
+                    roles: [...roles, newRole],
                   },
-                  body: JSON.stringify({
-                    app_metadata: {
-                      roles: [...roles, newRole],
-                    },
-                  }),
-                }
-              )
+                }),
+              })
                 .then(res => {
                   res.json()
                 })
@@ -132,7 +120,7 @@ exports.handler = ({ body, headers }, context) => {
         .catch(err => console.error(err))
     }
 
-    const result = faunaFetch({ query, variables })
+    faunaFetch({ query, variables })
 
     return {
       statusCode: 200,

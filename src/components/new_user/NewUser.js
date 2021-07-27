@@ -47,7 +47,7 @@ const NewUser = ({
         onSubmit={handleSubmit(onSubmit)}
       >
         {isLoggedIn ? (
-          <p class="white-text">
+          <p className="white-text">
             New Account Created. <br />
             You are currently logged in as: <br />
             {identity.user.user_metadata.full_name}{" "}

@@ -11,12 +11,12 @@ const Project = ({
   videoLink = "",
 }) => {
   return (
-    <div class="project">
+    <div className="project">
       <img
         src={require("../../../images/portfolio-sites/" + imgSrc)}
         alt="Respontive Portfolio Site"
       />
-      <div class="overlay">
+      <div className="overlay">
         <h4>{title}</h4>
         <ul>
           {skills.map(skill => (

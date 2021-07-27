@@ -165,7 +165,7 @@ const Terms = () => (
           fraudulent, we may immediately cancel or revoke your access to our
           services without notice to you.
         </p>
-        <p class="important">
+        <p className="important">
           <strong>Automatic Renewal.</strong> To ensure uninterrupted service,
           our services are automatically renewed. This means that unless you
           cancel you membership before the end of the applicable subscription
@@ -300,7 +300,7 @@ const Terms = () => (
           services through, our services at your own discretion and risk.
         </p>
         {/* <h2>13. Jurisdiction and Applicable Law.</h2> */}
-        {/* <p class="important">
+        {/* <p className="important">
           Except to the extent any applicable law provides otherwise, the
           Agreement and any access to or use of our Services will be governed by
           the laws of the state of Texas, U.S.A., excluding its conflict of
@@ -310,7 +310,7 @@ const Terms = () => (
           will be the state and federal courts located in Dallas, TX.
         </p> */}
         <h2>13. Arbitration Agreement</h2>
-        <p class="important">
+        <p className="important">
           Except for claims for injunctive or equitable relief or claims
           regarding intellectual property rights (which may be brought in any
           competent court without the posting of a bond), any dispute arising
@@ -324,7 +324,7 @@ const Terms = () => (
           attorneys’ fees.
         </p>
         <h2>14. Limitation of Liability</h2>
-        <p class="important">
+        <p className="important">
           In no event will Self Taught Dev, or its suppliers, partners, or
           licensors, be liable with respect to any subject matter of the
           Agreement under any contract, negligence, strict liability or other

@@ -20,7 +20,7 @@ const About = () => {
           rel="noreferrer"
           className="github"
         >
-          <i class="fa fa-github" aria-hidden="true"></i>
+          <i className="fa fa-github" aria-hidden="true"></i>
         </a>
         <a
           href="https://www.linkedin.com/in/garrett-hughes-5320626b/"
@@ -28,7 +28,7 @@ const About = () => {
           rel="noreferrer"
           className="linkedin"
         >
-          <i class="fa fa-linkedin" aria-hidden="true"></i>
+          <i className="fa fa-linkedin" aria-hidden="true"></i>
         </a>
         <a
           href="https://www.youtube.com/channel/UC_CWq39fcBPCmgKYZ0yProg?view_as=subscriber"
@@ -36,10 +36,10 @@ const About = () => {
           rel="noreferrer"
           className="youtube"
         >
-          <i class="fa fa-youtube"></i>
+          <i className="fa fa-youtube"></i>
         </a>
         <a href={pdf} target="_blank" rel="noreferrer">
-          <img src={require("../../../images/resume.png")} alt="resume"/>
+          <img src={require("../../../images/resume.png")} alt="resume" />
         </a>
       </div>
     </div>

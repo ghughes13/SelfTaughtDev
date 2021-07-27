@@ -48,7 +48,7 @@ const LoginForm = ({
         onSubmit={handleSubmit(onSubmit)}
       >
         {isLoggedIn ? (
-          <p class="white-text">
+          <p className="white-text">
             You are currently logged in as <br />
             {identity.user.user_metadata.full_name}{" "}
           </p>
@@ -96,7 +96,7 @@ const LoginForm = ({
           </p>
         </div>
         {formError && (
-          <p id="error-msg" class="error-msg">
+          <p id="error-msg" className="error-msg">
             Error submitting form. <br />
             Ensure all fields are filled out.
           </p>
