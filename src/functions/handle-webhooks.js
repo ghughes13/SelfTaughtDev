@@ -84,52 +84,52 @@ exports.handler = async ({ body, headers }, context) => {
         }),
       })
         .then(res => {
-          res.json()
+          console.log(res.json())
         })
         .catch(err => console.error(JSON.stringify(err, null, 2)))
     }
 
     const result = faunaFetch({ query, variables })
 
-    const netlifyID = result.data.getUserByStripeID.netlifyID
-    console.log("=======")
-    console.log(result)
-    console.log(result.data)
+    // const netlifyID = result.data.getUserByStripeID.netlifyID
+    // console.log("=======")
+    // console.log(result)
+    // console.log(result.data)
 
-    const { identity } = context.clientContext
+    // const { identity } = context.clientContext
 
-    const userCurrentRoles = await fetch(
-      `${identity.url}/admin/users/${netlifyID}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${identity.token}`,
-        },
-      }
-    )
-      .then(res => {
-        res.json()
-      })
-      .then(data => data.app_metadata.roles)
-      .catch(err => console.error(err))
+    // const userCurrentRoles = await fetch(
+    //   `${identity.url}/admin/users/${netlifyID}`,
+    //   {
+    //     method: "GET",
+    //     headers: {
+    //       Authorization: `Bearer ${identity.token}`,
+    //     },
+    //   }
+    // )
+    //   .then(res => {
+    //     res.json()
+    //   })
+    //   .then(data => data.app_metadata.roles)
+    //   .catch(err => console.error(err))
 
-    const { user } = context.clientContext
+    // const { user } = context.clientContext
 
-    const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${identity.token}`,
-      },
-      body: JSON.stringify({
-        app_metadata: {
-          roles: [...userCurrentRoles, newRole],
-        },
-      }),
-    })
-      .then(res => {
-        res.json()
-      })
-      .catch(err => console.error(err))
+    // const response = await fetch(`${identity.url}/admin/users/${netlifyID}`, {
+    //   method: "PUT",
+    //   headers: {
+    //     Authorization: `Bearer ${identity.token}`,
+    //   },
+    //   body: JSON.stringify({
+    //     app_metadata: {
+    //       roles: [...userCurrentRoles, newRole],
+    //     },
+    //   }),
+    // })
+    //   .then(res => {
+    //     res.json()
+    //   })
+    //   .catch(err => console.error(err))
 
     return {
       statusCode: 200,
