@@ -37,7 +37,7 @@ exports.handler = ({ body, headers }, context) => {
       })
         .then(res => res.json())
         .then(json => {
-          console.log(json)
+          console.log(json.data.getUserByStripeID.netlifyID)
 
           const { netlifyID } = json.data.getUserByStripeID
 
@@ -122,6 +122,7 @@ exports.handler = ({ body, headers }, context) => {
             })
             .catch(err => console.error(err))
         })
+        .catch(err => console.error(err))
     }
 
     const result = faunaFetch({ query, variables })
@@ -133,18 +134,18 @@ exports.handler = ({ body, headers }, context) => {
   } catch (err) {
     console.error(`Stripe webhook failed with ${err}`)
 
-    // if (typeof err === "object") {
-    //   if (err.message) {
-    //     console.log("\nMessage: " + err.message)
-    //   }
-    //   if (err.stack) {
-    //     console.log("\nStacktrace:")
-    //     console.log("====================")
-    //     console.log(err.stack)
-    //   }
-    // } else {
-    //   console.log("dumpError :: argument is not an object")
-    // }
+    if (typeof err === "object") {
+      if (err.message) {
+        console.log("\nMessage: " + err.message)
+      }
+      if (err.stack) {
+        console.log("\nStacktrace:")
+        console.log("====================")
+        console.log(err.stack)
+      }
+    } else {
+      console.log("dumpError :: argument is not an object")
+    }
 
     return {
       statusCode: 400,
