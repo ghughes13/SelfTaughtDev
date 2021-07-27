@@ -2,15 +2,18 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 import fetch from "node-fetch"
 
 exports.handler = async ({ body, headers }, context) => {
-  const stripeEvent = stripe.webhooks.constructEvent(
-    body,
-    headers["stripe-signature"],
-    process.env.STRIPE_WEBHOOK_SECRET_LIVE
-  )
+  try {
+    const stripeEvent = stripe.webhooks.constructEvent(
+      body,
+      headers["stripe-signature"],
+      process.env.STRIPE_WEBHOOK_SECRET_LIVE
+    )
 
-  if (stripeEvent.type === "checkout.session.completed") {
+    if (stripeEvent.type !== "checkout.session.completed") return
+
     const purchase = stripeEvent.data.object
     const stripeID = purchase.customer
+    console.log(stripeID)
     const productID = purchase.metadata.product_id
 
     let newRole
@@ -67,9 +70,10 @@ exports.handler = async ({ body, headers }, context) => {
         }
       `
     const variables = { stripeID }
+    console.log(variables)
 
-    const faunaFetch = ({ query, variables }) => {
-      fetch("https://graphql.fauna.com/graphql", {
+    const faunaFetch = async ({ query, variables }) => {
+      await fetch("https://graphql.fauna.com/graphql", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${process.env.FAUNA_SERVER_KEY}`,
@@ -80,13 +84,13 @@ exports.handler = async ({ body, headers }, context) => {
         }),
       })
         .then(res => {
+          console.log(res.json())
           res.json()
-          console.log(res)
         })
         .catch(err => console.error(JSON.stringify(err, null, 2)))
     }
 
-    const result = await faunaFetch({ query, variables })
+    const result = faunaFetch({ query, variables })
 
     const netlifyID = result.data.getUserByStripeID.netlifyID
 
@@ -124,10 +128,30 @@ exports.handler = async ({ body, headers }, context) => {
         res.json()
       })
       .catch(err => console.error(err))
-  }
 
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ received: true }),
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ received: true }),
+    }
+  } catch (err) {
+    console.error(`Stripe webhook failed with ${err}`)
+
+    // if (typeof err === "object") {
+    //   if (err.message) {
+    //     console.log("\nMessage: " + err.message)
+    //   }
+    //   if (err.stack) {
+    //     console.log("\nStacktrace:")
+    //     console.log("====================")
+    //     console.log(err.stack)
+    //   }
+    // } else {
+    //   console.log("dumpError :: argument is not an object")
+    // }
+
+    return {
+      statusCode: 400,
+      body: `Webhook Error: ${err.message}`,
+    }
   }
 }
