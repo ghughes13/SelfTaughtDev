@@ -39,7 +39,7 @@ exports.handler = ({ body, headers }, context) => {
         .then(json => {
           json
 
-          const { netlifyID } = result.data.getUserByStripeID
+          const { netlifyID } = json.data.getUserByStripeID
 
           const { identity } = context.clientContext
 
@@ -128,7 +128,7 @@ exports.handler = ({ body, headers }, context) => {
 
     return {
       statusCode: 200,
-      body: JSON.stringify(result),
+      body: JSON.stringify({ received: true }),
     }
   } catch (err) {
     console.error(`Stripe webhook failed with ${err}`)
