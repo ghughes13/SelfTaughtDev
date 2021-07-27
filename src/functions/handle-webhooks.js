@@ -13,7 +13,6 @@ exports.handler = async ({ body, headers }, context) => {
 
     const purchase = stripeEvent.data.object
     const stripeID = purchase.customer
-    console.log(stripeID)
     const productID = purchase.metadata.product_id
 
     let newRole
@@ -70,9 +69,9 @@ exports.handler = async ({ body, headers }, context) => {
         }
       `
     const variables = { stripeID }
-    console.log(stripeID)
 
     const faunaFetch = async ({ query, variables }) => {
+      console.log("fetching")
       await fetch("https://graphql.fauna.com/graphql", {
         method: "POST",
         headers: {
@@ -84,6 +83,7 @@ exports.handler = async ({ body, headers }, context) => {
         }),
       })
         .then(res => {
+          console.log("got res")
           console.log(res.json())
 
           return {
