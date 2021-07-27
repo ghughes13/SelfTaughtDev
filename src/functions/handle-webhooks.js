@@ -72,10 +72,6 @@ exports.handler = async ({ body, headers }, context) => {
           variables,
         }),
       })
-        .then(res => {
-          res.json()
-        })
-        .catch(err => console.error(JSON.stringify(err, null, 2)))
     }
 
     const query = `
@@ -87,9 +83,9 @@ exports.handler = async ({ body, headers }, context) => {
       `
     const variables = { stripeID }
 
-    const result = faunaFetch({ query, variables })
+    const result = await faunaFetch({ query, variables })
 
-    const netlifyID = await result.data.getUserByStripeID.netlifyID
+    const { netlifyID } = result.data.getUserByStripeID
 
     const { identity } = context.clientContext
 
