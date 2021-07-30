@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 import { Link } from "gatsby"
 import Loader from "../animations/loader/Loader"
 
-import "./login-screen.scss"
+import "../login_screen/login-screen.scss"
 
 const LoginForm = ({
   pageTitle,
@@ -15,37 +15,38 @@ const LoginForm = ({
   navigateTarget,
 }) => {
   const identity = useIdentityContext()
-  const { register, handleSubmit, errors } = useForm()
+  const [email, setEmail] = useState("guitarguy13@ymail.com")
   const [formError, setFormError] = useState(false)
   const [loggingIn, setLoggingIn] = useState(false)
+  // const [formMessage, setFormMessage] = useState()
 
-  const onSubmit = async data => {
+  const onSubmit = async e => {
     setLoggingIn(true)
     setFormError(false)
 
+    e.preventDefault()
     await identity
-      .login({ email: data.email, password: data.password })
-      .then(res => {
-        setLoggingIn(false)
+      .sendPasswordRecovery({
+        email,
       })
-      .catch(e => {
-        setLoggingIn(false)
-        setFormError(e.message)
-      })
+      // .then(() =>
+      //   setFormMessage("Please check your email for a password recovery link")
+      // )
+      .catch(e => setFormError(e.message))
   }
 
   let isLoggedIn = identity.user
 
   return (
     <div className="login-screen">
-      <h1>Sign In</h1>
+      <h1>Password Reset</h1>
       <form
         id={formTitle}
         method="POST"
         encType="multipart/form-data"
         name={formTitle}
         action={urlToPostTo}
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={onSubmit}
       >
         {isLoggedIn ? (
           <p className="white-text">
@@ -56,44 +57,37 @@ const LoginForm = ({
           <div className="form-info-div">
             <label htmlFor="email">
               <input
-                ref={register({
-                  required: true,
-                  pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                })}
+                // ref={register({
+                //   required: true,
+                //   pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                // })}
                 type="email"
                 placeholder="Email"
                 name="email"
                 id="email"
               />
-              {errors.email && <p className="error-msg">Email is required</p>}
             </label>
             <label htmlFor="password">
               <input
-                ref={register({ required: true })}
+                // ref={register({ required: true })}
                 className="margin-top-input"
                 type="password"
                 name="password"
                 placeholder="Password"
                 id="password"
               />
-              {errors.password && (
-                <p className="error-msg">Password is required</p>
-              )}
             </label>
             {loggingIn ? (
               <Loader />
             ) : (
               <button id="sbmt-form-btn" className="btn-style-1" type="submit">
-                Login
+                Reset
               </button>
             )}
           </div>
         )}
         <div id="thanks">
-          <p>
-            This shouldn't show up. You should just be taken to the project
-            archive main screen
-          </p>
+          <p>Please check your email for a password recovery link</p>
         </div>
         {formError && (
           <p id="error-msg" className="error-msg">
@@ -103,7 +97,7 @@ const LoginForm = ({
         )}
         <div className="other-options">
           <Link to="/new-user">Create Account</Link>
-          <Link to="/password-reset">Forgot Password</Link>
+          <Link to="/new-user">Forgot Password</Link>
         </div>
       </form>
     </div>
