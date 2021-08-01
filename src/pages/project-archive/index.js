@@ -1,10 +1,10 @@
 import React from "react"
 
-import Layout from "../../components/layout/Layout"
-import SEO from "../../components/seo"
-import DownArrows from "../../components/animations/down-arrows/DownArrows"
+import Layout from "../../components/Layout"
+import SEO from "../../components/Seo"
+import DownArrows from "../../components/Animations/DownArrows"
 import ProjectData from "../../data/projectData"
-import ProjectCard from "../../components/project_card/ProjectCard"
+import ProjectCard from "../../components/ProjectCard"
 
 export default function ProjectArchive() {
   return (

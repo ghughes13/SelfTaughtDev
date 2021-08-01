@@ -2,10 +2,8 @@ import React from "react"
 import { useIdentityContext } from "react-netlify-identity-gotrue"
 import { Link } from "gatsby"
 
-import Layout from "../../components/layout/Layout"
-import SEO from "../../components/seo"
-
-// import "../page_styles/account-created.scss"
+import Layout from "../../components/Layout"
+import SEO from "../../components/Seo"
 
 const PaymentPlanUpdated = () => {
   const identity = useIdentityContext()

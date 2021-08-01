@@ -1,14 +1,14 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout/Layout"
-import SEO from "../components/seo"
-import DownArrows from "../components/animations/down-arrows/DownArrows"
+import Layout from "../components/Layout"
+import SEO from "../components/Seo"
+import DownArrows from "../components/Animations/DownArrows"
 import ProjectData from "../data/projectData"
-import ProjectCard from "../components/project_card/ProjectCard"
+import ProjectCard from "../components/ProjectCard"
 import { Parallax, ParallaxProvider } from "react-scroll-parallax"
-import ParallaxImageHelper from "../components/ParallaxImageHelper/ParallaxImageHelper"
-import WistiaPopOut from "../components/wistia_popout_video/WistiaPopOut"
+import ParallaxImageHelper from "../components/ParallaxImageHelper"
+import WistiaPopOutVideo from "../components/WistiaPopoutVideo"
 
 export default function ProjectArchive() {
   return (
@@ -21,9 +21,9 @@ export default function ProjectArchive() {
             SelfTaughtDev
             <span className="mint-green">{"/>"}</span>
           </h1>
-          <WistiaPopOut>
+          <WistiaPopOutVideo>
             <button className="btn-style-1 min-width-200">How It Works</button>
-          </WistiaPopOut>
+          </WistiaPopOutVideo>
           <DownArrows />
         </div>
         <div className="section-1 container">

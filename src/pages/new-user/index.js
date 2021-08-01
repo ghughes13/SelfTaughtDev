@@ -1,8 +1,8 @@
 import React from "react"
 
-import Layout from "../../components/layout/Layout"
-import SEO from "../../components/seo"
-import NewUser from "../../components/new_user/NewUser"
+import Layout from "../../components/Layout"
+import SEO from "../../components/Seo"
+import NewUser from "../../components/NewUser"
 
 const NewUserPage = () => {
   return (

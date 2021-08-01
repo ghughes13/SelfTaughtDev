@@ -1,12 +1,12 @@
 import React from "react"
 
-import Layout from "../../components/layout/Layout"
-import SEO from "../../components/seo"
-import Hero from "../../components/portfolio/hero/Hero"
-import About from "../../components/portfolio/about/About"
-import Skills from "../../components/portfolio/skills/Skills"
-import Projects from "../../components/portfolio/projects/Projects"
-import Contact from "../../components/portfolio/contact/Contact"
+import Layout from "../../components/Layout"
+import SEO from "../../components/Seo"
+import Hero from "../../components/portfolio/Hero"
+import About from "../../components/portfolio/About"
+import Skills from "../../components/portfolio/Skills"
+import Projects from "../../components/portfolio/Projects"
+import Contact from "../../components/portfolio/Contact"
 
 const portfolio = () => (
   <Layout>

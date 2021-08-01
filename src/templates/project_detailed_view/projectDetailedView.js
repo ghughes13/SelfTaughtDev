@@ -1,7 +1,7 @@
 import React from "react"
-import Layout from "../../components/layout/Layout"
+import Layout from "../../components/Layout"
 import { Link } from "gatsby"
-import ManageSub from "../../components/manage_sub/ManageSub"
+import ManageSubscription from "../../components/ManageSubscription"
 import { useIdentityContext } from "react-netlify-identity-gotrue"
 
 import "./project-detailed-view.scss"
@@ -124,7 +124,7 @@ function ShouldContentLinkBeDisplayed({
   } else {
     return (
       <p>
-        <ManageSub
+        <ManageSubscription
           innerText="Purchase And Unlock This Project"
           projectTitle={projectTitle.replace(/\s/g, "")}
         />

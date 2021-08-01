@@ -1,8 +1,8 @@
 import React from "react"
 
-import Layout from "../../components/layout/Layout"
-import SEO from "../../components/seo"
-import PasswordReset from "../../components/PasswordReset/PasswordReset"
+import Layout from "../../components/Layout"
+import SEO from "../../components/Seo"
+import PasswordReset from "../../components/PasswordReset"
 
 const PasswordResetPage = () => {
   return (

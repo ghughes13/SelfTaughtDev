@@ -1,8 +1,8 @@
 import React from "react"
 
-import Layout from "../../components/layout/Layout"
-import SEO from "../../components/seo"
-import LoginScreen from "../../components/login_screen/LoginScreen"
+import Layout from "../../components/Layout"
+import SEO from "../../components/Seo"
+import LoginScreen from "../../components/LoginScreen"
 
 const LoginPage = () => {
   return (
