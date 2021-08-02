@@ -1,12 +1,11 @@
 import React, { useState } from "react"
 import { useIdentityContext } from "react-netlify-identity-gotrue"
-import { useForm } from "react-hook-form"
 import { Link } from "gatsby"
 import Loader from "../Animations/Loader"
 
-import "../LoginScreen/styles.scss"
+import "./styles.scss"
 
-const LoginForm = ({
+const PasswordResetForm = ({
   pageTitle,
   formTitle,
   urlToPostTo,
@@ -15,30 +14,56 @@ const LoginForm = ({
   navigateTarget,
 }) => {
   const identity = useIdentityContext()
-  const [email, setEmail] = useState("guitarguy13@ymail.com")
+  const [email, setEmail] = useState(" ")
+  const [password, setPassword] = useState(" ")
   const [formError, setFormError] = useState(false)
-  const [loggingIn, setLoggingIn] = useState(false)
-  // const [formMessage, setFormMessage] = useState()
+  const [showPasswordField, setShowPasswordField] = useState(false)
+  const [passwordResetEmailSent, setPasswordResetEmailSent] = useState(false)
+  const [passwordResetSuccessful, setPasswordResetSuccessful] = useState(false)
 
-  const onSubmit = async e => {
-    setLoggingIn(true)
+  if (identity.urlToken && identity.urlToken.type) {
+    console.log(identity.urlToken.type)
+  }
+
+  const sendPasswordResetEmail = e => {
+    e.preventDefault()
     setFormError(false)
 
-    e.preventDefault()
-    await identity
+    identity
       .sendPasswordRecovery({
         email,
       })
-      // .then(() =>
-      //   setFormMessage("Please check your email for a password recovery link")
-      // )
+      .then(() => {
+        setPasswordResetEmailSent(true)
+        console.log("sent")
+      })
       .catch(e => setFormError(e.message))
   }
 
-  let isLoggedIn = identity.user
+  const resetPassword = e => {
+    e.preventDefault()
+    setFormError(false)
+
+    identity
+      .completeUrlTokenTwoStep({ password })
+      .then(() => {
+        setPasswordResetEmailSent(true)
+        console.log("sent")
+      })
+      .catch(e => setFormError(e.message))
+  }
+
+  const handleEmailFieldChange = e => {
+    setEmail(e.target.value)
+    console.log(e.target.value)
+  }
+
+  const handlePasswordFieldChange = e => {
+    setEmail(e.target.value)
+  }
 
   return (
-    <div className="login-screen">
+    <div className="password-reset">
       <h1>Password Reset</h1>
       <form
         id={formTitle}
@@ -46,49 +71,69 @@ const LoginForm = ({
         encType="multipart/form-data"
         name={formTitle}
         action={urlToPostTo}
-        onSubmit={onSubmit}
       >
-        {isLoggedIn ? (
-          <p className="white-text">
-            You are currently logged in as <br />
-            {identity.user.user_metadata.full_name}{" "}
-          </p>
-        ) : (
-          <div className="form-info-div">
-            <label htmlFor="email">
-              <input
-                // ref={register({
-                //   required: true,
-                //   pattern: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                // })}
-                type="email"
-                placeholder="Email"
-                name="email"
-                id="email"
-              />
-            </label>
+        {!showPasswordField ? (
+          !passwordResetEmailSent && !showPasswordField ? (
+            <>
+              <p className="white-text reset-text">
+                Submit your email and a link will be sent to reset your
+                password.
+              </p>
+              <div className="form-info-div">
+                <label htmlFor="email">
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    id="email"
+                    value={email}
+                    onChange={e => {
+                      handleEmailFieldChange(e)
+                    }}
+                  />
+                </label>
+                <button
+                  id="sbmt-form-btn"
+                  className="btn-style-1"
+                  onClick={sendPasswordResetEmail}
+                >
+                  Send Reset Email
+                </button>
+              </div>
+            </>
+          ) : (
+            <div id="thanks">
+              <p>Please check your email for a password recovery link</p>
+            </div>
+          )
+        ) : !passwordResetSuccessful ? (
+          <>
             <label htmlFor="password">
               <input
-                // ref={register({ required: true })}
                 className="margin-top-input"
                 type="password"
                 name="password"
                 placeholder="Password"
                 id="password"
+                required
               />
             </label>
-            {loggingIn ? (
-              <Loader />
-            ) : (
-              <button id="sbmt-form-btn" className="btn-style-1" type="submit">
-                Reset
-              </button>
-            )}
+            <button
+              id="sbmt-form-btn"
+              className="btn-style-1"
+              onClick={resetPassword}
+            >
+              Reset Password
+            </button>
+          </>
+        ) : (
+          <div id="thanks">
+            <p>
+              Your password has been reset. You may now
+              <Link to="/login">Login</Link>.
+            </p>
           </div>
         )}
-        <div id="thanks">
-          <p>Please check your email for a password recovery link</p>
-        </div>
         {formError && (
           <p id="error-msg" className="error-msg">
             Error submitting form. <br />
@@ -97,11 +142,11 @@ const LoginForm = ({
         )}
         <div className="other-options">
           <Link to="/new-user">Create Account</Link>
-          <Link to="/new-user">Forgot Password</Link>
+          <Link to="/login">Login</Link>
         </div>
       </form>
     </div>
   )
 }
 
-export default LoginForm
+export default PasswordResetForm
