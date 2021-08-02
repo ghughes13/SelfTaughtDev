@@ -115,7 +115,7 @@ const PasswordResetForm = ({
                 placeholder="Password"
                 id="password"
                 required
-                value={email}
+                value={password}
                 onChange={e => {
                   handlePasswordFieldChange(e)
                 }}
