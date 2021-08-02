@@ -6,7 +6,7 @@ const PasswordResetTemplate = () => (
 
     <p>This one's in SRC/EMAILTEMPLATES</p>
     <p>
-      <a href="http://localhost:8888/password-reset/#recovery_token={{ .Token }}">
+      <a href="{{ .SiteURL }}/password-reset/#recovery_token={{ .Token }}">
         Reset Password
       </a>
     </p>

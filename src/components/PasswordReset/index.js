@@ -22,7 +22,7 @@ const PasswordResetForm = ({
   const [passwordResetSuccessful, setPasswordResetSuccessful] = useState(false)
 
   if (identity.urlToken && identity.urlToken.type) {
-    console.log(identity.urlToken.type)
+    setShowPasswordField(true)
   }
 
   const sendPasswordResetEmail = e => {
@@ -35,7 +35,6 @@ const PasswordResetForm = ({
       })
       .then(() => {
         setPasswordResetEmailSent(true)
-        console.log("sent")
       })
       .catch(e => setFormError(e.message))
   }
@@ -47,8 +46,7 @@ const PasswordResetForm = ({
     identity
       .completeUrlTokenTwoStep({ password })
       .then(() => {
-        setPasswordResetEmailSent(true)
-        console.log("sent")
+        setPasswordResetSuccessful(true)
       })
       .catch(e => setFormError(e.message))
   }
@@ -59,7 +57,7 @@ const PasswordResetForm = ({
   }
 
   const handlePasswordFieldChange = e => {
-    setEmail(e.target.value)
+    setPassword(e.target.value)
   }
 
   return (
@@ -73,7 +71,7 @@ const PasswordResetForm = ({
         action={urlToPostTo}
       >
         {!showPasswordField ? (
-          !passwordResetEmailSent && !showPasswordField ? (
+          !passwordResetEmailSent ? (
             <>
               <p className="white-text reset-text">
                 Submit your email and a link will be sent to reset your
@@ -86,6 +84,7 @@ const PasswordResetForm = ({
                     placeholder="Email"
                     name="email"
                     id="email"
+                    required
                     value={email}
                     onChange={e => {
                       handleEmailFieldChange(e)
@@ -116,6 +115,10 @@ const PasswordResetForm = ({
                 placeholder="Password"
                 id="password"
                 required
+                value={email}
+                onChange={e => {
+                  handlePasswordFieldChange(e)
+                }}
               />
             </label>
             <button
