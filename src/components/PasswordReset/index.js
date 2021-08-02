@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useIdentityContext } from "react-netlify-identity-gotrue"
 import { Link } from "gatsby"
 import Loader from "../Animations/Loader"
@@ -21,9 +21,11 @@ const PasswordResetForm = ({
   const [passwordResetEmailSent, setPasswordResetEmailSent] = useState(false)
   const [passwordResetSuccessful, setPasswordResetSuccessful] = useState(false)
 
-  if (identity.urlToken && identity.urlToken.type) {
-    setShowPasswordField(true)
-  }
+  useEffect(() => {
+    if (identity.urlToken && identity.urlToken.type) {
+      setShowPasswordField(true)
+    }
+  })
 
   const sendPasswordResetEmail = e => {
     e.preventDefault()
