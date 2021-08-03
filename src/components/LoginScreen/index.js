@@ -101,10 +101,12 @@ const LoginForm = ({
             Ensure all fields are filled out.
           </p>
         )}
-        <div className="other-options">
-          <Link to="/new-user">Create Account</Link>
-          <Link to="/password-reset">Forgot Password</Link>
-        </div>
+        {!isLoggedIn && (
+          <div className="other-options">
+            <Link to="/new-user">Create Account</Link>
+            <Link to="/password-reset">Forgot Password</Link>
+          </div>
+        )}
       </form>
     </div>
   )

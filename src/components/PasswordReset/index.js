@@ -20,6 +20,7 @@ const PasswordResetForm = ({
   const [showPasswordField, setShowPasswordField] = useState(false)
   const [passwordResetEmailSent, setPasswordResetEmailSent] = useState(false)
   const [passwordResetSuccessful, setPasswordResetSuccessful] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
     if (identity.urlToken && identity.urlToken.type) {
@@ -30,6 +31,7 @@ const PasswordResetForm = ({
   const sendPasswordResetEmail = e => {
     e.preventDefault()
     setFormError(false)
+    setSubmitting(true)
 
     identity
       .sendPasswordRecovery({
@@ -44,6 +46,7 @@ const PasswordResetForm = ({
   const resetPassword = e => {
     e.preventDefault()
     setFormError(false)
+    setSubmitting(true)
 
     identity
       .completeUrlTokenTwoStep({ password })
@@ -74,68 +77,83 @@ const PasswordResetForm = ({
       >
         {!showPasswordField ? (
           !passwordResetEmailSent ? (
-            <>
-              <p className="white-text reset-text">
-                Submit your email and a link will be sent to reset your
-                password.
-              </p>
-              <div className="form-info-div">
-                <label htmlFor="email">
-                  <input
-                    type="email"
-                    placeholder="Email"
-                    name="email"
-                    id="email"
-                    required
-                    value={email}
-                    onChange={e => {
-                      handleEmailFieldChange(e)
-                    }}
-                  />
-                </label>
-                <button
-                  id="sbmt-form-btn"
-                  className="btn-style-1"
-                  onClick={sendPasswordResetEmail}
-                >
-                  Send Reset Email
-                </button>
-              </div>
-            </>
+            submitting ? (
+              <Loader />
+            ) : (
+              <>
+                <p className="white-text reset-text">
+                  Submit your email and a link will be sent to reset your
+                  password.
+                </p>
+                <div className="form-info-div">
+                  <label htmlFor="email">
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      name="email"
+                      id="email"
+                      required
+                      value={email}
+                      onChange={e => {
+                        handleEmailFieldChange(e)
+                      }}
+                    />
+                  </label>
+                  <button
+                    id="sbmt-form-btn"
+                    className="btn-style-1"
+                    onClick={sendPasswordResetEmail}
+                  >
+                    Send Reset Email
+                  </button>
+                </div>
+              </>
+            )
           ) : (
             <div id="thanks">
-              <p>Please check your email for a password recovery link</p>
+              <p>
+                If an account exists with that email, a password reset link will
+                be sent to it.
+              </p>
             </div>
           )
         ) : !passwordResetSuccessful ? (
-          <>
-            <label htmlFor="password">
-              <input
-                className="margin-top-input"
-                type="password"
-                name="password"
-                placeholder="Password"
-                id="password"
-                required
-                value={password}
-                onChange={e => {
-                  handlePasswordFieldChange(e)
-                }}
-              />
-            </label>
-            <button
-              id="sbmt-form-btn"
-              className="btn-style-1"
-              onClick={resetPassword}
-            >
-              Reset Password
-            </button>
-          </>
+          submitting ? (
+            <Loader />
+          ) : (
+            <>
+              <label htmlFor="password">
+                <input
+                  className="margin-top-input"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  id="password"
+                  required
+                  value={password}
+                  onChange={e => {
+                    handlePasswordFieldChange(e)
+                  }}
+                />
+              </label>
+              <button
+                id="sbmt-form-btn"
+                className="btn-style-1"
+                onClick={resetPassword}
+              >
+                Reset Password
+              </button>
+            </>
+          )
         ) : (
           <div id="thanks">
             <p>
-              Your password has been reset. You may now
-              <Link to="/login">Login</Link>.
+              Your password has been reset. You may now{" "}
+              <Link to="/login" className="white-text">
+                {" "}
+                Login
+              </Link>
+              .
             </p>
           </div>
         )}

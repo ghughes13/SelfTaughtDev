@@ -37,7 +37,10 @@ const NewUser = ({
 
   return (
     <div className="new-user">
-      <h1>Become A Self Taught Dev.</h1>
+      <h1>
+        Become A <br />
+        Self Taught Dev.
+      </h1>
       <form
         id={formTitle}
         method="POST"
