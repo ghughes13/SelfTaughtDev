@@ -1,16 +1,15 @@
 {
   "name": "gatsby-starter-default",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A site with projects for aspiring web developers to practice building",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Garrett Hughes <selftdev@gmail.com>",
   "dependencies": {
     "@reach/dialog": "^0.11.2",
     "@reach/tabs": "^0.11.2",
     "@reach/visually-hidden": "^0.11.1",
     "@stripe/react-stripe-js": "^1.4.0",
     "@stripe/stripe-js": "^1.13.1",
-    "axios": "^0.20.0",
     "cors": "^2.8.5",
     "framer-motion": "^2.3.0",
     "gatsby": "^2.23.12",
