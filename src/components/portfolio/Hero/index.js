@@ -3,11 +3,11 @@ import "./styles.scss"
 import DownArrows from "../../Animations/DownArrows"
 
 const Hero = () => {
-  useEffect(() => {
-    window.addEventListener("load", () => {
-      document.querySelector("h1").addClass("animate")
-    })
-  })
+  // useEffect(() => {
+  //   window.addEventListener("load", () => {
+  //     document.querySelector("h1").addClass("animate")
+  //   })
+  // })
 
   return (
     <div className="hero">

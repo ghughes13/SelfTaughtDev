@@ -19,12 +19,12 @@ module.exports = {
     siteUrl: `https://selftaught-dev.com`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-netlify-identity-gotrue`,
-      options: {
-        url: `https://selftaught-dev.com`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-netlify-identity-gotrue`,
+    //   options: {
+    //     url: `https://selftaught-dev.com`,
+    //   },
+    // },
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
     {
@@ -36,15 +36,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

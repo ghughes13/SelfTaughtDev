@@ -15,27 +15,27 @@ const MailingListSignup = ({
   const [formError, setFormError] = useState(false)
   const [signingUp, setSigningUp] = useState(false)
 
-  const onSubmit = async data => {
-    setSigningUp(true)
-    setFormError(false)
+  // const onSubmit = async data => {
+  //   setSigningUp(true)
+  //   setFormError(false)
 
-    const formName = document.getElementById(formTitle)
+  // const formName = window && document.getElementById(formTitle)
 
-    fetch(formName.getAttribute("action"), {
-      method: "POST",
-      body: new FormData(document.getElementById(formTitle)),
-    })
-      .then(res => {
-        setSigningUp(false)
-        if (res.status === 200) {
-          document.querySelector(".form-info-div").style.display = "none"
-          document.getElementById("thanks").style.display = "flex"
-        }
-      })
-      .catch(e => {
-        setFormError(e.message)
-      })
-  }
+  //   fetch(formName.getAttribute("action"), {
+  //     method: "POST",
+  //     body: new FormData(formName),
+  //   })
+  //     .then(res => {
+  //       setSigningUp(false)
+  //       if (res.status === 200) {
+  //         document.querySelector(".form-info-div").style.display = "none"
+  //         document.getElementById("thanks").style.display = "flex"
+  //       }
+  //     })
+  //     .catch(e => {
+  //       setFormError(e.message)
+  //     })
+  // }
 
   return (
     <div className="mailing-list-signup">
