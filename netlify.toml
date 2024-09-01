@@ -4,7 +4,7 @@
   publish = "public"
 
 [[redirects]]
-  from = "/cancel"
-  to = "/"
+  from = "/portfolio"
+  to = "https://portfolio.selftaught-dev.com/"
   status = 301
   force = true
